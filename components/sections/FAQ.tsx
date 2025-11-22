@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: 'Do you offer coaching beyond the app?',
-    answer: 'No, we're a pure software product. The AI provides the analysis—you bring the dedication to improve.',
+    answer: "No, we're a pure software product. The AI provides the analysis—you bring the dedication to improve.",
   },
 ];
 
