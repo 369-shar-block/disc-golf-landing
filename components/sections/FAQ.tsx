@@ -19,16 +19,16 @@ const faqs = [
     answer: 'Powered by Google Gemini 3 Pro, trained on thousands of disc golf videos. It analyzes 30+ biomechanical markers with professional-level accuracy.',
   },
   {
-    question: 'Can I save my analyses?',
-    answer: 'Yes! The app includes a history feature that saves all your analyses. Track your improvement over time.',
+    question: 'Can I cancel my subscription anytime?',
+    answer: 'Absolutely! Cancel anytime with one tap in the app. No commitments, no cancellation fees.',
+  },
+  {
+    question: 'How many analyses can I do per month?',
+    answer: 'Unlimited! Analyze as many throws as you want. The more you practice and analyze, the faster you improve.',
   },
   {
     question: 'What about my privacy?',
     answer: "Your videos are only used for analysis and not stored on our servers. Everything stays on your device and Google's secure AI API.",
-  },
-  {
-    question: 'Do you offer coaching beyond the app?',
-    answer: "No, we're a pure software product. The AI provides the analysis—you bring the dedication to improve.",
   },
 ];
 

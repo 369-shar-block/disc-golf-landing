@@ -18,10 +18,10 @@ export function Pricing() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <GradientText gradient="action">Honest Pricing</GradientText>, No Surprises
+            <GradientText gradient="action">Simple Pricing</GradientText>, Unlimited Analyses
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            Transparent costs. You're in control.
+            One price. Unlimited form analyses. Cancel anytime.
           </p>
         </motion.div>
 
@@ -32,59 +32,96 @@ export function Pricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <GlassCard hover={false} className="max-w-2xl mx-auto">
-            <div className="space-y-6">
-              {/* App Download */}
-              <div className="flex justify-between items-center pb-4 border-b border-glass-border">
-                <div>
-                  <h3 className="font-bold text-lg text-text-primary">App Download</h3>
-                  <p className="text-sm text-text-secondary">iOS & Android</p>
+          <GlassCard hover={false} className="max-w-2xl mx-auto text-center">
+            <div className="space-y-8">
+              {/* Price */}
+              <div>
+                <div className="flex items-baseline justify-center gap-2 mb-2">
+                  <span className="text-6xl font-bold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
+                    $9.99
+                  </span>
+                  <span className="text-2xl text-text-secondary">/month</span>
                 </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-                  FREE
-                </div>
+                <p className="text-text-tertiary">Billed monthly • Cancel anytime</p>
               </div>
 
-              {/* API Key */}
-              <div className="flex justify-between items-center pb-4 border-b border-glass-border">
-                <div>
-                  <h3 className="font-bold text-lg text-text-primary">Gemini API Key</h3>
-                  <p className="text-sm text-text-secondary">You provide (free tier available)</p>
+              {/* Features */}
+              <div className="space-y-4 text-left max-w-md mx-auto">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-text-primary font-semibold">Unlimited Analyses</p>
+                    <p className="text-sm text-text-secondary">Analyze as many throws as you want</p>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
-                  $0
-                </div>
-              </div>
 
-              {/* Per Analysis */}
-              <div className="flex justify-between items-center pb-4">
-                <div>
-                  <h3 className="font-bold text-lg text-text-primary">Per Analysis</h3>
-                  <p className="text-sm text-text-secondary">Actual cost you pay Google</p>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-text-primary font-semibold">AI-Powered Feedback</p>
+                    <p className="text-sm text-text-secondary">Google Gemini 3 Pro analysis</p>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#c471f5] to-[#fa71cd] bg-clip-text text-transparent">
-                  ~$0.01
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-text-primary font-semibold">Analysis History</p>
+                    <p className="text-sm text-text-secondary">Track your progress over time</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-text-primary font-semibold">Custom Drills</p>
+                    <p className="text-sm text-text-secondary">Personalized training recommendations</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-text-primary font-semibold">All Throw Types</p>
+                    <p className="text-sm text-text-secondary">Backhand, forehand, and putting</p>
+                  </div>
                 </div>
               </div>
 
               {/* Comparison */}
-              <div className="bg-surface/50 rounded-xl p-4 text-center">
-                <p className="text-sm text-text-secondary mb-2">Compare to traditional coaching:</p>
-                <p className="text-lg font-bold text-text-primary">
-                  One private lesson ($100) ={' '}
-                  <span className="bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-                    10,000+ AI analyses
-                  </span>
-                </p>
+              <div className="bg-surface/50 rounded-xl p-6">
+                <p className="text-sm text-text-secondary mb-3">Compare to traditional coaching:</p>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-text-primary">Private Lesson (1 hour)</span>
+                    <span className="text-text-secondary line-through">$100</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-text-primary font-bold">Unlimited AI Coaching</span>
+                    <span className="text-2xl font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
+                      $9.99
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* CTA */}
-              <div className="text-center pt-4">
-                <Button variant="success" size="lg">
-                  Start with Free Tier
+              <div className="pt-4">
+                <Button variant="success" size="lg" className="w-full sm:w-auto">
+                  Start Your Free Trial
                 </Button>
-                <p className="text-xs text-text-tertiary mt-2">
-                  No credit card required. Pay only for what you use.
+                <p className="text-xs text-text-tertiary mt-3">
+                  7-day free trial • No credit card required
                 </p>
               </div>
             </div>
