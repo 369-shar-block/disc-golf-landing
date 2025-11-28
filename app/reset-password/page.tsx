@@ -14,18 +14,37 @@ function ResetPasswordContent() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const [sessionValid, setSessionValid] = useState(false);
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    // Check if we have a valid session from the reset link
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
+    // Listen for auth state changes to detect when session is established
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('Auth event:', event, 'Session:', !!session);
+
+      if (event === 'PASSWORD_RECOVERY') {
+        // Password recovery session established
         setSessionValid(true);
-      } else {
-        setError('Invalid or expired reset link. Please request a new password reset.');
+        setChecking(false);
+      } else if (session && event === 'SIGNED_IN') {
+        // Fallback: session exists
+        setSessionValid(true);
+        setChecking(false);
+      } else if (event === 'INITIAL_SESSION' || event === 'SIGNED_OUT') {
+        // Check if we have a session
+        const { data: { session: currentSession } } = await supabase.auth.getSession();
+        if (currentSession) {
+          setSessionValid(true);
+        } else {
+          setError('Invalid or expired reset link. Please request a new password reset.');
+        }
+        setChecking(false);
       }
+    });
+
+    // Cleanup subscription
+    return () => {
+      subscription.unsubscribe();
     };
-    checkSession();
   }, []);
 
   const resetPassword = async () => {
@@ -126,8 +145,14 @@ function ResetPasswordContent() {
           </div>
         )}
 
-        {/* Form - Only show if session is valid */}
-        {sessionValid ? (
+        {/* Show loading while checking */}
+        {checking ? (
+          <div className="text-center">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-action border-t-transparent mb-4"></div>
+            <p className="text-text-secondary">Validating reset link...</p>
+          </div>
+        ) : sessionValid ? (
+          /* Form - Only show if session is valid */
           <form onSubmit={handleResetPassword} className="space-y-6">
             {/* New Password */}
             <div>
@@ -171,9 +196,10 @@ function ResetPasswordContent() {
             </Button>
           </form>
         ) : (
+          /* Show error if no valid session */
           <div className="text-center">
             <p className="text-text-secondary mb-6">
-              {error || 'Validating reset link...'}
+              {error}
             </p>
             <Button variant="action" size="md" href="/">
               Back to Home
