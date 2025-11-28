@@ -11,6 +11,7 @@ interface ButtonProps {
   href?: string;
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -20,6 +21,7 @@ export function Button({
   href,
   onClick,
   className,
+  disabled = false,
 }: ButtonProps) {
   const baseClasses = 'font-bold rounded-full transition-all duration-300 cursor-pointer inline-block text-center';
 
@@ -40,18 +42,20 @@ export function Button({
     baseClasses,
     sizeClasses[size],
     variantClasses[variant],
+    disabled && 'opacity-50 cursor-not-allowed',
     className
   );
 
   if (href) {
     return (
       <motion.a
-        href={href}
+        href={disabled ? undefined : href}
         className={combinedClasses}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        whileHover={disabled ? {} : { scale: 1.05 }}
+        whileTap={disabled ? {} : { scale: 0.95 }}
+        target={href?.startsWith('http') ? '_blank' : undefined}
+        rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+        onClick={disabled ? (e) => e.preventDefault() : undefined}
       >
         {children}
       </motion.a>
@@ -61,9 +65,10 @@ export function Button({
   return (
     <motion.button
       onClick={onClick}
+      disabled={disabled}
       className={combinedClasses}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={disabled ? {} : { scale: 1.05 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
     >
       {children}
     </motion.button>

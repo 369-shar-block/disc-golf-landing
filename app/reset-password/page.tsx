@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSearchParams } from 'next/navigation';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Button } from '@/components/ui/Button';
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const searchParams = useSearchParams();
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,8 +28,7 @@ export default function ResetPasswordPage() {
     checkSession();
   }, []);
 
-  const handleResetPassword = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const resetPassword = async () => {
     setError('');
 
     // Validation
@@ -66,6 +65,11 @@ export default function ResetPasswordPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await resetPassword();
   };
 
   // Success State
@@ -159,7 +163,7 @@ export default function ResetPasswordPage() {
             <Button
               variant="action"
               size="lg"
-              onClick={handleResetPassword}
+              onClick={resetPassword}
               disabled={loading}
               className="w-full"
             >
@@ -178,5 +182,19 @@ export default function ResetPasswordPage() {
         )}
       </GlassCard>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <GlassCard hover={false} className="max-w-md w-full p-8 text-center">
+          <p className="text-text-secondary">Loading...</p>
+        </GlassCard>
+      </div>
+    }>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }
