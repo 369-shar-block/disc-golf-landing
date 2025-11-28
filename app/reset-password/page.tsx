@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSearchParams } from 'next/navigation';
-import GlassCard from '@/components/ui/GlassCard';
-import Button from '@/components/ui/Button';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { Button } from '@/components/ui/Button';
 
 export default function ResetPasswordPage() {
   const searchParams = useSearchParams();
