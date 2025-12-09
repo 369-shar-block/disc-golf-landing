@@ -56,15 +56,15 @@ export function FinalCTA() {
         >
           <div className="flex items-center gap-2">
             <span className="text-[#11998e]">✓</span>
-            <span>Free to download</span>
+            <span>1 Free Analysis</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#667eea]">✓</span>
-            <span>No subscription</span>
+            <span>Cancel Anytime</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#c471f5]">✓</span>
-            <span>Pay per use</span>
+            <span>Your Videos Stay Private</span>
           </div>
         </motion.div>
       </div>

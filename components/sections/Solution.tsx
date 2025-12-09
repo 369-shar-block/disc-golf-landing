@@ -15,8 +15,8 @@ const steps = [
   {
     number: '2',
     icon: '🤖',
-    title: 'AI Analyzes Every Frame',
-    description: 'Gemini 3 Pro spots 30+ biomechanical markers in seconds.',
+    title: 'AI Analyzes Your Form',
+    description: 'Perfect your reach back, timing, and release in seconds.',
     gradient: 'action' as const,
   },
   {

@@ -100,17 +100,26 @@ export function Pricing() {
 
               {/* Comparison */}
               <div className="bg-surface/50 rounded-xl p-6">
-                <p className="text-sm text-text-secondary mb-3">Compare to traditional coaching:</p>
-                <div className="space-y-2">
+                <p className="text-sm text-text-secondary mb-4 font-semibold">Why AI Coaching Wins:</p>
+                <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-text-primary">Private Lesson (1 hour)</span>
-                    <span className="text-text-secondary line-through">$100</span>
+                    <span className="text-text-primary">Private Coach (1 hour)</span>
+                    <span className="text-text-secondary line-through text-lg">$100/session</span>
                   </div>
+                  <div className="h-px bg-glass-border"></div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-primary font-bold">Unlimited AI Coaching</span>
+                    <div>
+                      <span className="text-text-primary font-bold block">AI Coach</span>
+                      <span className="text-xs text-text-tertiary">Unlimited analyses</span>
+                    </div>
                     <span className="text-2xl font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-                      $9.99
+                      $9.99/mo
                     </span>
+                  </div>
+                  <div className="text-center pt-2">
+                    <p className="text-sm font-semibold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
+                      Save 90% • Get 10x More Feedback
+                    </p>
                   </div>
                 </div>
               </div>
@@ -118,10 +127,10 @@ export function Pricing() {
               {/* CTA */}
               <div className="pt-4">
                 <Button variant="success" size="lg" className="w-full sm:w-auto">
-                  Start Your Free Trial
+                  Download on iOS
                 </Button>
                 <p className="text-xs text-text-tertiary mt-3">
-                  7-day free trial • No credit card required
+                  1 Free Analysis • Cancel Anytime • Your Videos Stay Private
                 </p>
               </div>
             </div>

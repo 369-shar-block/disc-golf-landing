@@ -68,7 +68,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Your AI <GradientText gradient="success">Disc Golf</GradientText> Coach
+          Throw Farther. <GradientText gradient="success">More Consistently.</GradientText>
         </motion.h1>
 
         {/* Subheadline */}
@@ -78,8 +78,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Upload your throw. Get pro-level form analysis in 60 seconds.{' '}
-          <span className="text-text-primary font-semibold">No experience required.</span>
+          Master your disc golf form with AI-powered coaching.{' '}
+          <span className="text-text-primary font-semibold">Get instant feedback on every throw.</span>
         </motion.p>
 
         {/* Trust Indicator */}
