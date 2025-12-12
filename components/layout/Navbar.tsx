@@ -37,8 +37,8 @@ export function Navbar() {
         </a>
 
         {/* CTA Button */}
-        <Button variant="action" size="sm">
-          Download App
+        <Button variant="action" size="sm" href="/waitlist">
+          Join Waitlist
         </Button>
       </div>
     </motion.nav>

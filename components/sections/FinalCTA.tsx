@@ -33,7 +33,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Join 10,000+ disc golfers improving their game with AI-powered coaching.
+          Start improving your game with AI-powered coaching.
         </motion.p>
 
         {/* CTA Buttons */}
