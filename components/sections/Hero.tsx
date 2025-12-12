@@ -82,16 +82,6 @@ export function Hero() {
           <span className="text-text-primary font-semibold">Get instant feedback on every throw.</span>
         </motion.p>
 
-        {/* Trust Indicator */}
-        <motion.p
-          className="text-sm text-text-tertiary mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          Powered by Google Gemini AI
-        </motion.p>
-
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -99,33 +89,6 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <AppStoreButtons className="justify-center" />
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div>
-            <div className="text-3xl font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-              10K+
-            </div>
-            <div className="text-sm text-text-secondary mt-1">Throws Analyzed</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
-              4.8★
-            </div>
-            <div className="text-sm text-text-secondary mt-1">Average Rating</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold bg-gradient-to-r from-[#c471f5] to-[#fa71cd] bg-clip-text text-transparent">
-              89%
-            </div>
-            <div className="text-sm text-text-secondary mt-1">See Improvement</div>
-          </div>
         </motion.div>
       </div>
 

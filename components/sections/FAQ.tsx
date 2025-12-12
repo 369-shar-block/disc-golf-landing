@@ -23,10 +23,6 @@ const faqs = [
     answer: 'Absolutely! Cancel anytime with one tap in the app. No commitments, no cancellation fees.',
   },
   {
-    question: 'How many analyses can I do per month?',
-    answer: 'Unlimited! Analyze as many throws as you want. The more you practice and analyze, the faster you improve.',
-  },
-  {
     question: 'What about my privacy?',
     answer: "Your videos are only used for analysis and not stored on our servers. Everything stays on your device and Google's secure AI API.",
   },
