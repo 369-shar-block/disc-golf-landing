@@ -1,15 +1,12 @@
 import { NextResponse } from 'next/server';
-import { writeFile, readFile, mkdir } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
-
-const DATA_DIR = path.join(process.cwd(), 'data');
-const WAITLIST_FILE = path.join(DATA_DIR, 'waitlist.json');
+import { kv } from '@vercel/kv';
 
 interface WaitlistEntry {
   email: string;
   timestamp: string;
 }
+
+const WAITLIST_KEY = 'disc-golf-waitlist';
 
 export async function POST(request: Request) {
   try {
@@ -32,21 +29,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create data directory if it doesn't exist
-    if (!existsSync(DATA_DIR)) {
-      await mkdir(DATA_DIR, { recursive: true });
-    }
+    const normalizedEmail = email.toLowerCase().trim();
 
-    // Read existing waitlist or create new one
-    let waitlist: WaitlistEntry[] = [];
-    if (existsSync(WAITLIST_FILE)) {
-      const fileContent = await readFile(WAITLIST_FILE, 'utf-8');
-      waitlist = JSON.parse(fileContent);
-    }
+    // Get existing waitlist from KV
+    let waitlist: WaitlistEntry[] = await kv.get(WAITLIST_KEY) || [];
 
     // Check if email already exists
     const emailExists = waitlist.some(
-      (entry) => entry.email.toLowerCase() === email.toLowerCase()
+      (entry) => entry.email === normalizedEmail
     );
 
     if (emailExists) {
@@ -58,14 +48,14 @@ export async function POST(request: Request) {
 
     // Add new entry
     const newEntry: WaitlistEntry = {
-      email: email.toLowerCase().trim(),
+      email: normalizedEmail,
       timestamp: new Date().toISOString(),
     };
 
     waitlist.push(newEntry);
 
-    // Save to file
-    await writeFile(WAITLIST_FILE, JSON.stringify(waitlist, null, 2), 'utf-8');
+    // Save to KV
+    await kv.set(WAITLIST_KEY, waitlist);
 
     return NextResponse.json(
       { message: 'Successfully added to waitlist', count: waitlist.length },
@@ -80,16 +70,10 @@ export async function POST(request: Request) {
   }
 }
 
-// Optional: GET endpoint to view waitlist count
+// GET endpoint to view waitlist count
 export async function GET() {
   try {
-    if (!existsSync(WAITLIST_FILE)) {
-      return NextResponse.json({ count: 0 });
-    }
-
-    const fileContent = await readFile(WAITLIST_FILE, 'utf-8');
-    const waitlist: WaitlistEntry[] = JSON.parse(fileContent);
-
+    const waitlist: WaitlistEntry[] = await kv.get(WAITLIST_KEY) || [];
     return NextResponse.json({ count: waitlist.length });
   } catch (error) {
     console.error('Waitlist error:', error);
