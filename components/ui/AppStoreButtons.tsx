@@ -18,8 +18,8 @@ export function AppStoreButtons({
     className
   );
 
-  // Placeholder link - replace with actual App Store URL later
-  const iosLink = '#';
+  // Link to waitlist page while app is in review
+  const iosLink = '/waitlist';
 
   return (
     <div className={containerClasses}>
