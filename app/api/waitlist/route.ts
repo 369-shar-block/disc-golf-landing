@@ -1,12 +1,7 @@
 import { NextResponse } from 'next/server';
-import { kv } from '@vercel/kv';
+import { Resend } from 'resend';
 
-interface WaitlistEntry {
-  email: string;
-  timestamp: string;
-}
-
-const WAITLIST_KEY = 'disc-golf-waitlist';
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -31,34 +26,41 @@ export async function POST(request: Request) {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // Get existing waitlist from KV
-    let waitlist: WaitlistEntry[] = await kv.get(WAITLIST_KEY) || [];
+    // Send email notification to you
+    await resend.emails.send({
+      from: 'Disc Golf Waitlist <onboarding@resend.dev>',
+      to: '369shar@gmail.com',
+      subject: '🎉 New Waitlist Signup!',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #667eea;">New Waitlist Signup</h2>
+          <p style="font-size: 16px; color: #333;">Someone just joined your disc golf app waitlist!</p>
 
-    // Check if email already exists
-    const emailExists = waitlist.some(
-      (entry) => entry.email === normalizedEmail
-    );
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 0; font-size: 18px; color: #667eea; font-weight: bold;">
+              ${normalizedEmail}
+            </p>
+          </div>
 
-    if (emailExists) {
-      return NextResponse.json(
-        { error: 'This email is already on the waitlist' },
-        { status: 400 }
-      );
-    }
+          <p style="font-size: 14px; color: #666;">
+            Signed up at: ${new Date().toLocaleString('en-US', {
+              timeZone: 'America/New_York',
+              dateStyle: 'full',
+              timeStyle: 'short'
+            })}
+          </p>
 
-    // Add new entry
-    const newEntry: WaitlistEntry = {
-      email: normalizedEmail,
-      timestamp: new Date().toISOString(),
-    };
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
 
-    waitlist.push(newEntry);
-
-    // Save to KV
-    await kv.set(WAITLIST_KEY, waitlist);
+          <p style="font-size: 12px; color: #999;">
+            This email was sent from your Disc Golf Form Analyzer waitlist form.
+          </p>
+        </div>
+      `,
+    });
 
     return NextResponse.json(
-      { message: 'Successfully added to waitlist', count: waitlist.length },
+      { message: 'Successfully added to waitlist' },
       { status: 200 }
     );
   } catch (error) {
@@ -70,13 +72,9 @@ export async function POST(request: Request) {
   }
 }
 
-// GET endpoint to view waitlist count
+// Optional GET endpoint
 export async function GET() {
-  try {
-    const waitlist: WaitlistEntry[] = await kv.get(WAITLIST_KEY) || [];
-    return NextResponse.json({ count: waitlist.length });
-  } catch (error) {
-    console.error('Waitlist error:', error);
-    return NextResponse.json({ count: 0 });
-  }
+  return NextResponse.json({
+    message: 'Waitlist API is running. Use POST to submit an email.'
+  });
 }

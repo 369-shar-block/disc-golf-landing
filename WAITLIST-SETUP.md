@@ -1,58 +1,65 @@
 # Waitlist Setup Instructions
 
-## Quick Setup (2 minutes)
+## Quick Setup (1 minute)
 
-Your waitlist is now using Vercel KV (free key-value storage) instead of the filesystem. You need to enable it in your Vercel dashboard:
+Your waitlist now sends emails directly to **369shar@gmail.com** whenever someone signs up. Much simpler!
 
 ### Steps:
 
-1. **Go to Vercel Dashboard**
-   - Visit: https://vercel.com/dashboard
-   - Click on your `disc-golf-landing` project
+1. **Create Free Resend Account**
+   - Go to: https://resend.com/signup
+   - Sign up with your email (free, no credit card needed)
 
-2. **Create KV Database**
-   - Click on the "Storage" tab
-   - Click "Create Database"
-   - Select "KV" (Key-Value Store)
-   - Name it: `disc-golf-waitlist` (or any name)
-   - Click "Create"
+2. **Get API Key**
+   - After signup, go to: https://resend.com/api-keys
+   - Click "Create API Key"
+   - Name it: `disc-golf-waitlist`
+   - Copy the API key (starts with `re_...`)
 
-3. **Connect to Project**
-   - After creating, click "Connect to Project"
-   - Select your `disc-golf-landing` project
-   - Click "Connect"
-   - This automatically adds the environment variables
+3. **Add to Vercel**
+   - Go to: https://vercel.com/dashboard
+   - Click your `disc-golf-landing` project
+   - Go to **Settings** → **Environment Variables**
+   - Add new variable:
+     - **Name**: `RESEND_API_KEY`
+     - **Value**: (paste your API key from Resend)
+     - Click "Save"
 
 4. **Redeploy**
-   - Go to "Deployments" tab
-   - Click the three dots on the latest deployment
-   - Click "Redeploy"
-   - ✅ Done! Your waitlist will now work
+   - Go to **Deployments** tab
+   - Click three dots on latest deployment
+   - Click **"Redeploy"**
+   - ✅ Done!
 
 ### That's it!
 
-The waitlist will now save emails to Vercel KV instead of trying to create files. All emails will be persistent and you can view them in the Vercel KV dashboard.
+Now whenever someone joins the waitlist, you'll get an email at **369shar@gmail.com** with their info!
 
-## Viewing Waitlist Emails
+## What You'll Receive
 
-**Option 1: Vercel KV Dashboard**
-- Go to Storage → Your KV database
-- Look for key: `disc-golf-waitlist`
-- Click to view all emails
+Every signup sends you an email like this:
 
-**Option 2: API Endpoint**
-- Visit: https://disc-golf-landing.vercel.app/api/waitlist
-- Shows count of waitlist signups
+```
+Subject: 🎉 New Waitlist Signup!
 
-## Cost
+New Waitlist Signup
+Someone just joined your disc golf app waitlist!
 
-- **Free tier:** 30,000 commands/month
-- **More than enough** for your waitlist
+user@example.com
+
+Signed up at: Thursday, December 12, 2024 at 3:45 PM
+```
+
+## Benefits
+
+- ✅ **100% Free** (100 emails/day, 3,000/month)
+- ✅ **Instant notifications** to your inbox
+- ✅ **No dashboard to check** - emails come to you
+- ✅ **Simple** - just one API key
+
+## Resend Free Tier
+
+- 100 emails per day
+- 3,000 emails per month
 - No credit card required
-
-## Why Vercel KV?
-
-- ✅ Free and simple
-- ✅ Persistent (emails won't be lost)
-- ✅ Works with Vercel's serverless functions
-- ✅ No additional setup besides the 2-minute dashboard flow above
+- Perfect for waitlist signups
