@@ -23,7 +23,7 @@ export default function TermsOfService() {
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 py-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <GradientText gradient="action">Terms of Service</GradientText>
+          <GradientText gradient="action">Terms of Use (EULA)</GradientText>
         </h1>
         <p className="text-text-secondary mb-8">
           Last Updated: November 25, 2025
@@ -34,7 +34,7 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">1. Agreement to Terms</h2>
             <p>
-              Welcome to Disc Golf Form Analyzer ("App," "Service," "we," "us," or "our"). By accessing or using our mobile application and website, you agree to be bound by these Terms of Service ("Terms").
+              Welcome to Disc Golf Form Analyzer ("App," "Service," "we," "us," or "our"). By accessing or using our mobile application and website, you agree to be bound by these Terms of Use ("Terms").
             </p>
             <p className="mt-4">
               <strong className="text-text-primary">If you do not agree to these Terms, do not use our Service.</strong>
@@ -415,7 +415,7 @@ export default function TermsOfService() {
 
           {/* Summary */}
           <section className="border-t border-glass-border pt-8">
-            <h2 className="text-2xl font-bold text-text-primary mb-4">Terms of Service Summary</h2>
+            <h2 className="text-2xl font-bold text-text-primary mb-4">Terms of Use Summary</h2>
             <div className="bg-gradient-to-br from-[#667eea]/10 to-[#764ba2]/10 border border-[#667eea]/30 rounded-xl p-6">
               <p className="font-semibold text-text-primary mb-3">In Plain English:</p>
               <ul className="space-y-2">
