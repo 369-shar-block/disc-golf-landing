@@ -26,7 +26,7 @@ export default function TermsOfService() {
           <GradientText gradient="action">Terms of Use (EULA)</GradientText>
         </h1>
         <p className="text-text-secondary mb-8">
-          Last Updated: November 25, 2025
+          Last Updated: December 15, 2025
         </p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed">
