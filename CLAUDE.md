@@ -5,10 +5,12 @@
 A **premium, conversion-optimized landing page** for the Disc Golf Form Analyzer mobile app. Built to be the best landing page in disc golf history with dark gradients, floating animations, and a clean subscription pricing model.
 
 **Built:** November 22, 2025
+**Updated:** December 18, 2025 (Launch Date Announcement)
 **Platform:** Next.js 15 + React 19 + Tailwind CSS
 **Deployment:** Vercel (Free Tier)
 **Live URL:** https://disc-golf-landing.vercel.app
 **GitHub:** https://github.com/369-shar-block/disc-golf-landing
+**Launch Date:** Tuesday, December 30th, 2025
 
 ---
 
@@ -177,21 +179,24 @@ All sections adapt perfectly to mobile, tablet, and desktop.
 #### Hero Section (`components/sections/Hero.tsx`)
 **Key Elements:**
 
-1. **FloatingDisc Component** (lines 9-31)
+1. **Launch Date Badge** (lines 57-68) **NEW**
+   - Premium announcement badge at top of hero
+   - Gradient border with backdrop blur effect
+   - Pulsing indicator dot
+   - Gradient text: "Launching Tuesday, December 30th"
+   - Smooth fade-in animation from top
+
+2. **FloatingDisc Component** (lines 9-31)
    - Custom animated component
    - Uses React Native Animated API pattern adapted for web
    - 5 instances with different positions/timings
 
-2. **Rotating Hero Disc** (line 58-66)
+3. **Rotating Hero Disc** (line 70-75)
    - 120px gradient disc
    - 20-second continuous rotation
    - Blue-purple action gradient
 
-3. **Stats Section** (lines 97-127)
-   - 3 stats with gradient numbers
-   - "10K+ Throws", "4.8★ Rating", "89% Improvement"
-
-4. **Scroll Indicator** (lines 130-144)
+4. **Scroll Indicator** (updated line numbers)
    - Animated mouse scroll icon
    - Bouncing animation
 
@@ -237,6 +242,42 @@ All sections adapt perfectly to mobile, tablet, and desktop.
 **Comparison:**
 - Private Lesson: ~~$100~~
 - Unlimited AI Coaching: $9.99
+
+---
+
+#### Launch Announcement Page (`app/waitlist/page.tsx`) **NEW**
+**Purpose:** Pre-launch page displaying launch date and collecting emails for notifications
+
+**Key Features:**
+
+1. **Premium Date Display Card** (lines 105-128)
+   - Large glass morphism card with gradient border
+   - "Tuesday" in gradient text (purple to pink)
+   - "December 30th, 2025" in large white text
+   - Clock icon with "Mark your calendar!" message
+   - Scale-in animation on load
+
+2. **Email Collection Form** (lines 140-188)
+   - Glass styled input field
+   - Gradient action button
+   - Loading and error states
+   - Success animation with celebration emoji
+   - Button text: "Notify Me on Launch Day"
+
+3. **Success Message**
+   - Shows after email submission
+   - Message: "We'll send you a reminder on December 30th when the app goes live!"
+   - Prevents duplicate submissions
+
+4. **Floating Disc Background**
+   - Same animation as Hero section
+   - Creates visual consistency
+   - 3 floating discs for lighter effect
+
+**Integration:**
+- Linked from AppStoreButtons component
+- API endpoint: `/api/waitlist` (handles email storage)
+- Back link to homepage
 
 ---
 
@@ -413,18 +454,24 @@ vercel logs
 
 **File:** `components/ui/AppStoreButtons.tsx`
 
-**Lines to Edit:** 18-19
+**Current Status:** Displays launch date announcement (December 30th, 2025)
 
-**Before:**
-```tsx
-const iosLink = '#';
-const androidLink = '#';
-```
+**Features:**
+- Premium gradient border with glow effects
+- Animated hover state with background gradient
+- Launch date in gradient text: "Launching on Tuesday, Dec 30th"
+- Pulsing "Available on iPhone" badge
+- Links to `/waitlist` for launch notifications
 
-**After:**
+**To Update After Launch:**
 ```tsx
+// Change line 22 from:
+const iosLink = '/waitlist';
+
+// To actual App Store link:
 const iosLink = 'https://apps.apple.com/app/your-app-id';
-const androidLink = 'https://play.google.com/store/apps/details?id=com.yourapp';
+
+// And update button text from launch date to "Download on the App Store"
 ```
 
 ---
@@ -684,6 +731,24 @@ See README.md for Google Analytics setup
 ---
 
 ## 🔄 Version History
+
+### v1.1 (December 18, 2025)
+**Launch Date Announcement Update:**
+- Added premium launch date badge to Hero section
+- Updated AppStoreButtons with December 30th launch date
+- Transformed waitlist page into beautiful launch announcement
+- Added gradient styling and pulsing animations throughout
+- Updated all messaging to reference December 30th, 2025 launch
+- Enhanced hover effects and glass morphism on launch elements
+
+**Commits:**
+- `5ef4692` - Update landing page with December 30th launch date
+
+**What's New:**
+1. **Hero Section Badge** - Pulsing gradient badge announcing "Launching Tuesday, December 30th"
+2. **Premium App Store Button** - Gradient border, glow effects, launch date display
+3. **Launch Announcement Page** - Large date display with glass card and gradient text
+4. **Waitlist Updates** - Updated messaging, button text, and success messages for launch day
 
 ### v1.0 (November 22, 2025)
 **Initial Launch:**
