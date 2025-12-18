@@ -4,17 +4,30 @@
 
 Your waitlist now sends emails directly to **369shar@gmail.com** whenever someone signs up. Much simpler!
 
+---
+
+## 🔑 Your Resend API Key
+
+```
+re_ch1uzSKh_JaPLujd3N4XjE3nETn21wM8h
+```
+
+**Important:** This file is gitignored to keep your API key private.
+
+---
+
 ### Steps:
 
 1. **Create Free Resend Account**
    - Go to: https://resend.com/signup
    - Sign up with your email (free, no credit card needed)
+   - ✅ Already done!
 
 2. **Get API Key**
    - After signup, go to: https://resend.com/api-keys
    - Click "Create API Key"
    - Name it: `disc-golf-waitlist`
-   - Copy the API key (starts with `re_...`)
+   - ✅ Your key is stored above
 
 3. **Add to Vercel**
    - Go to: https://vercel.com/dashboard

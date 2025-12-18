@@ -34,3 +34,6 @@ next-env.d.ts
 
 # waitlist data
 /data
+
+# API keys and sensitive docs
+WAITLIST-SETUP.md
