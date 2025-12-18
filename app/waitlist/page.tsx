@@ -58,7 +58,7 @@ export default function WaitlistPage() {
 
       if (response.ok) {
         setStatus('success');
-        setMessage('Thanks for joining! We\'ll notify you when the app launches.');
+        setMessage('We\'ll send you a reminder on December 30th when the app goes live!');
         setEmail('');
       } else {
         setStatus('error');
@@ -98,17 +98,43 @@ export default function WaitlistPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <GradientText gradient="action">Launching Soon</GradientText> on iOS
+          <GradientText gradient="action">Launching</GradientText> on iOS
         </motion.h1>
+
+        {/* Premium Launch Date Display */}
+        <motion.div
+          className="glass p-8 sm:p-12 rounded-3xl mb-8 border-2 border-[#667eea]/50 shadow-action-glow"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="text-text-tertiary text-sm uppercase tracking-wider mb-2 font-semibold">
+            App Store Launch Date
+          </div>
+          <div className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-[#667eea] via-[#764ba2] to-[#c471f5] bg-clip-text text-transparent">
+              Tuesday
+            </span>
+          </div>
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+            December 30th, 2025
+          </div>
+          <div className="flex items-center justify-center gap-2 text-text-secondary">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+            </svg>
+            <span className="font-medium">Mark your calendar!</span>
+          </div>
+        </motion.div>
 
         {/* Description */}
         <motion.p
           className="text-xl text-text-secondary mb-12 max-w-xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          Our app is currently under review by Apple. Join the waitlist and be the first to know when it's available!
+          Get notified the moment the app goes live on the App Store. Be among the first to transform your disc golf game with AI-powered coaching!
         </motion.p>
 
         {/* Email Form */}
@@ -155,7 +181,7 @@ export default function WaitlistPage() {
                 disabled={status === 'loading'}
                 className="w-full px-8 py-4 bg-gradient-action text-white font-bold rounded-xl shadow-action-glow hover:scale-105 active:scale-95 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === 'loading' ? 'Joining...' : 'Notify Me When Available'}
+                {status === 'loading' ? 'Joining...' : 'Notify Me on Launch Day'}
               </button>
             </form>
           )}
