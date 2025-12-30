@@ -54,19 +54,6 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Launch Date Badge */}
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-gradient-to-r from-[#667eea]/20 to-[#764ba2]/20 border border-[#667eea]/50 rounded-full backdrop-blur-sm"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="inline-block w-2 h-2 bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-full animate-pulse" />
-          <span className="text-sm font-semibold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
-            Launching Tuesday, December 30th
-          </span>
-        </motion.div>
-
         {/* Rotating Hero Disc */}
         <motion.div
           className="mx-auto mb-8 w-32 h-32 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-action-glow"
