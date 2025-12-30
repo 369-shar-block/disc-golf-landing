@@ -37,8 +37,8 @@ export function Navbar() {
         </a>
 
         {/* CTA Button */}
-        <Button variant="action" size="sm" href="/waitlist">
-          Join Waitlist
+        <Button variant="action" size="sm" href="https://apps.apple.com/us/app/disc-golf-form-analyzer/id6755727208">
+          Download App
         </Button>
       </div>
     </motion.nav>

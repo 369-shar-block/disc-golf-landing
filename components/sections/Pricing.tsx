@@ -126,8 +126,8 @@ export function Pricing() {
 
               {/* CTA */}
               <div className="pt-4">
-                <Button variant="success" size="lg" className="w-full sm:w-auto" href="/waitlist">
-                  Join the Waitlist
+                <Button variant="success" size="lg" className="w-full sm:w-auto" href="https://apps.apple.com/us/app/disc-golf-form-analyzer/id6755727208">
+                  Download App
                 </Button>
                 <p className="text-xs text-text-tertiary mt-3">
                   1 Free Analysis • Cancel Anytime • Your Videos Stay Private
