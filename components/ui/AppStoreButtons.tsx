@@ -75,19 +75,6 @@ export function AppStoreButtons({
           </div>
         </motion.a>
       </div>
-
-      {/* Now Available Badge */}
-      <motion.div
-        className="flex items-center justify-center gap-2 text-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-success rounded-full text-white font-semibold text-xs shadow-success-glow">
-          <span className="inline-block w-2 h-2 bg-white rounded-full animate-pulse" />
-          Now Available on iPhone & Android
-        </span>
-      </motion.div>
     </div>
   );
 }
