@@ -6,6 +6,12 @@ import { GradientText } from '../ui/GradientText';
 
 const features = [
   {
+    icon: '🧠',
+    title: 'Custom-Trained AI',
+    description: 'Not a generic pose app—trained specifically on disc golf mechanics.',
+    gradient: 'action' as const,
+  },
+  {
     icon: '🔍',
     title: 'Auto-Detects Throw Type',
     description: 'Backhand, forehand, putt—no manual selection needed.',
@@ -19,8 +25,8 @@ const features = [
   },
   {
     icon: '⚙️',
-    title: 'Biomechanical KPIs',
-    description: 'Footwork, reach back, power pocket—detailed analysis.',
+    title: 'Disc Golf-Specific Analysis',
+    description: 'Release angles, reach-back depth, brace timing, weight transfer, and follow-through.',
     gradient: 'action' as const,
   },
   {

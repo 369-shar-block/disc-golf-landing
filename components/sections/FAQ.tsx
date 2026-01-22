@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: 'How accurate is the AI?',
-    answer: 'Powered by Google Gemini 3 Pro, trained on thousands of disc golf videos. It analyzes 30+ biomechanical markers with professional-level accuracy.',
+    answer: 'Our AI is custom-trained specifically for disc golf—not a generic pose detection app. We adapted a computer-vision backbone and trained it to recognize disc golf mechanics: release angles, reach-back depth, brace timing, weight transfer, and follow-through patterns. It evaluates throws using disc-golf-specific constraints and scoring logic.',
   },
   {
     question: 'Can I cancel my subscription anytime?',

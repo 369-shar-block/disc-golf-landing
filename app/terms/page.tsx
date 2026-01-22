@@ -201,7 +201,7 @@ export default function TermsOfService() {
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">7.1 AI-Powered Service</h3>
             <p>
-              Our Service uses artificial intelligence (Google Gemini AI) to analyze disc golf form. The analysis is:
+              Our Service uses a custom-trained artificial intelligence model specifically designed for disc golf form analysis. The AI was built by adapting a computer-vision backbone and training additional layers to recognize disc-golf-specific mechanics such as release angles, reach-back depth, brace timing, weight transfer, and follow-through patterns. The analysis is:
             </p>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
               <li>Educational in nature</li>
@@ -284,7 +284,7 @@ export default function TermsOfService() {
               Our Service integrates with third-party services:
             </p>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
-              <li><strong className="text-text-primary">Google Gemini AI</strong> - Video analysis</li>
+              <li><strong className="text-text-primary">Custom Disc Golf AI</strong> - Video analysis (proprietary model trained on disc golf mechanics)</li>
               <li><strong className="text-text-primary">Supabase</strong> - Database and authentication</li>
               <li><strong className="text-text-primary">RevenueCat</strong> - Subscription management</li>
               <li><strong className="text-text-primary">Apple App Store / Google Play</strong> - Payment processing</li>

@@ -63,7 +63,7 @@ export function Pricing() {
                   </div>
                   <div>
                     <p className="text-text-primary font-semibold">AI-Powered Feedback</p>
-                    <p className="text-sm text-text-secondary">Google Gemini 3 Pro analysis</p>
+                    <p className="text-sm text-text-secondary">Custom-trained disc golf AI</p>
                   </div>
                 </div>
 

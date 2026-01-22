@@ -106,11 +106,11 @@ export default function PrivacyPolicy() {
               <li><strong className="text-text-primary">Privacy Policy:</strong> <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">supabase.com/privacy</a></li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">2. Google Gemini AI (Video Analysis)</h3>
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">2. Custom Disc Golf AI (Video Analysis)</h3>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
-              <li><strong className="text-text-primary">Purpose:</strong> AI-powered form analysis</li>
-              <li><strong className="text-text-primary">Data Shared:</strong> Video content (temporarily, not stored by Google)</li>
-              <li><strong className="text-text-primary">Privacy Policy:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">policies.google.com/privacy</a></li>
+              <li><strong className="text-text-primary">Purpose:</strong> AI-powered form analysis using our proprietary disc golf model</li>
+              <li><strong className="text-text-primary">Data Shared:</strong> Video content (temporarily processed for analysis, not permanently stored)</li>
+              <li><strong className="text-text-primary">Model:</strong> Custom-trained on disc golf mechanics including release angles, reach-back depth, brace timing, weight transfer, and follow-through patterns</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">3. RevenueCat (Subscription Management)</h3>
@@ -280,7 +280,7 @@ export default function PrivacyPolicy() {
                 <li>✅ We do NOT use tracking for advertising</li>
                 <li>✅ You can delete your account and all data anytime</li>
                 <li>✅ We use industry-standard security practices</li>
-                <li>✅ Third-party services (Google AI, Supabase) have their own privacy policies</li>
+                <li>✅ Third-party services (Supabase, RevenueCat) have their own privacy policies</li>
               </ul>
             </div>
           </section>

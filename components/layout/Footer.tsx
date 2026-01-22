@@ -74,7 +74,7 @@ export function Footer() {
             © {currentYear} Disc Golf Form Analyzer. All rights reserved.
           </p>
           <p className="mt-2">
-            Powered by Google Gemini AI
+            Powered by Custom-Trained Disc Golf AI
           </p>
         </div>
       </div>
