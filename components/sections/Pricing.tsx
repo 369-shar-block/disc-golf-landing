@@ -38,11 +38,11 @@ export function Pricing() {
               <div>
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-6xl font-bold bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
-                    $9.99
+                    $3.33
                   </span>
                   <span className="text-2xl text-text-secondary">/month</span>
                 </div>
-                <p className="text-text-tertiary">Billed monthly • Cancel anytime</p>
+                <p className="text-text-tertiary">Billed annually at $39.99 • Cancel anytime</p>
               </div>
 
               {/* Features */}
@@ -113,7 +113,7 @@ export function Pricing() {
                       <span className="text-xs text-text-tertiary">Unlimited analyses</span>
                     </div>
                     <span className="text-2xl font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-                      $9.99/mo
+                      $3.33/mo
                     </span>
                   </div>
                   <div className="text-center pt-2">
