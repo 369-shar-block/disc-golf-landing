@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
           <GradientText gradient="action">Privacy Policy</GradientText>
         </h1>
         <p className="text-text-secondary mb-8">
-          Last Updated: November 25, 2025
+          Last Updated: February 16, 2026
         </p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed">
@@ -126,6 +126,21 @@ export default function PrivacyPolicy() {
               <li><strong className="text-text-primary">Data Shared:</strong> Purchase information, subscription status</li>
               <li><strong className="text-text-primary">Privacy Policy:</strong> <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">Apple</a> / <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">Google</a></li>
             </ul>
+
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">5. Amplitude (Product Analytics)</h3>
+            <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
+              <li><strong className="text-text-primary">Purpose:</strong> Understand how users interact with the app to improve the experience</li>
+              <li><strong className="text-text-primary">Data Shared:</strong> Anonymous device ID, user ID (after signup), in-app events (e.g., feature usage, screen views), device type, OS version</li>
+              <li><strong className="text-text-primary">Privacy Policy:</strong> <a href="https://amplitude.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">amplitude.com/privacy</a></li>
+            </ul>
+
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">6. AppsFlyer (Mobile Attribution)</h3>
+            <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
+              <li><strong className="text-text-primary">Purpose:</strong> Understand which marketing channels drive app installs</li>
+              <li><strong className="text-text-primary">Data Shared:</strong> Device identifier (IDFA with your permission on iOS), install source, in-app conversion events (e.g., signup, trial start)</li>
+              <li><strong className="text-text-primary">Note:</strong> On iOS, we request your permission via App Tracking Transparency (ATT) before collecting your advertising identifier. You may decline without affecting app functionality.</li>
+              <li><strong className="text-text-primary">Privacy Policy:</strong> <a href="https://www.appsflyer.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#667eea] hover:underline">appsflyer.com/privacy-policy</a></li>
+            </ul>
           </section>
 
           {/* Data Storage & Security */}
@@ -149,7 +164,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold text-text-primary mb-4">Data Retention</h2>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
               <li><strong className="text-text-primary">Account Data:</strong> Retained as long as your account is active</li>
-              <li><strong className="text-text-primary">Analysis History:</strong> Stored indefinitely for Premium users; limited to most recent for Free users</li>
+              <li><strong className="text-text-primary">Analysis History:</strong> Stored indefinitely for subscribers</li>
               <li><strong className="text-text-primary">Video Files:</strong> Deleted immediately after processing (typically within 60 seconds)</li>
               <li><strong className="text-text-primary">Deleted Accounts:</strong> All personal data permanently deleted within 30 days of account deletion</li>
             </ul>
@@ -235,7 +250,9 @@ export default function PrivacyPolicy() {
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
               <li>Session management for authentication (required for app functionality)</li>
               <li>Local storage for app preferences</li>
-              <li>No third-party advertising or tracking SDKs</li>
+              <li>Amplitude SDK for product analytics (usage patterns, not advertising)</li>
+              <li>AppsFlyer SDK for install attribution (with ATT consent on iOS)</li>
+              <li>No third-party advertising SDKs (we do not display ads in the app)</li>
             </ul>
           </section>
 
@@ -263,7 +280,7 @@ export default function PrivacyPolicy() {
             </p>
             <div className="mt-4 bg-surface/50 border border-glass-border rounded-xl p-6">
               <p><strong className="text-text-primary">Email:</strong> <a href="mailto:privacy@discgolfformanalyzer.com" className="text-[#667eea] hover:underline">privacy@discgolfformanalyzer.com</a></p>
-              <p className="mt-2"><strong className="text-text-primary">Support:</strong> <a href="mailto:369shar@gmail.com" className="text-[#667eea] hover:underline">369shar@gmail.com</a></p>
+              <p className="mt-2"><strong className="text-text-primary">Support:</strong> <a href="mailto:support@axiomtrinitylabs.com" className="text-[#667eea] hover:underline">support@axiomtrinitylabs.com</a></p>
               <p className="mt-2"><strong className="text-text-primary">Response Time:</strong> We aim to respond within 48 hours</p>
             </div>
           </section>
@@ -277,10 +294,11 @@ export default function PrivacyPolicy() {
                 <li>✅ We collect only what's necessary to provide our service</li>
                 <li>✅ Your videos are NOT stored permanently (deleted after analysis)</li>
                 <li>✅ We do NOT sell your data to anyone</li>
-                <li>✅ We do NOT use tracking for advertising</li>
+                <li>✅ We use analytics (Amplitude) to improve the app, not for advertising</li>
+                <li>✅ Install attribution (AppsFlyer) requires your permission on iOS</li>
                 <li>✅ You can delete your account and all data anytime</li>
                 <li>✅ We use industry-standard security practices</li>
-                <li>✅ Third-party services (Supabase, RevenueCat) have their own privacy policies</li>
+                <li>✅ Third-party services (Supabase, RevenueCat, Amplitude, AppsFlyer) have their own privacy policies</li>
               </ul>
             </div>
           </section>

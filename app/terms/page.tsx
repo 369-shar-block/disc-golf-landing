@@ -26,7 +26,7 @@ export default function TermsOfService() {
           <GradientText gradient="action">Terms of Use (EULA)</GradientText>
         </h1>
         <p className="text-text-secondary mb-8">
-          Last Updated: December 15, 2025
+          Last Updated: February 16, 2026
         </p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed">
@@ -90,26 +90,19 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-2xl font-bold text-text-primary mb-4">4. Subscription & Payment Terms</h2>
 
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.1 Free Tier</h3>
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.1 Premium Subscription</h3>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
-              <li><strong className="text-text-primary">1 free analysis</strong> per account</li>
-              <li>No credit card required</li>
-              <li>Limited access to features</li>
+              <li><strong className="text-text-primary">Price:</strong> $49.99 per year (USD), with a 3-day free trial</li>
+              <li><strong className="text-text-primary">Billing:</strong> Automatically charged annually to your Apple/Google account after the free trial ends</li>
+              <li><strong className="text-text-primary">Benefits:</strong> Unlimited video analyses, analysis history, personalized drills, progress tracking</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.2 Premium Subscription</h3>
-            <ul className="list-disc list-inside ml-4 mt-2 space-y-2">
-              <li><strong className="text-text-primary">Price:</strong> $9.99 per month (USD)</li>
-              <li><strong className="text-text-primary">Billing:</strong> Automatically charged monthly to your Apple/Google account</li>
-              <li><strong className="text-text-primary">Benefits:</strong> Unlimited video analyses, analysis history, custom drills</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.3 Auto-Renewal</h3>
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.2 Auto-Renewal</h3>
             <p>
-              Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. Your account will be charged for renewal within 24 hours prior to the end of the current period.
+              Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. Your account will be charged for renewal within 24 hours prior to the end of the current period. The free trial converts to a paid subscription automatically unless canceled before the trial period ends.
             </p>
 
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.4 Cancellation</h3>
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.3 Cancellation</h3>
             <p>
               You can cancel your subscription at any time through:
             </p>
@@ -121,7 +114,7 @@ export default function TermsOfService() {
               Cancellation takes effect at the end of the current billing period. No partial refunds for unused time.
             </p>
 
-            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.5 Refund Policy</h3>
+            <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">4.4 Refund Policy</h3>
             <p>
               All payments are processed through the Apple App Store or Google Play Store. Refund requests must be made directly to Apple or Google according to their respective policies:
             </p>
@@ -153,7 +146,7 @@ export default function TermsOfService() {
               <li>Upload inappropriate, offensive, or illegal content</li>
               <li>Use the Service for any commercial purpose without our permission</li>
               <li>Attempt to reverse engineer, decompile, or hack the App</li>
-              <li>Create multiple accounts to abuse the free tier</li>
+              <li>Create multiple accounts to abuse free trials or circumvent subscription requirements</li>
               <li>Share your account credentials with others</li>
               <li>Scrape, copy, or redistribute our content</li>
               <li>Use automated systems (bots) to access the Service</li>
@@ -263,7 +256,7 @@ export default function TermsOfService() {
               <li>Third-party actions (e.g., app store policies)</li>
             </ul>
             <p className="mt-4">
-              In no event shall our total liability exceed the amount you paid us in the 12 months preceding the claim (maximum $119.88).
+              In no event shall our total liability exceed the amount you paid us in the 12 months preceding the claim (maximum $49.99).
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">9.3 Indemnification</h3>
@@ -288,6 +281,8 @@ export default function TermsOfService() {
               <li><strong className="text-text-primary">Supabase</strong> - Database and authentication</li>
               <li><strong className="text-text-primary">RevenueCat</strong> - Subscription management</li>
               <li><strong className="text-text-primary">Apple App Store / Google Play</strong> - Payment processing</li>
+              <li><strong className="text-text-primary">Amplitude</strong> - Product analytics (usage patterns, feature engagement)</li>
+              <li><strong className="text-text-primary">AppsFlyer</strong> - Mobile attribution (install source tracking)</li>
             </ul>
             <p className="mt-4">
               These third parties have their own terms of service and privacy policies. We are not responsible for their practices or availability.
@@ -336,7 +331,7 @@ export default function TermsOfService() {
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">12.1 Informal Resolution</h3>
             <p>
-              Before filing a claim, please contact us at <a href="mailto:support@discgolfformanalyzer.com" className="text-[#667eea] hover:underline">support@discgolfformanalyzer.com</a> to attempt informal resolution.
+              Before filing a claim, please contact us at <a href="mailto:support@axiomtrinitylabs.com" className="text-[#667eea] hover:underline">support@axiomtrinitylabs.com</a> to attempt informal resolution.
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">12.2 Governing Law</h3>
@@ -409,7 +404,7 @@ export default function TermsOfService() {
             </p>
             <div className="mt-4 bg-surface/50 border border-glass-border rounded-xl p-6">
               <p><strong className="text-text-primary">Email:</strong> <a href="mailto:legal@discgolfformanalyzer.com" className="text-[#667eea] hover:underline">legal@discgolfformanalyzer.com</a></p>
-              <p className="mt-2"><strong className="text-text-primary">Support:</strong> <a href="mailto:369shar@gmail.com" className="text-[#667eea] hover:underline">369shar@gmail.com</a></p>
+              <p className="mt-2"><strong className="text-text-primary">Support:</strong> <a href="mailto:support@axiomtrinitylabs.com" className="text-[#667eea] hover:underline">support@axiomtrinitylabs.com</a></p>
             </div>
           </section>
 
@@ -420,7 +415,7 @@ export default function TermsOfService() {
               <p className="font-semibold text-text-primary mb-3">In Plain English:</p>
               <ul className="space-y-2">
                 <li>✅ Use the Service respectfully and legally</li>
-                <li>✅ Premium subscription: $9.99/month, cancel anytime</li>
+                <li>✅ Premium subscription: $49.99/year with 3-day free trial, cancel anytime</li>
                 <li>✅ You own your videos; we only analyze them (then delete)</li>
                 <li>✅ AI analysis is educational, not guaranteed to be 100% accurate</li>
                 <li>✅ We can terminate accounts that violate these Terms</li>
