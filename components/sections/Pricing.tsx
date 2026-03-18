@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { GlassCard } from '../ui/GlassCard';
 import { GradientText } from '../ui/GradientText';
-import { Button } from '../ui/Button';
 
 export function Pricing() {
   return (
@@ -124,12 +123,9 @@ export function Pricing() {
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* Reassurance */}
               <div className="pt-4">
-                <Button variant="success" size="lg" className="w-full sm:w-auto" href="https://apps.apple.com/us/app/disc-golf-form-analyzer/id6755727208">
-                  Download App
-                </Button>
-                <p className="text-xs text-text-tertiary mt-3">
+                <p className="text-xs text-text-tertiary">
                   1 Free Analysis • Cancel Anytime • Your Videos Stay Private
                 </p>
               </div>
