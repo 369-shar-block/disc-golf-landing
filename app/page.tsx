@@ -6,7 +6,6 @@ import { Solution } from '@/components/sections/Solution';
 import { Features } from '@/components/sections/Features';
 import { AnalysisPreview } from '@/components/sections/AnalysisPreview';
 import { SocialProof } from '@/components/sections/SocialProof';
-import { Pricing } from '@/components/sections/Pricing';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 
@@ -21,7 +20,6 @@ export default function Home() {
         <Features />
         <AnalysisPreview />
         <SocialProof />
-        <Pricing />
         <FAQ />
         <FinalCTA />
       </main>
