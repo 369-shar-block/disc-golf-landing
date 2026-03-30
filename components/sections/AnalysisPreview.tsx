@@ -70,7 +70,12 @@ export function AnalysisPreview() {
           {/* Throw Type Toggle */}
           <div className="flex justify-center gap-4">
             <button
-              onClick={() => setSelectedType('backhand')}
+              onClick={() => {
+                setSelectedType('backhand');
+                if (typeof window !== 'undefined' && (window as any).fbq) {
+                  (window as any).fbq('trackCustom', 'AnalysisToggle', { throw_type: 'backhand' });
+                }
+              }}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 selectedType === 'backhand'
                   ? 'bg-gradient-to-r from-[#11998e] to-[#38ef7d] text-white'
@@ -80,7 +85,12 @@ export function AnalysisPreview() {
               Backhand Example
             </button>
             <button
-              onClick={() => setSelectedType('forehand')}
+              onClick={() => {
+                setSelectedType('forehand');
+                if (typeof window !== 'undefined' && (window as any).fbq) {
+                  (window as any).fbq('trackCustom', 'AnalysisToggle', { throw_type: 'forehand' });
+                }
+              }}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 selectedType === 'forehand'
                   ? 'bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white'

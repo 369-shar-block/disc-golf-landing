@@ -42,6 +42,11 @@ export function Navbar() {
             href="https://apps.apple.com/us/app/disc-golf-form-analyzer/id6755727208"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).fbq) {
+                (window as any).fbq('track', 'Lead', { content_name: 'App Store Navbar', content_category: 'iOS' });
+              }
+            }}
             className="w-10 h-10 rounded-lg bg-gradient-to-br from-black to-[#1a1a24] border border-[#667eea]/50 flex items-center justify-center hover:border-[#667eea] hover:scale-110 transition-all"
             aria-label="Download on App Store"
           >
@@ -54,6 +59,11 @@ export function Navbar() {
             href="https://play.google.com/store/apps/details?id=com.axiomtrinitylabs.discgolfform"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).fbq) {
+                (window as any).fbq('track', 'Lead', { content_name: 'Google Play Navbar', content_category: 'Android' });
+              }
+            }}
             className="w-10 h-10 rounded-lg bg-gradient-to-br from-black to-[#1a1a24] border border-[#667eea]/50 flex items-center justify-center hover:border-[#667eea] hover:scale-110 transition-all"
             aria-label="Get it on Google Play"
           >

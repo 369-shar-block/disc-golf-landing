@@ -60,7 +60,13 @@ export function FAQ() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
             >
-              <GlassCard hover={false} className="cursor-pointer" onClick={() => setOpenIndex(openIndex === index ? null : index)}>
+              <GlassCard hover={false} className="cursor-pointer" onClick={() => {
+                const isOpening = openIndex !== index;
+                setOpenIndex(isOpening ? index : null);
+                if (isOpening && typeof window !== 'undefined' && (window as any).fbq) {
+                  (window as any).fbq('trackCustom', 'FAQClick', { question: faq.question });
+                }
+              }}>
                 <div className="flex justify-between items-start gap-4">
                   <h3 className="font-bold text-lg text-text-primary flex-1">
                     {faq.question}

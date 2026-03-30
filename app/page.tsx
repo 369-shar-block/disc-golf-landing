@@ -8,10 +8,12 @@ import { AnalysisPreview } from '@/components/sections/AnalysisPreview';
 import { SocialProof } from '@/components/sections/SocialProof';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { MetaPixelEvents } from '@/components/MetaPixelEvents';
 
 export default function Home() {
   return (
     <>
+      <MetaPixelEvents />
       <Navbar />
       <main className="min-h-screen">
         <Hero />

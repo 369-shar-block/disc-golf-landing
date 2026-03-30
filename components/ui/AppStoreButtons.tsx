@@ -34,6 +34,11 @@ export function AppStoreButtons({
           href={iosLink}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).fbq) {
+              (window as any).fbq('track', 'Lead', { content_name: 'App Store', content_category: 'iOS' });
+            }
+          }}
           className="relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-br from-black to-[#1a1a24] border-2 border-[#667eea]/50 rounded-xl hover:border-[#667eea] transition-all shadow-action-glow/50 hover:shadow-action-glow overflow-hidden group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -57,6 +62,11 @@ export function AppStoreButtons({
           href={androidLink}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).fbq) {
+              (window as any).fbq('track', 'Lead', { content_name: 'Google Play', content_category: 'Android' });
+            }
+          }}
           className="relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-br from-black to-[#1a1a24] border-2 border-[#667eea]/50 rounded-xl hover:border-[#667eea] transition-all shadow-action-glow/50 hover:shadow-action-glow overflow-hidden group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
