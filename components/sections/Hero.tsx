@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { GradientText } from '../ui/GradientText';
 import { AppStoreButtons } from '../ui/AppStoreButtons';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Floating Disc Animation Component (like mobile app)
 function FloatingDisc({ delay, duration, startX, startY }: {
@@ -29,6 +29,27 @@ function FloatingDisc({ delay, duration, startX, startY }: {
       }}
     />
   );
+}
+
+// Animated counter that counts up from 0 to target value
+function AnimatedCounter({ to, decimals = 0, duration = 2 }: {
+  to: number;
+  decimals?: number;
+  duration?: number;
+}) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => latest.toFixed(decimals));
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(count, to, { duration, ease: 'easeOut' });
+      return controls.stop;
+    }
+  }, [inView, to, duration, count]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
 export function Hero() {
@@ -81,6 +102,41 @@ export function Hero() {
           Master your disc golf form with AI-powered coaching.{' '}
           <span className="text-text-primary font-semibold">Get instant feedback on every throw.</span>
         </motion.p>
+
+        {/* Social Proof Stats */}
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {/* Downloads */}
+          <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+            <svg className="w-5 h-5 text-[#38ef7d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            <div className="text-left">
+              <div className="text-xl sm:text-2xl font-bold text-white leading-none">
+                <AnimatedCounter to={6} />
+                k+
+              </div>
+              <div className="text-xs text-text-secondary mt-0.5">Downloads</div>
+            </div>
+          </div>
+
+          {/* Rating */}
+          <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+            <svg className="w-5 h-5 text-[#fbbf24]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <div className="text-left">
+              <div className="text-xl sm:text-2xl font-bold text-white leading-none">
+                <AnimatedCounter to={4.9} decimals={1} />
+              </div>
+              <div className="text-xs text-text-secondary mt-0.5">App Rating</div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
