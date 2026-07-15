@@ -4,35 +4,17 @@ import { motion } from 'framer-motion';
 import { GradientText } from '../ui/GradientText';
 import { GlassCard } from '../ui/GlassCard';
 import { useState } from 'react';
+import { FAQS } from '@/lib/seo';
 
-const faqs = [
-  {
-    question: 'Do I need a gimbal or fancy camera?',
-    answer: 'No! Your phone camera works perfectly. The AI adapts to any angle and video quality.',
-  },
-  {
-    question: "What if I don't know what throw type I'm doing?",
-    answer: "The AI auto-detects whether you're throwing backhand, forehand, or putting. No manual selection needed.",
-  },
-  {
-    question: 'How accurate is the AI?',
-    answer: 'Our AI is custom-trained specifically for disc golf—not a generic pose detection app. We adapted a computer-vision backbone and trained it to recognize disc golf mechanics: release angles, reach-back depth, brace timing, weight transfer, and follow-through patterns. It evaluates throws using disc-golf-specific constraints and scoring logic.',
-  },
-  {
-    question: 'Can I cancel my subscription anytime?',
-    answer: 'Absolutely! Cancel anytime with one tap in the app. No commitments, no cancellation fees.',
-  },
-  {
-    question: 'What about my privacy?',
-    answer: "Your videos are only used for analysis and not stored on our servers. Everything stays on your device and Google's secure AI API.",
-  },
-];
+// Q&A is sourced from lib/seo.ts so the visible FAQ and the FAQPage JSON-LD
+// schema (rendered in the layout) always stay identical.
+const faqs = FAQS;
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 px-6 relative">
+    <section id="faq" className="py-24 px-6 relative">
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
         <motion.div

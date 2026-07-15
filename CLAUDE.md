@@ -732,6 +732,27 @@ See README.md for Google Analytics setup
 
 ## 🔄 Version History
 
+### v2.0 (July 15, 2026) — Competitive SEO + copy overhaul
+**Branch:** `feature/landing-competitive-overhaul` (preview deploy; not yet merged to main).
+Driven by the ASO/SEO/GEO playbook (`disc-golf-analyzer/copy.md`) and a competitive read of
+**dgpocketcoach.com** (still a waitlist / web-only, no pricing — our wedge is "live today").
+
+- **SEO/GEO:** rewrote `layout.tsx` metadata (title `AI Disc Golf Form Analyzer & Coaching App | DGFA`,
+  playbook meta description, OpenGraph/Twitter, canonical, robots). Added **JSON-LD** — `MobileApplication`
+  + `Organization` + `WebSite` + `FAQPage` — server-rendered from a new `lib/seo.ts` single source of
+  truth. Added `app/sitemap.ts` + `app/robots.ts`.
+- **Hero:** new headline + availability badge ("Live now on iOS & Android"), a real product mock
+  (analysis card) instead of the abstract spinning disc, honest trust row.
+- **New `Comparison` section:** DGFA vs other AI apps / $299 launch monitors / private coach
+  (strong for conversion + AI citation per the playbook).
+- **Features** refreshed to the real v2.x app (skeleton overlay + ideal-form compare, AI Caddie).
+  **FAQ** rewritten (answer-first, competitor-aware) and wired to the FAQPage schema. **SocialProof**
+  rebuilt as an honest stats band (empty real-review slot, no fabricated quotes). **FinalCTA** + **Navbar** polish.
+- **Honesty fixes:** rating corrected fabricated **4.9 → real 4.2** (matches store + schema; Google
+  penalizes mismatches). Rating/price/links centralized in `lib/seo.ts` (one-line updates).
+- **NOTE:** entries below are stale (they predate launch — pricing is now $39.99/yr, the app is live,
+  the Dec 30 2025 launch has passed).
+
 ### v1.1 (December 18, 2025)
 **Launch Date Announcement Update:**
 - Added premium launch date badge to Hero section

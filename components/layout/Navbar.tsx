@@ -35,6 +35,13 @@ export function Navbar() {
           </span>
         </a>
 
+        {/* Anchor nav (desktop) */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-text-secondary">
+          <a href="#features" className="hover:text-text-primary transition-colors">Features</a>
+          <a href="#compare" className="hover:text-text-primary transition-colors">Compare</a>
+          <a href="#faq" className="hover:text-text-primary transition-colors">FAQ</a>
+        </div>
+
         {/* Store Icons */}
         <div className="flex items-center gap-3">
           {/* App Store */}

@@ -1,24 +1,69 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import {
+  SITE_URL,
+  organizationSchema,
+  websiteSchema,
+  mobileAppSchema,
+  faqSchema,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Disc Golf Form Analyzer - Your AI Coach",
-  description: "Upload your throw. Get pro-level form analysis in 60 seconds. AI-powered disc golf coaching that spots 30+ biomechanical markers.",
-  keywords: ["disc golf", "form analysis", "disc golf coach", "AI coaching", "disc golf training"],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "AI Disc Golf Form Analyzer & Coaching App | DGFA",
+    template: "%s | Disc Golf Form Analyzer",
+  },
+  description:
+    "Upload a video of your throw and get instant AI form analysis in 60 seconds. Fix your disc golf backhand & forehand, add distance. On iOS & Android. Try free.",
+  keywords: [
+    "disc golf",
+    "disc golf form analyzer",
+    "disc golf coach",
+    "disc golf coaching app",
+    "AI disc golf coach",
+    "disc golf technique",
+    "improve disc golf form",
+    "backhand",
+    "forehand",
+    "disc golf training app",
+  ],
+  applicationName: "Disc Golf Form Analyzer",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
+      { url: "/favicon.ico" },
+      { url: "/icon.png", sizes: "1024x1024", type: "image/png" },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Disc Golf Form Analyzer - Your AI Coach",
-    description: "Upload your throw. Get pro-level form analysis in 60 seconds.",
+    title: "AI Disc Golf Form Analyzer & Coaching App",
+    description:
+      "Upload your throw. Get a pro-level AI form breakdown in 60 seconds, with the exact fixes and drills. Live on iOS & Android.",
+    url: SITE_URL,
+    siteName: "Disc Golf Form Analyzer",
     type: "website",
+    images: [{ url: "/icon.png", width: 1024, height: 1024, alt: "Disc Golf Form Analyzer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Disc Golf Form Analyzer & Coaching App",
+    description:
+      "Upload your throw. Get a pro-level AI form breakdown in 60 seconds. Live on iOS & Android.",
+    images: ["/icon.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
+
+const schemas = [organizationSchema, websiteSchema, mobileAppSchema, faqSchema];
 
 export default function RootLayout({
   children,
@@ -28,6 +73,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Structured data — server-rendered so Google + AI crawlers read it in raw HTML */}
+        {schemas.map((schema, i) => (
+          <script
+            key={i}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
         <noscript>
           <img
             height="1"

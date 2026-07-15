@@ -20,8 +20,8 @@ export function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Ready to Break Through Your{' '}
-            <GradientText gradient="action">Plateau</GradientText>?
+            Film a throw. Fix your form.{' '}
+            <GradientText gradient="action">Today.</GradientText>
           </h2>
         </motion.div>
 
@@ -33,7 +33,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Start improving your game with AI-powered coaching.
+          Start a free trial and get your first AI form breakdown in 60 seconds. Live now on iOS and Android.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -56,15 +56,15 @@ export function FinalCTA() {
         >
           <div className="flex items-center gap-2">
             <span className="text-[#11998e]">✓</span>
-            <span>1 Free Analysis</span>
+            <span>Free trial</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#667eea]">✓</span>
-            <span>Cancel Anytime</span>
+            <span>No hardware needed</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#c471f5]">✓</span>
-            <span>Your Videos Stay Private</span>
+            <span>Cancel anytime</span>
           </div>
         </motion.div>
       </div>

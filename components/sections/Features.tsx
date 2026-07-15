@@ -6,52 +6,46 @@ import { GradientText } from '../ui/GradientText';
 
 const features = [
   {
+    icon: '⚡',
+    title: 'Instant AI breakdown',
+    description: 'Upload a throw, get a full form analysis in about 60 seconds. No coach to book, no hardware to ship.',
+    gradient: 'success' as const,
+  },
+  {
     icon: '🧠',
-    title: 'Custom-Trained AI',
-    description: 'Not a generic pose app—trained specifically on disc golf mechanics.',
+    title: 'Custom-trained for disc golf',
+    description: 'Not a generic pose app. Trained on disc golf mechanics: reach-back, rounding, brace timing, weight transfer, follow-through.',
     gradient: 'action' as const,
   },
   {
-    icon: '🔍',
-    title: 'Auto-Detects Throw Type',
-    description: 'Backhand, forehand, putt—no manual selection needed.',
-    gradient: 'success' as const,
-  },
-  {
-    icon: '✅',
-    title: "What's Working",
-    description: 'Start with positives. Build confidence before corrections.',
-    gradient: 'success' as const,
-  },
-  {
-    icon: '⚙️',
-    title: 'Disc Golf-Specific Analysis',
-    description: 'Release angles, reach-back depth, brace timing, weight transfer, and follow-through.',
+    icon: '📐',
+    title: 'Skeleton overlay + ideal-form compare',
+    description: 'See your throw as a skeleton lined up against ideal form, so you know exactly which positions to change.',
     gradient: 'action' as const,
   },
   {
-    icon: '⏱️',
-    title: 'Timestamped Issues',
-    description: 'Jump to exact frame of errors. No guesswork.',
+    icon: '🎯',
+    title: 'The fix, plus a drill',
+    description: "Not 'compare yourself to a pro' and guess. You get what's wrong, how to fix it, and a targeted drill to practice.",
     gradient: 'history' as const,
   },
   {
-    icon: '📝',
-    title: 'Step-by-Step Fixes',
-    description: "Not 'do better'—actual biomechanical corrections.",
-    gradient: 'action' as const,
+    icon: '🥏',
+    title: 'Backhand, forehand & putt',
+    description: 'Auto-detects your throw type. No manual selection, no wrong reference frame.',
+    gradient: 'success' as const,
   },
   {
-    icon: '🛠️',
-    title: 'Focused Drills',
-    description: 'One targeted drill to fix your biggest issue.',
+    icon: '🎒',
+    title: 'AI Caddie built in',
+    description: 'Snap your discs into a bag, then get shot and disc recommendations for any hole. Nobody else bundles this.',
     gradient: 'history' as const,
   },
 ];
 
 export function Features() {
   return (
-    <section className="py-24 px-6 relative">
+    <section id="features" className="py-24 px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -62,7 +56,7 @@ export function Features() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            More Than Just <GradientText gradient="action">Video Analysis</GradientText>
+            Everything a coach does. <GradientText gradient="action">In one app.</GradientText>
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             AI-powered features that give you the edge over your competition.

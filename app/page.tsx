@@ -5,6 +5,7 @@ import { Problem } from '@/components/sections/Problem';
 import { Solution } from '@/components/sections/Solution';
 import { Features } from '@/components/sections/Features';
 import { AnalysisPreview } from '@/components/sections/AnalysisPreview';
+import { Comparison } from '@/components/sections/Comparison';
 import { SocialProof } from '@/components/sections/SocialProof';
 import { FAQ } from '@/components/sections/FAQ';
 import { FinalCTA } from '@/components/sections/FinalCTA';
@@ -21,6 +22,7 @@ export default function Home() {
         <Solution />
         <Features />
         <AnalysisPreview />
+        <Comparison />
         <SocialProof />
         <FAQ />
         <FinalCTA />

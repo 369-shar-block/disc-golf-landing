@@ -5,7 +5,7 @@ import { GradientText } from '../ui/GradientText';
 import { AppStoreButtons } from '../ui/AppStoreButtons';
 import { useEffect, useRef, useState } from 'react';
 
-// Floating Disc Animation Component (like mobile app)
+// Subtle floating disc in the background
 function FloatingDisc({ delay, duration, startX, startY }: {
   delay: number;
   duration: number;
@@ -21,18 +21,12 @@ function FloatingDisc({ delay, duration, startX, startY }: {
         x: [startX, startX + 50, startX],
         rotate: [0, 360, 0],
       }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: 'linear',
-      }}
+      transition={{ duration, delay, repeat: Infinity, ease: 'linear' }}
     />
   );
 }
 
-// Animated counter that counts up from 0 to target value
-function AnimatedCounter({ to, decimals = 0, duration = 2 }: {
+function AnimatedCounter({ to, decimals = 0, duration = 1.6 }: {
   to: number;
   decimals?: number;
   duration?: number;
@@ -52,116 +46,151 @@ function AnimatedCounter({ to, decimals = 0, duration = 2 }: {
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
+// A polished phone mock showing what an actual analysis looks like — the real
+// product, not an abstract disc. This is the differentiator vs. "compare to a pro".
+function PhoneMock() {
+  return (
+    <div className="relative mx-auto w-[280px] sm:w-[300px]">
+      {/* glow */}
+      <div className="absolute -inset-6 bg-gradient-to-r from-[#667eea]/25 to-[#38ef7d]/20 blur-[60px] rounded-full" />
+      <div className="relative rounded-[2.2rem] border border-white/10 bg-[#0d0d14] p-3 shadow-2xl">
+        <div className="rounded-[1.7rem] bg-gradient-to-b from-[#15151f] to-[#0a0a0f] p-4 overflow-hidden">
+          {/* header */}
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <div className="text-[11px] text-text-tertiary">Your throw</div>
+              <div className="text-sm font-bold text-white">Backhand breakdown</div>
+            </div>
+            <span className="text-[10px] font-semibold px-2 py-1 rounded-full bg-[#38ef7d]/15 text-[#38ef7d] border border-[#38ef7d]/30">
+              RHBH
+            </span>
+          </div>
+
+          {/* what's working */}
+          <div className="rounded-xl border-l-2 border-[#38ef7d] bg-white/[0.03] p-3 mb-2.5">
+            <div className="text-[11px] font-bold text-[#38ef7d] mb-1">✓ What&apos;s working</div>
+            <div className="text-[11px] text-text-secondary leading-snug">Strong brace, front foot planted at 90°.</div>
+          </div>
+
+          {/* main issue */}
+          <div className="rounded-xl border-l-2 border-[#ff9800] bg-white/[0.03] p-3 mb-2.5">
+            <div className="text-[11px] font-bold text-[#ff9800] mb-1">! Main issue</div>
+            <div className="text-[11px] text-text-secondary leading-snug">Rounding — disc pulled too close to your chest.</div>
+          </div>
+
+          {/* the fix */}
+          <div className="rounded-xl border-l-2 border-[#667eea] bg-white/[0.03] p-3 mb-3">
+            <div className="text-[11px] font-bold text-[#8b9dff] mb-1">→ The fix + drill</div>
+            <div className="text-[11px] text-text-secondary leading-snug">Wall reach-back drill: keep the arm extended through the pull.</div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 text-[10px] text-text-tertiary">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38ef7d] animate-pulse" />
+            Analyzed in 58s
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
-  const [windowWidth, setWindowWidth] = useState(1200); // Default for SSR
+  const [windowWidth, setWindowWidth] = useState(1200);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#1a1a24] to-[#0a0a0f]" />
-
-      {/* Floating Discs Background */}
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#12121b] to-[#0a0a0f]" />
       <div className="absolute inset-0 pointer-events-none">
-        <FloatingDisc delay={0} duration={25} startX={100} startY={600} />
-        <FloatingDisc delay={0.5} duration={30} startX={windowWidth - 100} startY={700} />
-        <FloatingDisc delay={1} duration={35} startX={300} startY={650} />
-        <FloatingDisc delay={1.5} duration={28} startX={windowWidth - 300} startY={600} />
-        <FloatingDisc delay={2} duration={32} startX={windowWidth - 150} startY={680} />
+        <FloatingDisc delay={0} duration={26} startX={80} startY={620} />
+        <FloatingDisc delay={0.8} duration={32} startX={windowWidth - 120} startY={700} />
+        <FloatingDisc delay={1.6} duration={30} startX={windowWidth - 260} startY={600} />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Rotating Hero Disc */}
-        <motion.div
-          className="mx-auto mb-8 w-32 h-32 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-action-glow"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: copy */}
+          <div className="text-center lg:text-left">
+            {/* Availability badge — the wedge vs. waitlist competitors */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#38ef7d]/10 border border-[#38ef7d]/25 mb-6"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#38ef7d] animate-pulse" />
+              <span className="text-sm font-semibold text-[#38ef7d]">Live now on iOS &amp; Android</span>
+            </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Throw Farther. <GradientText gradient="success">More Consistently.</GradientText>
-        </motion.h1>
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-[1.05]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Fix your disc golf form. <GradientText gradient="success">Throw farther.</GradientText>
+            </motion.h1>
 
-        {/* Subheadline */}
-        <motion.p
-          className="text-xl sm:text-2xl text-text-secondary mb-8 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Master your disc golf form with AI-powered coaching.{' '}
-          <span className="text-text-primary font-semibold">Get instant feedback on every throw.</span>
-        </motion.p>
+            <motion.p
+              className="text-lg sm:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <span className="text-text-primary font-semibold">AI disc golf form analysis in 60 seconds.</span>{' '}
+              Upload a throw and get the exact fixes and drills to add distance and consistency. No hardware. No waitlist.
+            </motion.p>
 
-        {/* Social Proof Stats */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          {/* Downloads */}
-          <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
-            <svg className="w-5 h-5 text-[#38ef7d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
-            </svg>
-            <div className="text-left">
-              <div className="text-xl sm:text-2xl font-bold text-white leading-none">
-                <AnimatedCounter to={6} />
-                k+
+            {/* CTA */}
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <AppStoreButtons className="justify-center lg:justify-start" />
+            </motion.div>
+
+            {/* Trust row — real, verifiable numbers */}
+            <motion.div
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-[#fbbf24]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <span className="text-sm text-text-secondary">
+                  <span className="font-bold text-white"><AnimatedCounter to={4.2} decimals={1} /></span> App Store rating
+                </span>
               </div>
-              <div className="text-xs text-text-secondary mt-0.5">Downloads</div>
-            </div>
+              <div className="h-4 w-px bg-white/10 hidden sm:block" />
+              <div className="text-sm text-text-secondary">
+                <span className="font-bold text-white"><AnimatedCounter to={7900} /></span>+ throws analyzed
+              </div>
+              <div className="h-4 w-px bg-white/10 hidden sm:block" />
+              <div className="text-sm text-text-secondary">
+                <span className="font-bold text-white">Custom-trained</span> for disc golf
+              </div>
+            </motion.div>
           </div>
 
-          {/* Rating */}
-          <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
-            <svg className="w-5 h-5 text-[#fbbf24]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <div className="text-left">
-              <div className="text-xl sm:text-2xl font-bold text-white leading-none">
-                <AnimatedCounter to={4.9} decimals={1} />
-              </div>
-              <div className="text-xs text-text-secondary mt-0.5">App Rating</div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <AppStoreButtons className="justify-center" />
-        </motion.div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <div className="w-6 h-10 border-2 border-glass-border rounded-full flex justify-center">
+          {/* Right: product mock */}
           <motion.div
-            className="w-1.5 h-1.5 bg-gradient-to-b from-[#667eea] to-[#764ba2] rounded-full mt-2"
-            animate={{ y: [0, 16, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+          >
+            <PhoneMock />
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
