@@ -15,7 +15,7 @@ function FloatingDisc({ delay, duration, startX, startY }: {
 }) {
   return (
     <motion.div
-      className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] opacity-10 blur-sm"
+      className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#38ef7d] to-[#11998e] opacity-[0.06] blur-sm"
       initial={{ x: startX, y: startY, rotate: 0 }}
       animate={{
         y: [startY, startY - 400, startY],
@@ -53,7 +53,7 @@ function PhoneMock() {
   return (
     <div className="relative mx-auto w-[280px] sm:w-[300px]">
       {/* glow */}
-      <div className="absolute -inset-6 bg-gradient-to-r from-[#667eea]/25 to-[#38ef7d]/20 blur-[60px] rounded-full" />
+      <div className="absolute -inset-6 bg-gradient-to-r from-[#38ef7d]/20 to-[#11998e]/10 blur-[60px] rounded-full" />
       <div className="relative rounded-[2.2rem] border border-white/10 bg-[#0d0d14] p-3 shadow-2xl">
         <div className="rounded-[1.7rem] bg-gradient-to-b from-[#15151f] to-[#0a0a0f] p-4 overflow-hidden">
           {/* header */}

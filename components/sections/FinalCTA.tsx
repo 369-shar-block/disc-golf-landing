@@ -9,7 +9,7 @@ export function FinalCTA() {
     <section className="py-32 px-6 relative overflow-hidden">
       {/* Background Gradient Glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-surface/50 to-background" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#667eea]/20 to-[#764ba2]/20 blur-[100px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#38ef7d]/15 to-[#11998e]/15 blur-[100px] rounded-full" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Headline */}
@@ -21,7 +21,7 @@ export function FinalCTA() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             Film a throw. Fix your form.{' '}
-            <GradientText gradient="action">Today.</GradientText>
+            <GradientText gradient="success">Today.</GradientText>
           </h2>
         </motion.div>
 

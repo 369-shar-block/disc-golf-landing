@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Icon } from '../ui/Icon';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,11 +27,11 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center group-hover:scale-110 transition-transform">
-            <span className="text-xl">🥏</span>
+        <a href="#" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 rounded-full border border-[#38ef7d]/30 bg-[#38ef7d]/10 flex items-center justify-center text-[#38ef7d] group-hover:bg-[#38ef7d]/15 transition-colors">
+            <Icon name="disc" className="w-5 h-5" />
           </div>
-          <span className="font-bold text-xl text-text-primary hidden sm:block">
+          <span className="font-semibold text-lg tracking-tight text-text-primary hidden sm:block">
             Disc Golf Form Analyzer
           </span>
         </a>
@@ -54,7 +55,7 @@ export function Navbar() {
                 (window as any).fbq('track', 'Lead', { content_name: 'App Store Navbar', content_category: 'iOS' });
               }
             }}
-            className="w-10 h-10 rounded-lg bg-gradient-to-br from-black to-[#1a1a24] border border-[#667eea]/50 flex items-center justify-center hover:border-[#667eea] hover:scale-110 transition-all"
+            className="w-10 h-10 rounded-lg bg-white/[0.03] border border-white/15 flex items-center justify-center hover:border-[#38ef7d]/50 hover:scale-110 transition-all"
             aria-label="Download on App Store"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="white">
@@ -71,7 +72,7 @@ export function Navbar() {
                 (window as any).fbq('track', 'Lead', { content_name: 'Google Play Navbar', content_category: 'Android' });
               }
             }}
-            className="w-10 h-10 rounded-lg bg-gradient-to-br from-black to-[#1a1a24] border border-[#667eea]/50 flex items-center justify-center hover:border-[#667eea] hover:scale-110 transition-all"
+            className="w-10 h-10 rounded-lg bg-white/[0.03] border border-white/15 flex items-center justify-center hover:border-[#38ef7d]/50 hover:scale-110 transition-all"
             aria-label="Get it on Google Play"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="white">

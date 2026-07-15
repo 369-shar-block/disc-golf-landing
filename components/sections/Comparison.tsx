@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { GradientText } from '../ui/GradientText';
+import { Icon } from '../ui/Icon';
 
 type Cell = { v: 'yes' | 'no' | 'partial'; note?: string };
 
@@ -48,14 +49,14 @@ const rows: { label: string; dgfa: Cell; others: [Cell, Cell, Cell] }[] = [
 function Mark({ cell, strong = false }: { cell: Cell; strong?: boolean }) {
   const icon =
     cell.v === 'yes' ? (
-      <span className={`text-lg ${strong ? 'text-[#38ef7d]' : 'text-[#38ef7d]/80'}`}>✓</span>
+      <Icon name="check" className={`w-5 h-5 ${strong ? 'text-[#38ef7d]' : 'text-[#38ef7d]/80'}`} />
     ) : cell.v === 'no' ? (
-      <span className="text-lg text-[#ff5a5a]/70">✕</span>
+      <Icon name="x" className="w-4 h-4 text-white/25" />
     ) : (
-      <span className="text-lg text-[#ffb020]">~</span>
+      <Icon name="minus" className="w-4 h-4 text-[#ffb020]" />
     );
   return (
-    <div className="flex flex-col items-center justify-center gap-0.5 text-center">
+    <div className="flex flex-col items-center justify-center gap-1 text-center">
       {icon}
       {cell.note && <span className="text-[10px] leading-tight text-text-tertiary">{cell.note}</span>}
     </div>

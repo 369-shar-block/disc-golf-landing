@@ -1,102 +1,81 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GradientText } from '../ui/GradientText';
-import { GlassCard } from '../ui/GlassCard';
+import { Icon, IconName } from '../ui/Icon';
 
-const steps = [
+const steps: { n: string; icon: IconName; title: string; description: string }[] = [
   {
-    number: '1',
-    icon: '🎬',
-    title: 'Record Your Throw',
-    description: 'Use any angle, the AI adapts. Just film with your phone.',
-    gradient: 'success' as const,
+    n: '01',
+    icon: 'video',
+    title: 'Record your throw',
+    description: 'Film from any angle with your phone. No gimbal, no launch monitor, no special setup.',
   },
   {
-    number: '2',
-    icon: '🤖',
-    title: 'AI Analyzes Your Form',
-    description: 'Perfect your reach back, timing, and release in seconds.',
-    gradient: 'action' as const,
+    n: '02',
+    icon: 'cpu',
+    title: 'AI analyzes your form',
+    description: 'A frame-by-frame breakdown of your mechanics, returned in about 60 seconds.',
   },
   {
-    number: '3',
-    icon: '🎯',
-    title: 'Get Your Custom Drill',
-    description: 'Specific fixes, not generic platitudes. Know exactly what to practice.',
-    gradient: 'history' as const,
+    n: '03',
+    icon: 'target',
+    title: 'Get the fix and a drill',
+    description: 'Exactly what to change and how to practice it. Specific corrections, not generic tips.',
   },
 ];
 
 export function Solution() {
   return (
-    <section className="py-24 px-6 relative bg-gradient-to-b from-transparent to-surface/30">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+    <section className="py-24 px-6 relative bg-gradient-to-b from-transparent to-white/[0.015]">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center max-w-2xl mx-auto mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <GradientText gradient="action">Film. Upload. Improve.</GradientText> Repeat.
+          <div className="text-xs font-semibold tracking-[0.2em] text-[#38ef7d] uppercase mb-3">
+            How it works
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4">
+            From throw to fix in three steps.
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            Getting pro-level feedback has never been this simple.
+          <p className="text-lg text-text-secondary">
+            Real coaching feedback, without the coach, the wait, or the hardware.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-4">
           {steps.map((step, index) => (
             <motion.div
-              key={index}
+              key={step.n}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.14] hover:bg-white/[0.03]"
             >
-              {/* Connecting Line (desktop only) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-glass-border to-transparent -translate-y-1/2 z-0" />
-              )}
-
-              <GlassCard className="text-center relative z-10">
-                {/* Step Number */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center text-white font-bold text-xl shadow-action-glow">
-                  {step.number}
+              <div className="flex items-center justify-between mb-5">
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] text-[#38ef7d]">
+                  <Icon name={step.icon} className="w-5 h-5" />
                 </div>
-
-                {/* Icon */}
-                <div className="text-6xl mb-4 mt-4">{step.icon}</div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold mb-3">
-                  <GradientText gradient={step.gradient}>{step.title}</GradientText>
-                </h3>
-
-                {/* Description */}
-                <p className="text-text-secondary">{step.description}</p>
-              </GlassCard>
+                <span className="text-sm font-semibold text-white/25">{step.n}</span>
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Time Indicator */}
         <motion.p
-          className="text-center mt-12 text-lg"
+          className="text-center mt-10 text-sm text-text-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="text-text-secondary">Total time: </span>
-          <span className="font-bold bg-gradient-to-r from-[#11998e] to-[#38ef7d] bg-clip-text text-transparent">
-            Less than 60 seconds
-          </span>
+          Total time: <span className="font-semibold text-[#38ef7d]">under 60 seconds</span>
         </motion.p>
       </div>
     </section>

@@ -1,98 +1,78 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GlassCard } from '../ui/GlassCard';
-import { GradientText } from '../ui/GradientText';
+import { Icon, IconName } from '../ui/Icon';
 
-const features = [
+const features: { icon: IconName; title: string; description: string }[] = [
   {
-    icon: '⚡',
+    icon: 'bolt',
     title: 'Instant AI breakdown',
     description: 'Upload a throw, get a full form analysis in about 60 seconds. No coach to book, no hardware to ship.',
-    gradient: 'success' as const,
   },
   {
-    icon: '🧠',
+    icon: 'cpu',
     title: 'Custom-trained for disc golf',
     description: 'Not a generic pose app. Trained on disc golf mechanics: reach-back, rounding, brace timing, weight transfer, follow-through.',
-    gradient: 'action' as const,
   },
   {
-    icon: '📐',
-    title: 'Skeleton overlay + ideal-form compare',
+    icon: 'layers',
+    title: 'Skeleton + ideal-form compare',
     description: 'See your throw as a skeleton lined up against ideal form, so you know exactly which positions to change.',
-    gradient: 'action' as const,
   },
   {
-    icon: '🎯',
+    icon: 'target',
     title: 'The fix, plus a drill',
-    description: "Not 'compare yourself to a pro' and guess. You get what's wrong, how to fix it, and a targeted drill to practice.",
-    gradient: 'history' as const,
+    description: "Not 'compare yourself to a pro' and guess. You get what is wrong, how to fix it, and a targeted drill.",
   },
   {
-    icon: '🥏',
+    icon: 'disc',
     title: 'Backhand, forehand & putt',
-    description: 'Auto-detects your throw type. No manual selection, no wrong reference frame.',
-    gradient: 'success' as const,
+    description: 'Auto-detects your throw type, so the analysis always uses the right reference.',
   },
   {
-    icon: '🎒',
+    icon: 'bag',
     title: 'AI Caddie built in',
-    description: 'Snap your discs into a bag, then get shot and disc recommendations for any hole. Nobody else bundles this.',
-    gradient: 'history' as const,
+    description: 'Log your discs into a bag, then get shot and disc recommendations for any hole. Nobody else bundles this.',
   },
 ];
 
 export function Features() {
   return (
     <section id="features" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center max-w-2xl mx-auto mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Everything a coach does. <GradientText gradient="action">In one app.</GradientText>
+          <div className="text-xs font-semibold tracking-[0.2em] text-[#38ef7d] uppercase mb-3">
+            Features
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4">
+            Everything a coach does. In one app.
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            AI-powered features that give you the edge over your competition.
+          <p className="text-lg text-text-secondary">
+            Analysis, comparison, drills, and a caddie, all built specifically for disc golf.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature, index) => (
             <motion.div
-              key={index}
+              key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.14] hover:bg-white/[0.03]"
             >
-              <GlassCard className="h-full">
-                {/* Icon with gradient background */}
-                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 bg-gradient-to-br ${
-                  feature.gradient === 'success' ? 'from-[#11998e] to-[#38ef7d]' :
-                  feature.gradient === 'action' ? 'from-[#667eea] to-[#764ba2]' :
-                  'from-[#c471f5] to-[#fa71cd]'
-                }`}>
-                  <span className="text-3xl">{feature.icon}</span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold mb-2 text-text-primary">
-                  {feature.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </GlassCard>
+              <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] text-[#38ef7d] mb-5">
+                <Icon name={feature.icon} className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

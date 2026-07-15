@@ -7,37 +7,22 @@ interface BadgeProps {
   className?: string;
 }
 
+const labels: Record<BadgeProps['type'], string> = {
+  backhand: 'BACKHAND',
+  forehand: 'FOREHAND',
+  putt: 'PUTT',
+  unknown: 'UNKNOWN',
+};
+
 export function Badge({ type, className }: BadgeProps) {
-  const badgeConfig = {
-    backhand: {
-      gradient: 'bg-gradient-to-r from-[#11998e] to-[#38ef7d]',
-      label: 'BACKHAND',
-    },
-    forehand: {
-      gradient: 'bg-gradient-to-r from-[#667eea] to-[#764ba2]',
-      label: 'FOREHAND',
-    },
-    putt: {
-      gradient: 'bg-gradient-to-r from-[#c471f5] to-[#fa71cd]',
-      label: 'PUTT',
-    },
-    unknown: {
-      gradient: 'bg-gradient-to-r from-[#6b6b80] to-[#4a4a60]',
-      label: 'UNKNOWN',
-    },
-  };
-
-  const config = badgeConfig[type];
-
   return (
     <div
       className={cn(
-        'inline-block px-4 py-2 rounded-full text-white font-bold text-xs tracking-wider shadow-lg',
-        config.gradient,
+        'inline-block px-3 py-1.5 rounded-full border border-[#38ef7d]/30 bg-[#38ef7d]/10 text-[#38ef7d] font-semibold text-[11px] tracking-[0.15em]',
         className
       )}
     >
-      {config.label}
+      {labels[type]}
     </div>
   );
 }

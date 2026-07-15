@@ -24,11 +24,14 @@ export function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <GradientText gradient="history">Frequently Asked</GradientText> Questions
+          <div className="text-xs font-semibold tracking-[0.2em] text-[#38ef7d] uppercase mb-3">
+            FAQ
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4">
+            Questions, answered.
           </h2>
-          <p className="text-xl text-text-secondary">
-            Everything you need to know before getting started.
+          <p className="text-lg text-text-secondary">
+            Everything you need to know before your first analysis.
           </p>
         </motion.div>
 

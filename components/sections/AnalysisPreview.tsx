@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { GradientText } from '../ui/GradientText';
 import { GlassCard } from '../ui/GlassCard';
 import { Badge } from '../ui/Badge';
+import { Icon } from '../ui/Icon';
 import { useState } from 'react';
 
 const exampleAnalyses = {
@@ -118,8 +119,8 @@ export function AnalysisPreview() {
           {/* What's Working */}
           <GlassCard hover={false} className="border-l-4 border-[#38ef7d]">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#11998e] to-[#38ef7d] flex items-center justify-center">
-                <span className="text-2xl">✅</span>
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl border border-[#38ef7d]/25 bg-[#38ef7d]/10 flex items-center justify-center text-[#38ef7d]">
+                <Icon name="check" className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-3 text-text-primary">What's Working</h3>
@@ -136,10 +137,10 @@ export function AnalysisPreview() {
           </GlassCard>
 
           {/* Main Issues */}
-          <GlassCard hover={false} className="border-l-4 border-[#ff9800]">
+          <GlassCard hover={false} className="border-l-4 border-[#ffb020]">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff9800] to-[#ff5722] flex items-center justify-center">
-                <span className="text-2xl">⚠️</span>
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl border border-[#ffb020]/25 bg-[#ffb020]/10 flex items-center justify-center text-[#ffb020]">
+                <Icon name="alert" className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-3 text-text-primary">Main Issues</h3>
@@ -156,10 +157,10 @@ export function AnalysisPreview() {
           </GlassCard>
 
           {/* The Fix */}
-          <GlassCard hover={false} className="border-l-4 border-[#667eea]">
+          <GlassCard hover={false} className="border-l-4 border-[#8b9dff]">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-                <span className="text-2xl">🎯</span>
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl border border-[#8b9dff]/25 bg-[#8b9dff]/10 flex items-center justify-center text-[#8b9dff]">
+                <Icon name="target" className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-3 text-text-primary">The Fix</h3>
@@ -178,10 +179,10 @@ export function AnalysisPreview() {
           </GlassCard>
 
           {/* Suggested Drill */}
-          <GlassCard hover={false} className="border-l-4 border-[#c471f5]">
+          <GlassCard hover={false} className="border-l-4 border-[#38ef7d]">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#c471f5] to-[#fa71cd] flex items-center justify-center">
-                <span className="text-2xl">🛠️</span>
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl border border-[#38ef7d]/25 bg-[#38ef7d]/10 flex items-center justify-center text-[#38ef7d]">
+                <Icon name="flag" className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-3 text-text-primary">Suggested Drill</h3>
