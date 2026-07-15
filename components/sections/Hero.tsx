@@ -3,6 +3,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { GradientText } from '../ui/GradientText';
 import { AppStoreButtons } from '../ui/AppStoreButtons';
+import { APP } from '@/lib/seo';
 import { useEffect, useRef, useState } from 'react';
 
 // Subtle floating disc in the background
@@ -167,7 +168,7 @@ export function Hero() {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
                 <span className="text-sm text-text-secondary">
-                  <span className="font-bold text-white"><AnimatedCounter to={4.2} decimals={1} /></span> App Store rating
+                  <span className="font-bold text-white"><AnimatedCounter to={APP.ratingValue} decimals={1} /></span> App Store rating
                 </span>
               </div>
               <div className="h-4 w-px bg-white/10 hidden sm:block" />

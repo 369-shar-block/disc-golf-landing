@@ -12,11 +12,40 @@ const stats = [
   { value: '~60s', label: 'Per analysis' },
 ];
 
-// Real reviews only. Paste verbatim App Store / Play Store reviews here
-// (name optional, keep it truthful). The testimonial block renders only when
-// this array has entries, so the page never shows empty or fabricated quotes.
-const testimonials: { text: string; name: string }[] = [
-  // { text: 'Fixed my rounding in a week. Gained real distance.', name: 'App Store review' },
+// Real, verbatim 5-star reviews pulled from the App Store public reviews feed
+// (id 6755727208). Attributed to the reviewer's public handle. Trims are marked
+// with an ellipsis and never change meaning. Renders only when non-empty.
+const testimonials: { title: string; text: string; name: string }[] = [
+  {
+    title: 'Solid way to improve form',
+    text: 'This makes form work super accessible and allows you to get instant feedback. Way more productive than trying to figure it out yourself and way cheaper than a coach.',
+    name: 'PC2k18',
+  },
+  {
+    title: 'Best Analyzer',
+    text: 'I struggle with lots of issues on my form and the first analysis this app gave me was better than all the feedback I have gotten on social media.',
+    name: 'ThomasCharles_12',
+  },
+  {
+    title: 'Best App for Disc Golf',
+    text: 'This app completely transformed my throw. The improvement was immediate and very noticeable… the yearly subscription is soo economical and better than any real life coaching sessions which cost hundreds.',
+    name: 'Biba1478',
+  },
+  {
+    title: 'Definitely worth it',
+    text: 'This app made me realize there was a lot of issues with my form and helped me correct them. This not only made my game better but also added distance and control.',
+    name: 'Evan M.',
+  },
+  {
+    title: 'Very Helpful',
+    text: 'It’s one thing to tell you how your form is wrong, but to actually tell you how to fix it and provide drills to learn is amazing! Definitely recommend.',
+    name: 'Aaron Hage',
+  },
+  {
+    title: 'Helped me a lot',
+    text: 'I really like that this app gives you instant feedback after uploading a video, rather than me having to post it somewhere and hope for feedback days later that may not even be accurate.',
+    name: 'Mac smack',
+  },
 ];
 
 export function SocialProof() {
@@ -57,15 +86,23 @@ export function SocialProof() {
         </motion.div>
 
         {testimonials.length > 0 && (
-          <div className="grid md:grid-cols-3 gap-4 mt-8">
-            {testimonials.map((t, i) => (
-              <GlassCard key={i} hover={false} className="h-full">
-                <div className="text-[#fbbf24] mb-2">★★★★★</div>
-                <p className="text-text-secondary text-sm leading-relaxed mb-3">&ldquo;{t.text}&rdquo;</p>
-                <p className="text-text-tertiary text-xs font-medium">{t.name}</p>
-              </GlassCard>
-            ))}
-          </div>
+          <>
+            <p className="text-center text-sm text-text-tertiary mt-14 mb-6">
+              Straight from the App Store
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              {testimonials.map((t, i) => (
+                <GlassCard key={i} hover={false} className="h-full flex flex-col">
+                  <div className="text-[#fbbf24] mb-2 text-sm tracking-wide">★★★★★</div>
+                  <p className="font-bold text-text-primary text-sm mb-1.5">{t.title}</p>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-4 flex-1">
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+                  <p className="text-text-tertiary text-xs font-medium">{t.name} · App Store</p>
+                </GlassCard>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </section>

@@ -14,8 +14,9 @@ export const APP = {
     'https://play.google.com/store/apps/details?id=com.axiomtrinitylabs.discgolfform',
   // Keep in sync with the App Store rating so JSON-LD never mismatches the store
   // (Google penalizes fabricated / mismatched aggregateRating).
-  ratingValue: 4.2,
-  ratingCount: 36,
+  // Source: itunes.apple.com/lookup?id=6755727208 — 4.26 avg (displays 4.3), 38 ratings.
+  ratingValue: 4.3,
+  ratingCount: 38,
   priceYearly: 39.99,
   currency: 'USD',
   markersDetected: 30,
