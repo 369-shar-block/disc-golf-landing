@@ -1,6 +1,6 @@
 'use client';
 
-import { GradientText } from '../ui/GradientText';
+import { Icon } from '../ui/Icon';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,12 +13,10 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-                <span className="text-lg">🥏</span>
+              <div className="w-8 h-8 rounded-full border border-[#38ef7d]/30 bg-[#38ef7d]/10 flex items-center justify-center text-[#38ef7d]">
+                <Icon name="disc" className="w-4 h-4" />
               </div>
-              <span className="font-bold text-lg">
-                <GradientText gradient="action">DGFA</GradientText>
-              </span>
+              <span className="font-semibold text-lg tracking-tight text-white">DGFA</span>
             </div>
             <p className="text-sm text-text-secondary">
               AI-powered disc golf form analysis. Level up your game with professional coaching insights.
@@ -60,7 +58,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+                <a href="#faq" className="text-text-secondary hover:text-text-primary transition-colors">
                   FAQ
                 </a>
               </li>
