@@ -1,878 +1,169 @@
-# Disc Golf Form Analyzer - Landing Page Technical Documentation
+# Disc Golf Form Analyzer — Landing Page
 
-## 📋 Project Overview
+Marketing / conversion landing page for the Disc Golf Form Analyzer mobile app.
 
-A **premium, conversion-optimized landing page** for the Disc Golf Form Analyzer mobile app. Built to be the best landing page in disc golf history with dark gradients, floating animations, and a clean subscription pricing model.
-
-**Built:** November 22, 2025
-**Updated:** December 18, 2025 (Launch Date Announcement)
-**Platform:** Next.js 15 + React 19 + Tailwind CSS
-**Deployment:** Vercel (Free Tier)
-**Live URL:** https://disc-golf-landing.vercel.app
-**GitHub:** https://github.com/369-shar-block/disc-golf-landing
-**Launch Date:** Tuesday, December 30th, 2025
+- **Live:** https://www.dgformanalyzer.com (Vercel; also disc-golf-landing.vercel.app)
+- **Repo:** https://github.com/369-shar-block/disc-golf-landing
+- **Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 3.4 · Framer Motion
+- **Deploy:** Vercel — auto-deploys on push to `main`; branch pushes get a preview URL
+- **Last major update:** July 15, 2026 — competitive SEO/schema overhaul + real reviews + serious design pass
 
 ---
 
-## 🏗️ Architecture
+## The app it sells
 
-### Tech Stack
-- **Framework:** Next.js 15 (App Router)
-- **React:** Version 19
-- **TypeScript:** Type-safe components
-- **Styling:** Tailwind CSS 3.4
-- **Animations:** Framer Motion 11.15
-- **Deployment:** Vercel (automatic from GitHub)
-- **Version Control:** Git + GitHub
+- **Disc Golf Form Analyzer** by Axiom Trinity Labs. Live on both stores.
+- App Store: `id6755727208`. Google Play: `com.axiomtrinitylabs.discgolfform`.
+- **$39.99/year with a free trial.** Rating **4.3★ / 38 ratings** (App Store).
+- AI form analysis (backhand / forehand / putt), skeleton overlay + ideal-form compare,
+  what's-working / main-issue / fix + a drill, and an **AI Caddie** (bag + hole advisor).
 
-### Project Structure
-```
-disc-golf-landing/
-├── app/
-│   ├── layout.tsx           # Root layout with SEO metadata
-│   ├── page.tsx              # Main landing page (assembles all sections)
-│   └── globals.css           # Global styles + Tailwind imports
-│
-├── components/
-│   ├── ui/                   # Reusable UI components
-│   │   ├── Button.tsx        # Gradient button with variants
-│   │   ├── GlassCard.tsx     # Frosted glass card component
-│   │   ├── GradientText.tsx  # Gradient text effect
-│   │   ├── Badge.tsx         # Throw type badges
-│   │   └── AppStoreButtons.tsx # iOS/Android download buttons
-│   │
-│   ├── sections/             # Landing page sections
-│   │   ├── Hero.tsx          # Hero with floating discs
-│   │   ├── Problem.tsx       # Pain points section
-│   │   ├── Solution.tsx      # How it works (3 steps)
-│   │   ├── Features.tsx      # 6 key features grid
-│   │   ├── AnalysisPreview.tsx # Live AI output example
-│   │   ├── SocialProof.tsx   # Testimonials + stats
-│   │   ├── Pricing.tsx       # $9.99/month pricing
-│   │   ├── FAQ.tsx           # Collapsible FAQ
-│   │   └── FinalCTA.tsx      # Bottom conversion section
-│   │
-│   └── layout/               # Layout components
-│       ├── Navbar.tsx        # Sticky glass navbar
-│       └── Footer.tsx        # Footer with links
-│
-├── lib/
-│   └── utils.ts              # Utility functions (cn helper)
-│
-├── public/                   # Static assets
-│   └── (add screenshots/videos here)
-│
-├── tailwind.config.ts        # Tailwind configuration
-├── next.config.mjs           # Next.js configuration
-├── package.json              # Dependencies
-├── README.md                 # User-facing documentation
-├── DEPLOYMENT.md             # Deployment guide
-└── CLAUDE.md                 # This file
-```
+## Positioning (why the page reads the way it does)
+
+The competitive wedge is against rivals like **DG Pocket Coach (dgpocketcoach.com)**, which
+are still **waitlist / web-only with no pricing**. DGFA is **live on iOS + Android today**,
+instant, phone-only, disc-golf-trained, with actionable fixes + drills and an AI Caddie
+competitors lack. Every section leans on: **available now, instant, no hardware,
+disc-golf-specific, actionable.** The Comparison table and real reviews carry this.
+
+Copy/ASO/SEO/GEO strategy source: `disc-golf-analyzer/copy.md` (the playbook).
 
 ---
 
-## 🎯 Key Features
+## Design system (current — post July 2026 redesign)
 
-### 1. Premium Design System
-Matches the mobile app's dark gradient theme:
+Serious, restrained, single-accent. Deliberately NOT the old rainbow/emoji look (that read
+as "AI slop").
 
-**Colors:**
-- Success: `#11998e → #38ef7d` (green gradient)
-- Action: `#667eea → #764ba2` (blue-purple gradient)
-- History: `#c471f5 → #fa71cd` (pink-purple gradient)
-- Background: `#0a0a0f` (deep space black)
-- Surface: `#1a1a24` (card backgrounds)
+- **Background:** `#0a0a0f` near-black. Surfaces: white at 2–4% opacity.
+- **Single accent: green `#38ef7d`** — used sparingly for icons, eyebrow labels, one accent
+  word, and marks. No blue/purple/pink rainbow in content.
+- **Icons: `components/ui/Icon.tsx`** — clean stroke-based line icons (24px grid, 1.5 stroke,
+  `currentColor`). **No emoji anywhere.** Add new glyphs to the `IconName` union + switch.
+- **Cards:** hairline-bordered — `rounded-2xl border border-white/[0.07] bg-white/[0.02]`
+  with a subtle hover. Icon chips: `w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] text-[#38ef7d]`.
+- **Headings:** a small uppercase tracked green **eyebrow** label above a
+  `font-semibold tracking-tight text-white` heading. Gradient text is minimal (hero +
+  a couple accent words via `GradientText gradient="success"`).
+- **Marks:** ★ appears ONLY for real review star ratings; the comparison table uses SVG
+  check / x / dash (not text symbols).
 
-**Effects:**
-- Glass morphism (frosted glass cards)
-- Gradient shadows and glows
-- Smooth Framer Motion animations
-- Floating disc background animations
-
-### 2. 10 Strategic Sections
-
-**Section Flow (Optimized for Conversion):**
-
-1. **Hero** - Floating discs, rotating gradient disc, dual CTAs
-2. **Problem** - 3 pain point cards (resonates with users)
-3. **Solution** - 3-step process ("Film. Upload. Improve.")
-4. **Features** - 6 capability cards (auto-detect, KPIs, drills)
-5. **Analysis Preview** - Live example with backhand/forehand toggle
-6. **Social Proof** - Testimonials + stats (10K throws, 4.8★)
-7. **Pricing** - $9.99/month, unlimited analyses, 7-day trial
-8. **FAQ** - 6 questions addressing objections
-9. **Final CTA** - Conversion-focused download section
-10. **Footer** - Legal, support, branding
-
-### 3. Floating Disc Animations
-
-**Implementation:** `components/sections/Hero.tsx` (lines 9-31)
-
-5 floating discs with:
-- Continuous upward float (400px travel)
-- Subtle horizontal drift
-- 360° rotation
-- 25-35 second animation cycles
-- Staggered delays (0-2s)
-- Low opacity (0.15) for subtlety
-- `pointerEvents="none"` to not block interactions
-
-### 4. Responsive Design
-
-**Breakpoints:**
-- Mobile: Default (< 640px)
-- Tablet: `sm:` (≥ 640px)
-- Desktop: `md:` (≥ 768px), `lg:` (≥ 1024px)
-
-All sections adapt perfectly to mobile, tablet, and desktop.
+**Legacy tokens still in the repo (phasing out):** `tailwind.config.ts` still defines
+`gradient-success / action / history`, and `GradientText` / `Button` still expose the
+`action` (blue) and `history` (pink) variants. Content sections no longer use the blue/pink
+ones — prefer green (`success`) or plain white for anything new.
 
 ---
 
-## 💻 Code Deep Dive
+## Page structure (`app/page.tsx`, top → bottom)
 
-### Core Components
+Navbar → Hero → Problem → Solution → Features → AnalysisPreview → **Comparison** → SocialProof → FAQ → FinalCTA → Footer.
+(The old **Pricing** section was removed pre-launch; **Comparison** was added in the July 2026 overhaul.)
 
-#### Button (`components/ui/Button.tsx`)
-**Props:**
-- `variant`: 'success' | 'action' | 'history' | 'outline'
-- `size`: 'sm' | 'md' | 'lg'
-- `href`: Optional link (renders as `<a>`)
-- `onClick`: Optional click handler
-
-**Features:**
-- Framer Motion hover/tap animations
-- Gradient backgrounds
-- Shadow glows
-- Auto-detects external links
-
-**Usage:**
-```tsx
-<Button variant="success" size="lg" href="#">
-  Start Your Free Trial
-</Button>
-```
+| Section | File | Purpose |
+|---------|------|---------|
+| Navbar | `components/layout/Navbar.tsx` | Sticky glass nav, SVG disc mark, anchor links (Features / Compare / FAQ), store icons |
+| Hero | `components/sections/Hero.tsx` | "Live now on iOS & Android" badge, keyword H1, **product mock** (analysis card), honest trust row, store CTAs |
+| Problem | `components/sections/Problem.tsx` | 3 pains: cost of coaching / generic tips / conflicting advice |
+| Solution | `components/sections/Solution.tsx` | 3 steps: record → AI analyzes → fix + drill |
+| Features | `components/sections/Features.tsx` | 6 features incl. skeleton + ideal-form compare and the AI Caddie |
+| AnalysisPreview | `components/sections/AnalysisPreview.tsx` | Interactive backhand/forehand example of the real analysis output |
+| Comparison | `components/sections/Comparison.tsx` | DGFA vs other AI apps / $299 launch monitors / private coach |
+| SocialProof | `components/sections/SocialProof.tsx` | Stats band + **real App Store review** cards |
+| FAQ | `components/sections/FAQ.tsx` | Accordion, sourced from `lib/seo.ts` FAQS (also feeds FAQPage schema) |
+| FinalCTA | `components/sections/FinalCTA.tsx` | Availability + free-trial close |
+| Footer | `components/layout/Footer.tsx` | Brand mark, legal + support links |
 
 ---
 
-#### GlassCard (`components/ui/GlassCard.tsx`)
-**Props:**
-- `children`: ReactNode
-- `className`: Optional additional classes
-- `hover`: boolean (default: true) - enables hover animation
-- `onClick`: Optional click handler
+## SEO / GEO (ranking + AI-citation layer)
 
-**Features:**
-- Frosted glass effect via CSS class `.glass`
-- Hover scale + lift animation (if enabled)
-- Customizable via Tailwind classes
+- **`app/layout.tsx`** — full metadata (title, meta description, OpenGraph, Twitter, canonical,
+  robots) and renders the JSON-LD. Meta Pixel lives here too.
+- **`lib/seo.ts` — single source of truth.** Site URL, store links, **rating (4.3 / 38 — update
+  HERE to match the store)**, price, the FAQ list, and the JSON-LD builders. Imported by both
+  the layout (schema) and FAQ (visible Q&A) so they can never drift.
+- **JSON-LD, server-rendered:** `MobileApplication` + `Organization` + `WebSite` + `FAQPage`.
+  Validate at Google's Rich Results Test after each deploy.
+- **`app/sitemap.ts` + `app/robots.ts`** → `/sitemap.xml` + `/robots.txt`. Submit the sitemap
+  to **Google Search Console AND Bing Webmaster Tools** (Bing feeds ChatGPT Search).
+- Title tag: `AI Disc Golf Form Analyzer & Coaching App | DGFA`. H1: `Fix your disc golf form.
+  Throw farther.` with a keyword-rich subhead ("AI disc golf form analysis in 60 seconds…").
 
-**Usage:**
-```tsx
-<GlassCard hover={false} className="p-8">
-  <h3>Content here</h3>
-</GlassCard>
-```
+## Social proof / reviews — never fabricate
 
----
+- `SocialProof.tsx` holds a `testimonials` array of **real, verbatim App Store reviews**
+  (id 6755727208), attributed to public handles. It renders only when non-empty.
+- Refresh reviews from the public RSS feed:
+  `https://itunes.apple.com/us/rss/customerreviews/id=6755727208/sortby=mostrecent/json`
+- Rating is in `lib/seo.ts` and **must match the store** (Google penalizes mismatched
+  aggregateRating). Authoritative source: `https://itunes.apple.com/lookup?id=6755727208`.
 
-#### Hero Section (`components/sections/Hero.tsx`)
-**Key Elements:**
+## Analytics
 
-1. **Launch Date Badge** (lines 57-68) **NEW**
-   - Premium announcement badge at top of hero
-   - Gradient border with backdrop blur effect
-   - Pulsing indicator dot
-   - Gradient text: "Launching Tuesday, December 30th"
-   - Smooth fade-in animation from top
-
-2. **FloatingDisc Component** (lines 9-31)
-   - Custom animated component
-   - Uses React Native Animated API pattern adapted for web
-   - 5 instances with different positions/timings
-
-3. **Rotating Hero Disc** (line 70-75)
-   - 120px gradient disc
-   - 20-second continuous rotation
-   - Blue-purple action gradient
-
-4. **Scroll Indicator** (updated line numbers)
-   - Animated mouse scroll icon
-   - Bouncing animation
+- **Meta Pixel** `1459941859097694` (in `layout.tsx`). Events: `Lead` on store-button clicks
+  (iOS/Android, incl. navbar), custom `FAQClick`, `AnalysisToggle`. Route events via
+  `components/MetaPixelEvents.tsx`.
 
 ---
 
-#### Analysis Preview (`components/sections/AnalysisPreview.tsx`)
-**Features:**
-
-- Toggle between backhand/forehand examples
-- Color-coded sections matching mobile app:
-  - What's Working: Green border
-  - Main Issues: Orange border
-  - The Fix: Blue border
-  - Suggested Drill: Pink border
-- Realistic example content
-- Shows exactly what users will see in the app
-
-**Data Structure:**
-```tsx
-{
-  throwType: 'backhand' | 'forehand',
-  working: string[],
-  issues: string[],
-  fix: string[],
-  drill: string
-}
-```
-
----
-
-#### Pricing Section (`components/sections/Pricing.tsx`)
-**Current Model:** $9.99/month subscription
-
-**Features Highlighted:**
-- ✓ Unlimited Analyses
-- ✓ AI-Powered Feedback
-- ✓ Analysis History
-- ✓ Custom Drills
-- ✓ All Throw Types
-
-**CTA:** "Start Your Free Trial" (7-day free trial)
-
-**Comparison:**
-- Private Lesson: ~~$100~~
-- Unlimited AI Coaching: $9.99
-
----
-
-#### Launch Announcement Page (`app/waitlist/page.tsx`) **NEW**
-**Purpose:** Pre-launch page displaying launch date and collecting emails for notifications
-
-**Key Features:**
-
-1. **Premium Date Display Card** (lines 105-128)
-   - Large glass morphism card with gradient border
-   - "Tuesday" in gradient text (purple to pink)
-   - "December 30th, 2025" in large white text
-   - Clock icon with "Mark your calendar!" message
-   - Scale-in animation on load
-
-2. **Email Collection Form** (lines 140-188)
-   - Glass styled input field
-   - Gradient action button
-   - Loading and error states
-   - Success animation with celebration emoji
-   - Button text: "Notify Me on Launch Day"
-
-3. **Success Message**
-   - Shows after email submission
-   - Message: "We'll send you a reminder on December 30th when the app goes live!"
-   - Prevents duplicate submissions
-
-4. **Floating Disc Background**
-   - Same animation as Hero section
-   - Creates visual consistency
-   - 3 floating discs for lighter effect
-
-**Integration:**
-- Linked from AppStoreButtons component
-- API endpoint: `/api/waitlist` (handles email storage)
-- Back link to homepage
-
----
-
-### Design System Implementation
-
-#### Tailwind Configuration (`tailwind.config.ts`)
-
-**Custom Colors:**
-```ts
-colors: {
-  background: '#0a0a0f',
-  surface: '#1a1a24',
-  'glass-border': 'rgba(255, 255, 255, 0.1)',
-  'text-primary': '#ffffff',
-  'text-secondary': '#a0a0b0',
-  'text-tertiary': '#6b6b80',
-}
-```
-
-**Custom Gradients:**
-```ts
-backgroundImage: {
-  'gradient-success': 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
-  'gradient-action': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  'gradient-history': 'linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)',
-}
-```
-
-**Custom Shadows:**
-```ts
-boxShadow: {
-  'success-glow': '0 10px 40px rgba(17, 153, 142, 0.3)',
-  'action-glow': '0 10px 40px rgba(102, 126, 234, 0.3)',
-  'history-glow': '0 10px 40px rgba(196, 113, 245, 0.3)',
-}
-```
-
----
-
-#### Global CSS (`app/globals.css`)
-
-**Glass Morphism:**
-```css
-.glass {
-  background: rgba(26, 26, 36, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-```
-
-**Custom Scrollbar:**
-- Width: 10px
-- Track: Dark background
-- Thumb: Blue-purple gradient
-- Hover: Darker purple
-
----
-
-## 🔄 Development Workflow
-
-### Local Development
+## Dev + deploy
 
 ```bash
-# Navigate to project
 cd C:\Users\369sh\OneDrive\Desktop\Apps\disc-golf-landing
-
-# Install dependencies (if needed)
 npm install
-
-# Start dev server
-npm run dev
-
-# Open http://localhost:3000 (or 3001 if 3000 is occupied)
+npm run dev      # http://localhost:3000
+npm run build    # ALWAYS run before shipping — Vercel fails the deploy on TS/build errors
 ```
 
-### Making Changes
+- Push to **`main`** → Vercel **production** deploy to dgformanalyzer.com (~1–2 min).
+- Push any **branch** → Vercel **preview** deploy. Prefer this for subjective/visual changes on
+  a live-traffic site; merge to main to ship.
 
-**1. Edit Component Files:**
-```bash
-# Example: Update pricing
-code components/sections/Pricing.tsx
+## Key files
 
-# Save file → Hot reload in browser (instant)
-```
+- `app/`: `layout.tsx` (metadata + JSON-LD + pixel), `page.tsx` (section assembly),
+  `globals.css`, `sitemap.ts`, `robots.ts`
+- `lib/`: `seo.ts` (SEO/schema/FAQs SSOT), `utils.ts` (`cn`)
+- `components/ui/`: `Icon.tsx` (line-icon set), `Badge.tsx`, `GlassCard.tsx`,
+  `GradientText.tsx` (legacy variants), `Button.tsx` (legacy variants), `AppStoreButtons.tsx`
+- `components/layout/`: `Navbar.tsx`, `Footer.tsx`
+- `components/sections/`: the 9 sections above
+- `components/MetaPixelEvents.tsx`
 
-**2. Commit Changes:**
-```bash
-git add .
-git commit -m "Description of changes"
-git push
-```
+## Known cleanups / next steps
 
-**3. Automatic Deployment:**
-- Vercel detects the push
-- Builds the project automatically
-- Deploys to production (~1-2 minutes)
-- Live at https://disc-golf-landing.vercel.app
-
----
-
-## 🚀 Deployment
-
-### Vercel Integration
-
-**Connected Services:**
-- GitHub Repo: `369-shar-block/disc-golf-landing`
-- Vercel Project: `disc-golf-landing`
-- Production URL: `https://disc-golf-landing.vercel.app`
-
-**Automatic Deployments:**
-- Every push to `main` → Production deployment
-- Pull requests → Preview deployments
-- Instant rollback available
-
-**Build Process:**
-1. Vercel pulls latest code from GitHub
-2. Runs `npm install`
-3. Runs `npm run build` (Next.js build)
-4. Deploys static files + serverless functions
-5. Live in ~1-2 minutes
-
-### Manual Deployment
-
-```bash
-# Install Vercel CLI (one-time)
-npm install -g vercel
-
-# Deploy to production
-cd disc-golf-landing
-vercel --prod
-
-# View deployment logs
-vercel logs
-```
+- Footer support email is `support@discgolfformanalyzer.com`; the app's real support address
+  is `support@axiomtrinitylabs.com` — reconcile.
+- Remove the legacy rainbow gradient tokens + `action`/`history` GradientText/Button variants
+  once nothing references them.
+- SocialProof shows 6 of ~20 available real 5-star reviews — room to rotate more in.
+- Next ASO (playbook Stage 2, not landing-page): iOS 100-char keyword field + subtitle test;
+  pitch "best disc golf apps" listicles; build Reddit presence; validate schema in Rich Results Test.
+- Security: Vercel opened a `vercel/react-flightnextjs-rce-vulnera-*` branch (Next.js RCE fix) —
+  merge it when convenient.
 
 ---
 
-## 🎨 Customization Guide
-
-### Update Pricing
-
-**File:** `components/sections/Pricing.tsx`
-
-**Current:** $9.99/month
-
-**To Change:**
-1. Update price on line 40-42
-2. Update features list (lines 49-98)
-3. Update CTA text if needed (line 121)
-
----
-
-### Update Testimonials
-
-**File:** `components/sections/SocialProof.tsx`
-
-**Current:** 3 hypothetical testimonials
-
-**To Add Real Testimonials:**
-1. Edit `testimonials` array (line 8)
-2. Add new objects with:
-   ```tsx
-   {
-     name: 'Customer Name',
-     role: 'Player Type',
-     text: 'Quote here',
-     rating: 5
-   }
-   ```
-
----
-
-### Update App Store Links
-
-**File:** `components/ui/AppStoreButtons.tsx`
-
-**Current Status:** Displays launch date announcement (December 30th, 2025)
-
-**Features:**
-- Premium gradient border with glow effects
-- Animated hover state with background gradient
-- Launch date in gradient text: "Launching on Tuesday, Dec 30th"
-- Pulsing "Available on iPhone" badge
-- Links to `/waitlist` for launch notifications
-
-**To Update After Launch:**
-```tsx
-// Change line 22 from:
-const iosLink = '/waitlist';
-
-// To actual App Store link:
-const iosLink = 'https://apps.apple.com/app/your-app-id';
-
-// And update button text from launch date to "Download on the App Store"
-```
-
----
-
-### Add Screenshots/Videos
-
-**Directory:** `public/`
-
-**Steps:**
-1. Add files to `public/` folder
-2. Import in components:
-   ```tsx
-   <img src="/screenshot.png" alt="Description" />
-
-   // Or with Next.js Image optimization:
-   import Image from 'next/image';
-   <Image src="/screenshot.png" width={600} height={400} alt="Description" />
-   ```
-
----
-
-### Modify FAQ Questions
-
-**File:** `components/sections/FAQ.tsx`
-
-**Edit:** `faqs` array (line 8)
-
-**Format:**
-```tsx
-{
-  question: 'Your question here?',
-  answer: 'Your answer here.',
-}
-```
-
-**Current Count:** 6 questions (optimal for readability)
-
----
-
-## 📊 Performance Optimization
-
-### Current Metrics
-
-**Build Stats:**
-- Route `/`: 49.8 kB page size
-- First Load JS: 152 kB
-- All static pages: 4 pages
-- Build Time: ~37 seconds
-
-**Core Web Vitals:**
-- LCP (Largest Contentful Paint): Optimized
-- FID (First Input Delay): Fast
-- CLS (Cumulative Layout Shift): Minimal
-
-### Optimization Techniques Used
-
-1. **Next.js App Router:**
-   - Automatic code splitting
-   - Server Components (default)
-   - Optimized CSS loading
-
-2. **Tailwind CSS:**
-   - Purges unused styles
-   - Minimal CSS bundle
-
-3. **Framer Motion:**
-   - GPU-accelerated animations
-   - Lazy loading of animation libraries
-
-4. **Image Optimization:**
-   - Next.js Image component (when images added)
-   - Automatic WebP conversion
-   - Lazy loading
-
----
-
-## 🐛 Troubleshooting
-
-### Issue: TypeScript Errors
-
-**Symptom:** Build fails with type errors
-
-**Solution:**
-```bash
-# Check types locally
-npm run build
-
-# Fix common issues:
-# - Add missing props to interface
-# - Check component prop types match usage
-```
-
-**Example Fix:** GlassCard onClick prop (fixed in commit 1ad027e)
-
----
-
-### Issue: Floating Discs Not Animating
-
-**Cause:** SSR (Server-Side Rendering) issue with `window.innerWidth`
-
-**Solution:** Already fixed with `useState` + `useEffect` pattern
-
-**Location:** `components/sections/Hero.tsx` (lines 35-39)
-
----
-
-### Issue: Deployment Fails
-
-**Common Causes:**
-1. TypeScript errors (check locally first)
-2. Missing dependencies (check package.json)
-3. Build errors (check Vercel logs)
-
-**Debug:**
-```bash
-# Test build locally
-npm run build
-
-# If successful locally, check Vercel logs
-vercel logs
-```
-
----
-
-### Issue: Changes Not Showing on Live Site
-
-**Causes:**
-1. Not pushed to GitHub
-2. Deployment still in progress
-3. Browser cache
-
-**Solutions:**
-```bash
-# Verify pushed to GitHub
-git status
-git log
-
-# Check Vercel deployment status
-vercel ls
-
-# Hard refresh browser
-Ctrl+Shift+R (Windows/Linux)
-Cmd+Shift+R (Mac)
-```
-
----
-
-## 📝 Content Strategy
-
-### Headlines
-
-**Hero:**
-- "Your AI Disc Golf Coach"
-- Emphasizes AI + personal coaching
-
-**Problem:**
-- "Stuck in a Form Plateau?"
-- Resonates with frustration
-
-**Solution:**
-- "Film. Upload. Improve. Repeat."
-- Simple, actionable process
-
-**Features:**
-- "More Than Just Video Analysis"
-- Differentiates from basic video tools
-
-**Pricing:**
-- "Simple Pricing, Unlimited Analyses"
-- Emphasizes value + simplicity
-
----
-
-### Call-to-Actions (CTAs)
-
-**Primary CTA:** "Download App" / "Start Your Free Trial"
-
-**CTA Placement:**
-1. Hero section (2 buttons: iOS + Android)
-2. Pricing section (after seeing value)
-3. Final CTA section (last chance conversion)
-4. Navbar (always visible)
-
-**CTA Copy Strategy:**
-- Hero: "Download App" (simple, direct)
-- Pricing: "Start Your Free Trial" (emphasizes risk-free)
-- Final: "Start Your Free Trial" (reinforces no-risk)
-
----
-
-## 🔐 Security & Privacy
-
-### Data Collection
-
-**None on Landing Page:**
-- No analytics by default (can add Google Analytics)
-- No cookies
-- No user data collected
-
-**Future Analytics:**
-See README.md for Google Analytics setup
-
-### SSL/HTTPS
-
-**Automatic via Vercel:**
-- Free SSL certificate
-- Auto-renewal
-- Forced HTTPS redirect
-
----
-
-## 🎯 Conversion Optimization
-
-### Key Metrics to Track
-
-**When Analytics Added:**
-1. **Bounce Rate** - Users leaving without interaction
-2. **Scroll Depth** - How far users scroll
-3. **CTA Click Rate** - Downloads per visitor
-4. **Time on Page** - Engagement level
-5. **Section Views** - Which sections get seen
-
-### A/B Testing Opportunities
-
-**Headlines:**
-- Test "Your AI Disc Golf Coach" vs alternatives
-- Test pricing headline variations
-
-**CTAs:**
-- Button colors (current: gradient)
-- Button text ("Download" vs "Get Started" vs "Try Free")
-
-**Pricing:**
-- Annual option ($99/year, save $20)
-- Different tier options
-
----
-
-## 📚 Resources
-
-### Internal Documentation
-- `README.md` - User-facing overview
-- `DEPLOYMENT.md` - Deployment guide
-- `CLAUDE.md` - This file (technical docs)
-
-### External Links
-- **Next.js Docs:** https://nextjs.org/docs
-- **Tailwind CSS:** https://tailwindcss.com/docs
-- **Framer Motion:** https://www.framer.com/motion/
-- **Vercel Docs:** https://vercel.com/docs
-
-### Mobile App
-- **Location:** `C:\Users\369sh\OneDrive\Desktop\Apps\disc-golf-analyzer\`
-- **Docs:** `disc-golf-analyzer/CLAUDE.md`
-- **Design Sync:** Colors and gradients match exactly
-
----
-
-## 🔄 Version History
-
-### v2.0 (July 15, 2026) — Competitive SEO + copy overhaul
-**Branch:** `feature/landing-competitive-overhaul` (preview deploy; not yet merged to main).
-Driven by the ASO/SEO/GEO playbook (`disc-golf-analyzer/copy.md`) and a competitive read of
-**dgpocketcoach.com** (still a waitlist / web-only, no pricing — our wedge is "live today").
-
-- **SEO/GEO:** rewrote `layout.tsx` metadata (title `AI Disc Golf Form Analyzer & Coaching App | DGFA`,
-  playbook meta description, OpenGraph/Twitter, canonical, robots). Added **JSON-LD** — `MobileApplication`
-  + `Organization` + `WebSite` + `FAQPage` — server-rendered from a new `lib/seo.ts` single source of
-  truth. Added `app/sitemap.ts` + `app/robots.ts`.
-- **Hero:** new headline + availability badge ("Live now on iOS & Android"), a real product mock
-  (analysis card) instead of the abstract spinning disc, honest trust row.
-- **New `Comparison` section:** DGFA vs other AI apps / $299 launch monitors / private coach
-  (strong for conversion + AI citation per the playbook).
-- **Features** refreshed to the real v2.x app (skeleton overlay + ideal-form compare, AI Caddie).
-  **FAQ** rewritten (answer-first, competitor-aware) and wired to the FAQPage schema. **SocialProof**
-  rebuilt as an honest stats band (empty real-review slot, no fabricated quotes). **FinalCTA** + **Navbar** polish.
-- **Honesty fixes:** rating corrected fabricated **4.9 → real 4.2** (matches store + schema; Google
-  penalizes mismatches). Rating/price/links centralized in `lib/seo.ts` (one-line updates).
-- **NOTE:** entries below are stale (they predate launch — pricing is now $39.99/yr, the app is live,
-  the Dec 30 2025 launch has passed).
-
-### v1.1 (December 18, 2025)
-**Launch Date Announcement Update:**
-- Added premium launch date badge to Hero section
-- Updated AppStoreButtons with December 30th launch date
-- Transformed waitlist page into beautiful launch announcement
-- Added gradient styling and pulsing animations throughout
-- Updated all messaging to reference December 30th, 2025 launch
-- Enhanced hover effects and glass morphism on launch elements
-
-**Commits:**
-- `5ef4692` - Update landing page with December 30th launch date
-
-**What's New:**
-1. **Hero Section Badge** - Pulsing gradient badge announcing "Launching Tuesday, December 30th"
-2. **Premium App Store Button** - Gradient border, glow effects, launch date display
-3. **Launch Announcement Page** - Large date display with glass card and gradient text
-4. **Waitlist Updates** - Updated messaging, button text, and success messages for launch day
-
-### v1.0 (November 22, 2025)
-**Initial Launch:**
-- 10 premium sections
-- Floating disc animations
-- Dark gradient theme
-- Fully responsive
-- Deployed to Vercel
-
-**Commits:**
-- `1effd58` - Initial commit
-- `1ad027e` - Fix TypeScript onClick prop
-- `9c960f7` - Update pricing to $9.99/month subscription
-
----
-
-## 🎨 Design Principles
-
-### Visual Hierarchy
-1. **Hero** - Grab attention with animations
-2. **Problem** - Build emotional connection
-3. **Solution** - Show simplicity
-4. **Features** - Detail capabilities
-5. **Proof** - Live example + social proof
-6. **Pricing** - Remove cost objections
-7. **FAQ** - Handle final questions
-8. **CTA** - Convert warmed-up visitors
-
-### Animation Philosophy
-- **Subtle, Not Distracting:** Animations enhance, don't overwhelm
-- **Purposeful:** Every animation guides attention
-- **Performance:** GPU-accelerated, 60fps
-- **Accessibility:** Respects `prefers-reduced-motion`
-
-### Mobile-First
-- Designed for mobile first
-- Enhanced for desktop
-- Touch-friendly targets (48px minimum)
-- Readable text sizes (16px+ body)
-
----
-
-## 🚀 Future Enhancements
-
-### Phase 1 (When App Launches)
-- [ ] Add real App Store links
-- [ ] Replace hypothetical testimonials with real reviews
-- [ ] Add actual app screenshots
-- [ ] Record demo video for hero section
-
-### Phase 2 (Post-Launch)
-- [ ] Add Google Analytics
-- [ ] A/B test headlines
-- [ ] Add annual pricing option ($99/year)
-- [ ] Add "Most Popular" badge to pricing
-
-### Phase 3 (Scaling)
-- [ ] Custom domain (e.g., discgolfformanalyzer.com)
-- [ ] Blog section for SEO
-- [ ] Case studies from power users
-- [ ] Integration showcase (Apple Health, etc.)
-
-### Phase 4 (Advanced)
-- [ ] Animated form demo (show AI analysis in action)
-- [ ] Interactive throw type selector
-- [ ] Video testimonials
-- [ ] Coach endorsements section
-
----
-
-## 🏆 What Makes This Landing Page LEGENDARY
-
-✅ **Premium Design** - Matches paid coaching app quality
-✅ **Conversion Optimized** - Strategic section flow
-✅ **Show Don't Tell** - Live analysis preview
-✅ **Mobile Perfect** - Responsive everywhere
-✅ **Lightning Fast** - A+ Core Web Vitals
-✅ **SEO Ready** - Metadata configured
-✅ **Zero Cost** - Free hosting forever
-✅ **Easy Updates** - Just edit components
-✅ **Brand Consistent** - Matches mobile app theme
-✅ **Animation Rich** - Smooth, professional feel
-
----
-
-## 📞 Support
-
-**For Development Questions:**
-- Check this documentation first
-- Review README.md for user-facing info
-- Check DEPLOYMENT.md for deployment issues
-
-**For Design Decisions:**
-- All colors match `disc-golf-analyzer/theme.js`
-- All sections follow conversion best practices
-- All copy tested for clarity
-
----
-
-**Last Updated:** November 22, 2025
-**Version:** 1.0
-**Status:** Production Ready ✅
-**Live URL:** https://disc-golf-landing.vercel.app
-**Conversion Rate:** TBD (track with analytics)
-
-🥏 **Built with Claude Code** 🚀
+## Version history
+
+### v2.1 — July 15, 2026: Real reviews + serious design pass
+- Wired 6 verbatim 5-star App Store reviews into SocialProof; synced rating to the real
+  **4.3★ / 38** in `lib/seo.ts` (from Apple's lookup API), so hero, stats, and schema all match.
+- Design overhaul to kill the "AI slop" look: every emoji → line icons (new `Icon.tsx`),
+  green/blue/pink rainbow → **single green accent**, heavy glass tiles → hairline cards with
+  eyebrow labels + semibold headings, comparison marks → SVG, nav + footer disc mark → SVG.
+
+### v2.0 — July 15, 2026: Competitive SEO + copy overhaul
+- Rewrote `layout.tsx` metadata; added `lib/seo.ts` SSOT and server-rendered
+  `MobileApplication` + `Organization` + `WebSite` + `FAQPage` JSON-LD; added `sitemap.ts` +
+  `robots.ts`. New Hero (live-now badge + product mock), new **Comparison** section, refreshed
+  Features (skeleton compare + AI Caddie), rewritten FAQ, honest-stats SocialProof.
+- Positioned against waitlist/web-only rivals; corrected a fabricated 4.9 rating to the real 4.3.
+
+### v1.1 — Dec 18, 2025 (historical, pre-launch)
+- Launch-date announcement styling. Superseded.
+
+### v1.0 — Nov 22, 2025 (historical)
+- Initial 10-section build: dark rainbow-gradient theme, floating discs, emoji icons,
+  $9.99/mo pricing section. All since replaced.
