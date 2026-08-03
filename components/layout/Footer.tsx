@@ -1,6 +1,7 @@
 'use client';
 
 import { Icon } from '../ui/Icon';
+import { COMPANY } from '@/lib/seo';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -68,8 +69,12 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="pt-8 border-t border-glass-border text-center text-sm text-text-tertiary">
-          <p>
-            © {currentYear} Disc Golf Form Analyzer. All rights reserved.
+          <p className="text-text-secondary">
+            Disc Golf Form Analyzer is a product of{' '}
+            <span className="font-semibold text-text-primary">{COMPANY}</span>.
+          </p>
+          <p className="mt-2">
+            © {currentYear} {COMPANY}. All rights reserved.
           </p>
           <p className="mt-2">
             Powered by Custom-Trained Disc Golf AI

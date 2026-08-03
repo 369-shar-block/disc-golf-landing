@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import {
   SITE_URL,
+  COMPANY,
   organizationSchema,
   websiteSchema,
   mobileAppSchema,
@@ -30,6 +31,9 @@ export const metadata: Metadata = {
     "disc golf training app",
   ],
   applicationName: "Disc Golf Form Analyzer",
+  authors: [{ name: COMPANY }],
+  creator: COMPANY,
+  publisher: COMPANY,
   alternates: {
     canonical: "/",
   },

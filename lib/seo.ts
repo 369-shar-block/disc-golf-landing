@@ -5,6 +5,10 @@
 
 export const SITE_URL = 'https://www.dgformanalyzer.com';
 
+// The legal entity that owns and operates the app. Comma-before-LLC is the
+// house style and must match App Store Connect / Play Console exactly.
+export const COMPANY = 'Axiom Trinity Labs, LLC';
+
 export const APP = {
   name: 'Disc Golf Form Analyzer',
   shortName: 'DGFA',
@@ -71,12 +75,17 @@ export const FAQS: Faq[] = [
 
 // --- JSON-LD builders (rendered server-side in the layout <head>/<body>) -----
 
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Axiom Trinity Labs',
+  '@id': ORGANIZATION_ID,
+  name: COMPANY,
+  legalName: COMPANY,
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
+  email: 'support@axiomtrinitylabs.com',
   brand: {
     '@type': 'Brand',
     name: APP.name,
@@ -101,6 +110,9 @@ export const mobileAppSchema = {
   url: SITE_URL,
   installUrl: APP.iosUrl,
   downloadUrl: APP.iosUrl,
+  publisher: { '@id': ORGANIZATION_ID },
+  author: { '@id': ORGANIZATION_ID },
+  copyrightHolder: { '@id': ORGANIZATION_ID },
   offers: {
     '@type': 'Offer',
     price: APP.priceYearly.toFixed(2),

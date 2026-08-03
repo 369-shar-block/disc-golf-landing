@@ -40,7 +40,7 @@ export default function TermsOfService() {
               <strong className="text-text-primary">If you do not agree to these Terms, do not use our Service.</strong>
             </p>
             <p className="mt-4">
-              These Terms constitute a legally binding agreement between you and Disc Golf Form Analyzer. We reserve the right to update these Terms at any time, and your continued use of the Service after changes constitutes acceptance of the updated Terms.
+              These Terms constitute a legally binding agreement between you and Axiom Trinity Labs, LLC, the company that owns and operates Disc Golf Form Analyzer. We reserve the right to update these Terms at any time, and your continued use of the Service after changes constitutes acceptance of the updated Terms.
             </p>
           </section>
 
@@ -166,7 +166,7 @@ export default function TermsOfService() {
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">6.1 Our Ownership</h3>
             <p>
-              The Service, including the App, website, software, design, AI models, analysis algorithms, and content (excluding user-uploaded videos), is owned by Disc Golf Form Analyzer and protected by copyright, trademark, and other intellectual property laws.
+              The Service, including the App, website, software, design, AI models, analysis algorithms, and content (excluding user-uploaded videos), is owned by Axiom Trinity Labs, LLC and protected by copyright, trademark, and other intellectual property laws.
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">6.2 Your Content</h3>
@@ -372,7 +372,7 @@ export default function TermsOfService() {
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">14.1 Entire Agreement</h3>
             <p>
-              These Terms, together with our Privacy Policy, constitute the entire agreement between you and Disc Golf Form Analyzer.
+              These Terms, together with our Privacy Policy, constitute the entire agreement between you and Axiom Trinity Labs, LLC.
             </p>
 
             <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3">14.2 Severability</h3>
@@ -441,7 +441,7 @@ export default function TermsOfService() {
       {/* Footer */}
       <footer className="border-t border-glass-border bg-surface/30 py-8 px-6 mt-12">
         <div className="max-w-4xl mx-auto text-center text-sm text-text-tertiary">
-          <p>© {new Date().getFullYear()} Disc Golf Form Analyzer. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Axiom Trinity Labs, LLC. All rights reserved.</p>
         </div>
       </footer>
     </div>
