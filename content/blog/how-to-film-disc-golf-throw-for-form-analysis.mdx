@@ -1,0 +1,144 @@
+---
+title: "How to Film Your Disc Golf Throw for Form Analysis"
+description: "How to film disc golf form: which camera angle shows which fault, phone slow-mo settings, distance, framing and light, plus the filming mistakes to avoid."
+date: "2026-10-02"
+author: "Tushar Saini"
+category: "Filming"
+draft: true
+faqs:
+  - question: "What is the best angle to film a disc golf throw?"
+    answer: "There is no single best angle. Side-on, square to your chest at the plant, shows the most: weight shift, plant timing, posture and the brace. Directly behind you, looking down the target line, is the angle that shows rounding and the power pocket."
+  - question: "Should I film my disc golf form in slow motion?"
+    answer: "Yes for review. A higher frame rate (120 or 240 fps if your phone offers it) and good light give sharper frames of the arm and disc. Watch the clip at full speed too, because slow motion makes timing harder to judge."
+  - question: "How far away should the camera be?"
+    answer: "Far enough that your whole body, the disc and your follow-through stay in frame for the entire throw. For most people that is roughly 15 to 25 feet away, with the phone at about hip height and held in landscape."
+  - question: "Can one camera measure nose angle?"
+    answer: "Not precisely. Nose angle is a small tilt of the disc that a single phone camera at normal distance cannot measure reliably. Use video to check body positions and sequencing, and judge nose angle from the flight and from field work."
+  - question: "Do I need a tripod?"
+    answer: "You need the phone to stay still and level. A cheap phone tripod is easiest, but a phone propped on a bag or held by a friend who keeps it still works fine."
+---
+
+<Answer>
+
+Film from two angles: directly behind you, looking down the target line, and side-on, square to your chest at the plant. Put the phone at about hip height, roughly 15 to 25 feet away, in landscape, with your whole body and the disc in frame from the reach-back through the follow-through. Use slow motion (120 or 240 fps) in good, even light. Each angle shows different faults, so pick the angle that matches what you want to check.
+
+</Answer>
+
+People want feedback on their form, and they post video to get it. In our own count of r/discgolf over the last 12 months, 510 posts carried the "Form Check" flair, and the dedicated [r/DiscGolfForm](https://www.reddit.com/r/DiscGolfForm/) community saw 932 posts over the same period. A lot of those clips are hard to read: filmed in portrait, from too close, with feet cut off or the sun behind the thrower. The fixes are simple, and this guide covers them.
+
+Full disclosure: I build Disc Golf Form Analyzer, an app that grades filmed throws. Everything below applies whether you review the clip yourself, post it for a form check, or upload it to an app.
+
+## The short answer: two angles, phone settings, framing
+
+If you only remember one setup, make it this:
+
+1. **Two clips, two angles.** One from directly behind (down the target line), one side-on.
+2. **Phone at hip height, level, in landscape.** Not tilted up from the ground, not shot from eye height looking down.
+3. **Whole body in frame.** Head to plant foot, plus the disc at full reach-back and at the end of the follow-through.
+4. **Slow motion in good light.** A high frame rate and bright, even light give you sharp frames.
+5. **Several throws, same setup.** One throw can be a fluke. Three or four with the same camera position show your pattern.
+
+A forum thread on [the best angle for filming drives](https://www.dgcoursereview.com/threads/best-angle-for-filming-drives-for-critique.40170/) landed on the same pairing years ago: rear plus side. What has changed is the phone in your pocket and what software can now do with the clip.
+
+## Which angle shows which fault
+
+A camera sees motion across its view clearly and motion toward or away from it poorly. That is the whole reason angle matters. Rounding is a sideways path of the arm, so it shows from behind. Weight shift and plant timing happen along the target line, so they show from the side.
+
+| What you want to check | Best angle | Why |
+|---|---|---|
+| Rounding (the disc swings wide of the chest) | Behind | The arm's path away from the body is side to side in this view |
+| Power pocket (elbow leading, disc tight to the chest) | Behind or front | You see how far the disc and elbow sit from the body |
+| Early release (the disc leaves the hand off line) | Behind | The disc's departure line is visible against the target line |
+| Plant timing and weight transfer | Side-on | The stride and plant happen across the frame |
+| Hip lead and loading sequence | Side-on, then behind | Side-on shows hips moving before shoulders; behind adds the coil |
+| Posture and the brace | Side-on | Spine angle and the front leg block are side-to-side shapes in this view |
+| Early rotation | Front | You see the chest open toward the target too soon |
+| Chicken wing (forehand elbow flaring) | Front | The elbow's distance from the body faces the camera |
+| Nose angle | None precisely | A small disc tilt a single phone cannot measure reliably |
+
+If you can only film one angle, film side-on. It shows the most faults. Then add a behind clip when you are working on rounding or the power pocket. For more on the most common backhand fault, see [how to stop rounding your backhand](/blog/how-to-stop-rounding-disc-golf-backhand).
+
+A note on nose angle: video is the wrong tool for it. You can sometimes see an obvious nose-up release, but the tilt is a few degrees of a thin object moving fast. Judge it from how the disc flies and from field work, and use video for body positions.
+
+<AppCallout feature="pose-estimation" title="Filmed from one angle? The app tells you what that angle can and cannot show">
+
+Pose Estimation only grades the faults your angle can actually reveal, and lists which ones need a clip from behind, the side or the front.
+
+</AppCallout>
+
+## Phone settings: slow motion, frame rate and why timing gets tricky
+
+### Frame rate and sharpness
+
+A throw is fast. At normal video settings the arm and disc smear across the frame at the moment that matters most. A review of 2D video analysis in sport notes that images need to be "sharp and motion blur-free, especially in high speed motions" for accurate analysis ([Pueo 2016](https://www.redalyc.org/pdf/3010/301049620005.pdf)).
+
+Two things reduce blur:
+
+- **A higher frame rate.** My recommendation for throwing is 120 or 240 fps. On iPhone that is the Slo-mo mode in the Camera app; most Android phones have a Slow motion mode in the camera too. This is practical advice from filming a lot of throws, not a figure from a study.
+- **More light.** Your phone picks its own shutter speed. In bright light it can use a short exposure, which freezes motion. In shade or at dusk it leaves the shutter open longer and the arm blurs, even at a high frame rate.
+
+### Why variable frame rate matters for timing
+
+This one caught me out while building the app. iPhones record video at a variable frame rate, so the frames are not always evenly spaced in time. For watching your own throw this does not matter. For anything that measures timing from the clip, the clip has to be converted to a constant frame rate first, or durations come out wrong. If you count frames to time your plant or release, treat the result as approximate.
+
+The same caution applies to slow motion in general. The DGCR thread above makes a good point: use slow motion to see positions, then watch at full speed to judge timing, because slow motion stretches everything and makes a late move look fine.
+
+### If you are uploading to an app
+
+Check what the app wants. For Disc Golf Form Analyzer, the standard camera mode works best; skip 4K HDR, ProRes and Cinematic mode. Very large files get compressed on the phone, and a video stored only in iCloud has to be downloaded in Photos before you can upload it. At 30 fps the fastest hand motion still blurs, so the app grades body positions and sequencing, not exact hand speed.
+
+## Distance, height, framing and light checklist
+
+Run through this before you throw:
+
+1. **Distance:** roughly 15 to 25 feet. Close enough that you fill a good part of the frame, far enough that nothing gets cropped during the reach-back or the follow-through.
+2. **Height:** about hip height. A phone on the ground looking up distorts posture and makes your plant leg look longer than it is.
+3. **Level:** the horizon flat. A tilted frame makes a level shoulder line look tilted.
+4. **Square to the line:** for side-on, the camera points straight across the tee, perpendicular to your target line. A paid video review service, [The Form Tracker](https://theformtracker.com/product/video-analysis-disc-golf-form/), asks for the same thing: camera perpendicular to the teepad, at least 60 fps, and a disc that contrasts with the background.
+5. **Framing:** whole body plus a margin. Plant foot visible, head visible, disc visible at full reach-back.
+6. **Landscape:** a throw moves sideways. Landscape keeps the run-up and follow-through in frame.
+7. **Light behind the camera:** the sun at your back as the filmer, not behind the thrower.
+8. **Contrast:** a bright disc against grass or trees, and clothing that does not blend into the background.
+9. **Still phone:** tripod, bag, or a friend who keeps it steady. No panning to follow the disc.
+
+## Common filming mistakes
+
+**Portrait video.** The most common one in form check threads. Your body fits, but the run-up and follow-through fall off the sides.
+
+**Too close.** The reach-back and follow-through leave the frame, which hides exactly the positions people ask about.
+
+**Cropped feet.** Many faults start at the plant. If the plant foot is out of frame, nobody can tell you whether you are planting early, late or open.
+
+**Backlit thrower.** With the sun behind you, you become a silhouette. The arm and disc disappear into the glare.
+
+**Digital zoom.** Zooming in on a phone often crops the sensor and costs sharpness, and it makes small shakes look large. Walk closer instead, or step back and crop later.
+
+**Moving camera.** Following the disc with the phone smears every frame of your body. Lock the camera and let the disc leave the shot.
+
+**One throw only.** Your best throw and your worst throw look different. Film a few and look for what repeats.
+
+## What to do with the clip
+
+### Review it yourself
+
+Watch at full speed first, then step frame by frame through the reach-back, plant and release. Compare it with a clip of a player whose form you trust. There is decent evidence that watching a model helps: a meta-analysis of observational learning found a mean effect of 0.77 on movement form and dynamics, against 0.17 on movement outcome ([Ashford, Bennett and Davids 2006](https://pubmed.ncbi.nlm.nih.gov/16709559/)). In plain terms, watching good form helps your form more than it helps your results directly. Pair the comparison with one specific thing to change, and one drill for it.
+
+### Post a form check
+
+Post the behind and side-on clips together, say what disc you threw, how far it went and how it flew. Commenters give better advice when they can see your plant foot and know the flight.
+
+### Use an app
+
+Pose estimation software tracks your body from the video. The model behind MediaPipe Pose, BlazePose, "produces 33 body keypoints for a single person" and runs in real time on a phone ([Bazarevsky et al. 2020](https://arxiv.org/abs/2006.10204)). That makes phone-based analysis practical, but it is not a lab. A research system using two or more smartphones, OpenCap, measured joint angles with a 4.5 degree mean absolute error compared with lab motion capture ([Uhlrich et al. 2023](https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1011462)). One phone is less precise than that, which is another reason to film more than one angle and to focus on clear positions rather than small numbers. I go into the details in [how AI disc golf form analysis works](/blog/how-ai-disc-golf-form-analysis-works).
+
+In Disc Golf Form Analyzer, [Pose Estimation](/features/pose-estimation) grades a backhand or forehand against a real coach's ideal form on 20 coach-defined faults (10 backhand, 10 forehand), each with the coach's explanation, a cue, a drill and a short demo clip. [3D Throw](/features/3d-throw) turns one clip into a 3D body you can spin to any angle, including top-down, and play at 1/4 or 1/2 speed with a release marker. That helps when your one camera angle hides something, though it is still built from a single video.
+
+<AppCallout feature="3d-throw" title="Shot only from the side? Spin the throw to look from behind">
+
+Clips of 2 to 30 seconds become a 3D body you can view from any angle, scrub frame by frame, and compare with another throw synced at release.
+
+</AppCallout>
+
+If you are comparing tools, I wrote up [the disc golf training apps worth knowing](/blog/best-disc-golf-training-apps), including the ones I do not make.
+
+Whatever you use, the clip is only as good as the filming. Two angles, hip height, whole body, good light, a few throws. Get those right and both people and software can actually help you.

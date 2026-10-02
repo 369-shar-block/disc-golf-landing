@@ -64,7 +64,8 @@
   .prose-lab p {
     @apply my-5;
   }
-  .prose-lab a {
+  /* links inside article text only, not inside components marked .not-prose (e.g. the app card) */
+  .prose-lab a:not(.not-prose a) {
     @apply text-cyan-400 underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-400;
   }
   .prose-lab strong {
