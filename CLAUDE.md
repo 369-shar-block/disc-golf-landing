@@ -59,6 +59,10 @@ video understates peak hand speed (~14 mph computed), so phases are shown instea
 - Posts: `content/blog/<slug>.mdx`. Frontmatter: `title`, `description` (~150 chars), `date`,
   `updated?`, `author` (default **Tushar Saini**), `category`, `faqs?` [{question, answer}], `draft?`.
 - **`draft: true` posts render with `npm run dev` only** (orange "Draft" banner), never in production.
+  Don't run `npm run build` while `npm run dev` is running: both use `.next` and the dev server breaks.
+- **Published 2026-10-02 (5):** filming for form analysis, stop rounding, throw farther, best training
+  apps, how AI form analysis works. ⚠️ `best-disc-golf-training-apps` went live WITHOUT the recommended
+  lawyer review (user's call); re-verify competitor prices periodically and update `updated:`.
 - MDX components (`components/site/mdx.tsx`): `<Answer>` (answer-first box), `<AppCallout feature=…>`
   (the DGFA anchor, includes the ownership disclosure; max twice per post), `<Figure>`.
 - Author: `AUTHOR` in `lib/seo.tsx` (Person schema + author box). Bio states facts only.
