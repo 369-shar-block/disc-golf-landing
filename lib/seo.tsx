@@ -11,6 +11,13 @@ export const SITE_URL = "https://www.dgformanalyzer.com";
 export const COMPANY = "Axiom Trinity Labs, LLC"; // must match App Store Connect / Play Console
 export const SUPPORT_EMAIL = "support@axiomtrinitylabs.com";
 
+// Blog byline. Keep the bio to verifiable facts; never invent playing or coaching credentials.
+export const AUTHOR = {
+  name: "Tushar Saini",
+  role: "Founder, Disc Golf Form Analyzer",
+  bio: "Tushar Saini is the founder of Disc Golf Form Analyzer and Axiom Trinity Labs, LLC. He builds the app's form analysis, pose estimation and 3D Throw features, and writes these guides with the app's coaching material.",
+} as const;
+
 export const APP = {
   name: "Disc Golf Form Analyzer",
   shortName: "DGFA",

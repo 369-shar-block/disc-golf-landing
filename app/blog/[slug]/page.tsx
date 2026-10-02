@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { formatDate, getAllPosts, getPost } from "@/lib/blog";
-import { APP_ID, JsonLd, ORGANIZATION_ID, SITE_URL, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { APP_ID, AUTHOR, JsonLd, ORGANIZATION_ID, SITE_URL, breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { mdxComponents } from "@/components/site/mdx";
 import { FaqList } from "@/components/site/FaqList";
 import { PostCard } from "@/components/site/LatestGuides";
@@ -55,7 +55,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
-    author: { "@type": "Organization", name: post.author, url: SITE_URL },
+    author: { "@type": "Person", name: post.author, jobTitle: post.author === AUTHOR.name ? AUTHOR.role : undefined, worksFor: { "@id": ORGANIZATION_ID } },
     publisher: { "@id": ORGANIZATION_ID },
     about: { "@id": APP_ID },
     image: `${SITE_URL}/blog/${post.slug}/opengraph-image`,
@@ -82,8 +82,29 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </p>
           </div>
         </header>
+        {post.draft && (
+          <p className="mx-auto mt-8 max-w-3xl rounded-xl border border-heat-400/40 bg-heat-400/10 px-5 py-3 font-mono text-[12px] uppercase tracking-label text-heat-400 sm:px-8">
+            Draft: only visible on your computer, not on the live site
+          </p>
+        )}
         <div className="prose-lab mx-auto max-w-3xl px-5 py-12 sm:px-8">
           <MDXRemote source={post.body} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+        </div>
+        <div className="mx-auto max-w-3xl px-5 pb-12 sm:px-8">
+          <div className="panel flex gap-4 p-6">
+            <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full border border-line bg-white/[0.04] font-display text-[18px] font-bold text-cyan-400">
+              {post.author.split(" ").map((w) => w[0]).join("")}
+            </div>
+            <div>
+              <p className="text-[15px] font-semibold text-white">{post.author}</p>
+              {post.author === AUTHOR.name && (
+                <>
+                  <p className="font-mono text-[11px] uppercase tracking-label text-fog-400">{AUTHOR.role}</p>
+                  <p className="mt-2 text-[14px] leading-relaxed text-fog-400">{AUTHOR.bio}</p>
+                </>
+              )}
+            </div>
+          </div>
         </div>
         {post.faqs?.length ? (
           <section className="mx-auto max-w-3xl px-5 pb-16 sm:px-8">

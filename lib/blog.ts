@@ -7,6 +7,8 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const DIR = path.join(process.cwd(), "content", "blog");
+// Drafts (frontmatter `draft: true`) render with `npm run dev` only, never in production builds.
+const SHOW_DRAFTS = process.env.NODE_ENV === "development";
 
 export type PostMeta = {
   slug: string;
@@ -33,7 +35,7 @@ function readPost(file: string): Post {
     description: String(data.description),
     date: String(data.date),
     updated: data.updated ? String(data.updated) : undefined,
-    author: data.author ? String(data.author) : "DGFA Team",
+    author: data.author ? String(data.author) : "Tushar Saini",
     category: data.category ? String(data.category) : "Technique",
     readingMinutes: Number(data.readingMinutes) || Math.max(3, Math.round(words / 230)),
     faqs: Array.isArray(data.faqs) ? data.faqs : undefined,
@@ -48,7 +50,7 @@ export function getAllPosts(): PostMeta[] {
     .readdirSync(DIR)
     .filter((f) => /\.mdx?$/.test(f))
     .map(readPost)
-    .filter((p) => !p.draft)
+    .filter((p) => !p.draft || SHOW_DRAFTS)
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .map(({ body, ...meta }) => meta);
@@ -59,7 +61,7 @@ export function getPost(slug: string): Post | null {
     const f = slug + ext;
     if (fs.existsSync(path.join(DIR, f))) {
       const p = readPost(f);
-      return p.draft ? null : p;
+      return p.draft && !SHOW_DRAFTS ? null : p;
     }
   }
   return null;

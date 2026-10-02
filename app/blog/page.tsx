@@ -4,7 +4,10 @@ import { JsonLd, SITE_URL, breadcrumbSchema } from "@/lib/seo";
 import { PostCard } from "@/components/site/LatestGuides";
 import { FinalCta, SectionHead } from "@/components/site/blocks";
 
+const HAS_POSTS = getAllPosts().length > 0;
+
 export const metadata: Metadata = {
+  robots: HAS_POSTS ? undefined : { index: false, follow: true },
   title: "Disc Golf Form Guides: Technique, Distance & Drills",
   description:
     "Practical disc golf guides on form, distance, backhand and forehand technique, filming your throw and drills, from the team behind Disc Golf Form Analyzer.",
