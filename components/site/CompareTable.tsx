@@ -13,7 +13,7 @@ const ROWS: { k: string; v: [Cell, Cell, Cell, Cell] }[] = [
   { k: "See the throw in 3D", v: [true, false, false, false] },
   { k: "Live, in-person correction", v: [false, true, false, false] },
   { k: "Needs extra hardware", v: ["Just your phone", "No", "Sensor disc", "Just your phone"] },
-  { k: "Cost", v: ["$39.99 / year", "$80-150 / hour", "About $299", "Free"] },
+  { k: "Cost", v: ["$39.99 / year", "$80-150 / hour", "$299.99", "Free"] },
 ];
 
 function Mark({ c }: { c: Cell }) {

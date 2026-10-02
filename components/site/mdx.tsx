@@ -41,6 +41,7 @@ export function AppCallout({ feature = "pose-estimation", title, children }: { f
           How {f.label} works
         </Link>
       </div>
+      <p className="mt-4 text-[12px] text-fog-600">Disclosure: Disc Golf Form Analyzer is made by the team that writes these guides.</p>
     </aside>
   );
 }

@@ -52,6 +52,10 @@ export default function ComparePage() {
             />
           </div>
           <CompareTable className="mt-12" />
+          <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-fog-600">
+            Disclosure: this page is published by Axiom Trinity Labs, LLC, the maker of Disc Golf Form Analyzer. Prices and features are as
+            published by each provider and checked in October 2026; lesson prices vary by coach and region.
+          </p>
         </div>
       </section>
       <Band index="01" label="When to use what" title={<>Pick the <span className="text-gradient">right tool.</span></>}>
