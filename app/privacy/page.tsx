@@ -1,29 +1,14 @@
 'use client';
 
-import { GradientText } from '@/components/ui/GradientText';
 import Link from 'next/link';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-background text-text-primary">
-      {/* Header */}
-      <header className="border-b border-glass-border bg-surface/30 sticky top-0 z-50 backdrop-blur-lg">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-              <span className="text-lg">🥏</span>
-            </div>
-            <span className="font-bold text-lg">
-              <GradientText gradient="action">← Back to Home</GradientText>
-            </span>
-          </Link>
-        </div>
-      </header>
-
+    <div className="min-h-screen text-text-primary">
       {/* Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <GradientText gradient="action">Privacy Policy</GradientText>
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <h1 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tight text-white mb-4">
+          Privacy Policy
         </h1>
         <p className="text-text-secondary mb-8">
           Last Updated: February 16, 2026
@@ -313,14 +298,7 @@ export default function PrivacyPolicy() {
             ← Back to Home
           </Link>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-glass-border bg-surface/30 py-8 px-6 mt-12">
-        <div className="max-w-4xl mx-auto text-center text-sm text-text-tertiary">
-          <p>© {new Date().getFullYear()} Axiom Trinity Labs, LLC. All rights reserved.</p>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }

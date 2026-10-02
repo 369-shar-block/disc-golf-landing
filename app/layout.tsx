@@ -1,97 +1,60 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Barlow_Condensed, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import {
-  SITE_URL,
-  COMPANY,
-  organizationSchema,
-  websiteSchema,
-  mobileAppSchema,
-  faqSchema,
-} from "@/lib/seo";
+import { COMPANY, SITE_URL, JsonLd, mobileAppSchema, organizationSchema, websiteSchema } from "@/lib/seo";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
+import { MetaPixelEvents } from "@/components/MetaPixelEvents";
+
+const display = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
+
+export const viewport: Viewport = {
+  themeColor: "#080b11",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "AI Disc Golf Form Analyzer & Coaching App | DGFA",
+    default: "Disc Golf Form Analyzer: AI Form Analysis & 3D Throw Coach | DGFA",
     template: "%s | Disc Golf Form Analyzer",
   },
   description:
-    "Upload a video of your throw and get instant AI form analysis in 60 seconds. Fix your disc golf backhand & forehand, add distance. On iOS & Android. Try free.",
-  keywords: [
-    "disc golf",
-    "disc golf form analyzer",
-    "disc golf coach",
-    "disc golf coaching app",
-    "AI disc golf coach",
-    "disc golf technique",
-    "improve disc golf form",
-    "backhand",
-    "forehand",
-    "disc golf training app",
-  ],
+    "Film one throw on your phone. Get your disc golf form graded against a real coach, see the fault costing you distance and the drill that fixes it, and rebuild the throw in 3D. iOS and Android.",
   applicationName: "Disc Golf Form Analyzer",
   authors: [{ name: COMPANY }],
   creator: COMPANY,
   publisher: COMPANY,
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png", sizes: "1024x1024", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.ico" }, { url: "/icon.png", sizes: "1024x1024", type: "image/png" }],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "AI Disc Golf Form Analyzer & Coaching App",
-    description:
-      "Upload your throw. Get a pro-level AI form breakdown in 60 seconds, with the exact fixes and drills. Live on iOS & Android.",
-    url: SITE_URL,
     siteName: "Disc Golf Form Analyzer",
     type: "website",
-    images: [{ url: "/icon.png", width: 1024, height: 1024, alt: "Disc Golf Form Analyzer" }],
+    locale: "en_US",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI Disc Golf Form Analyzer & Coaching App",
-    description:
-      "Upload your throw. Get a pro-level AI form breakdown in 60 seconds. Live on iOS & Android.",
-    images: ["/icon.png"],
-  },
+  twitter: { card: "summary_large_image" },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
+  other: { "apple-itunes-app": "app-id=6755727208" },
 };
 
-const schemas = [organizationSchema, websiteSchema, mobileAppSchema, faqSchema];
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <head>
-        {/* Structured data — server-rendered so Google + AI crawlers read it in raw HTML */}
-        {schemas.map((schema, i) => (
-          <script
-            key={i}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        ))}
+        <JsonLd data={[organizationSchema, websiteSchema, mobileAppSchema]} />
         <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1459941859097694&ev=PageView&noscript=1"
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img height="1" width="1" style={{ display: "none" }} alt="" src="https://www.facebook.com/tr?id=1459941859097694&ev=PageView&noscript=1" />
         </noscript>
       </head>
       <body>
@@ -109,7 +72,13 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-        {children}
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-ink-900">
+          Skip to content
+        </a>
+        <Nav />
+        <main id="main">{children}</main>
+        <Footer />
+        <MetaPixelEvents />
       </body>
     </html>
   );
