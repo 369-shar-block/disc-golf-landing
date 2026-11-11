@@ -36,7 +36,7 @@ export const APP = {
 export const NAV = [
   { href: "/features/pose-estimation", label: "Pose Estimation" },
   { href: "/features/3d-throw", label: "3D Throw" },
-  { href: "/features/ai-analysis", label: "AI Analysis" },
+  { href: "/features/form-analysis", label: "Form Analysis" },
   { href: "/features/caddie", label: "Caddie" },
   { href: "/blog", label: "Guides" },
 ] as const;
@@ -58,7 +58,12 @@ export const FAQS: Faq[] = [
   {
     question: "Does it work for backhand and forehand?",
     answer:
-      "Yes. Pose Estimation grades both backhand and forehand against a coach's ideal form, using 20 coach-defined faults (10 per throw). AI Analysis also covers putts.",
+      "Yes. Pose Estimation grades both backhand and forehand against a coach's ideal form, using 20 coach-defined faults (10 per throw). Form Analysis also covers putts.",
+  },
+  {
+    question: "Can I analyze my disc golf form in 3D?",
+    answer:
+      "Yes. Disc Golf Form Analyzer does 3D disc golf form analysis from one ordinary phone video. Its vision software rebuilds your throw as a 3D body you can view from above, behind, the front or the side, slowed to quarter speed, with no sensors and no marking frames by hand. It works on iPhone and Android.",
   },
   {
     question: "What is 3D Throw?",
@@ -124,11 +129,12 @@ export const mobileAppSchema = {
   operatingSystem: "iOS, Android",
   applicationCategory: "SportsApplication",
   description:
-    "Disc golf form analysis on your phone. Film a throw to get it graded against a coach's ideal backhand or forehand, see the main fault and the drill that fixes it, and rebuild the throw in 3D.",
+    "Vision software for disc golf form analysis and 3D form analysis on your phone. Film a throw to get it graded against a coach's ideal backhand or forehand, see the main fault and the drill that fixes it, and rebuild the throw as a 3D body.",
   featureList: [
     "Pose estimation graded against a coach's ideal form (backhand and forehand, 20 faults)",
-    "AI analysis of what is working, the main issue, the fix and a drill",
-    "3D Throw: view a throw as a 3D body from any angle, slow motion, side-by-side compare, AR on iPhone",
+    "Form Analysis: what is working, the main issue, the fix and a drill",
+    "3D disc golf form analysis: view a throw as a 3D body from any angle, slow motion, side-by-side compare synced at release, AR on iPhone",
+    "Automatic body tracking from one phone video, no sensors and no manual marking of positions",
     "DGFA Coach chat",
     "DGFA Caddie: disc bag manager and hole-by-hole disc recommendations",
   ],

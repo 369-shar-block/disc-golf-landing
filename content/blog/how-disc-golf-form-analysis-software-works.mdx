@@ -1,17 +1,18 @@
 ---
-title: "How AI Disc Golf Form Analysis Works (and What It Can't Do)"
-description: "How AI disc golf form analysis turns phone video into faults and fixes: pose estimation, coach grading, 3D, accuracy research and honest limits."
+title: "How Disc Golf Form Analysis Software Works (and What It Can't Do)"
+description: "How disc golf form analysis software turns phone video into faults and fixes: pose estimation, coach grading, 3D, accuracy research and honest limits."
 date: "2026-10-02"
+updated: "2026-11-11"
 author: "Tushar Saini"
 category: "How it works"
 faqs:
   - question: "Is Disc Golf Form Analyzer accurate?"
     answer: "It is accurate enough to be a useful second opinion, not a lab measurement. It works from one phone camera, so body positions, angles and timing are more reliable than absolute distances, and overall body scale in the 3D view carries roughly 6% uncertainty. Published research shows phone-based pose estimation is not yet as precise as marker-based motion capture. Fault grading can be wrong, especially from a poor camera angle or bad footage, so confirm any flagged fault on the video yourself."
-  - question: "Can AI measure my arm speed or disc speed?"
+  - question: "Can form analysis software measure my arm speed or disc speed?"
     answer: "Not from normal phone video, and Disc Golf Form Analyzer does not try. At 30 frames per second the hand is blurred at its fastest moment, so the app shows throw phases instead of speed numbers. A sensor disc such as TechDisc measures speed, spin and nose angle directly."
-  - question: "What camera angle do I need for AI form analysis?"
+  - question: "What camera angle do I need for disc golf form analysis?"
     answer: "It depends on the fault. Some faults only show from the side, others from behind or in front. Disc Golf Form Analyzer only grades a fault from an angle that can show it and lists the faults that need another angle, so filming from two angles gives the most complete read."
-  - question: "Does AI form analysis replace a disc golf coach?"
+  - question: "Does form analysis software replace a disc golf coach?"
     answer: "No. It is useful between lessons or when no coach is nearby, because it names a fault, explains why it happens and gives a drill. A live coach can watch many throws, see the flight, adjust cues in real time and catch things one camera misses."
   - question: "What happens to the videos I upload?"
     answer: "Uploaded videos are processed to produce the analysis. For the 3D Throw feature, the input copy of the video is deleted after processing."
@@ -21,7 +22,7 @@ I build Disc Golf Form Analyzer (DGFA), so this is how our app works, including 
 
 <Answer>
 
-AI disc golf form analysis uses computer vision to find your joints in every frame of a normal phone video and follow them through the throw. It compares those positions and their timing with a reference throw, turns the differences into named faults, and pairs each fault with an explanation and a drill. It is good at spotting position and sequencing problems, less precise than lab motion capture, and it cannot measure disc speed, spin or nose angle.
+Disc golf form analysis software uses computer vision to find your joints in every frame of a normal phone video and follow them through the throw. It compares those positions and their timing with a reference throw, turns the differences into named faults, and pairs each fault with an explanation and a drill. It is good at spotting position and sequencing problems, less precise than lab motion capture, and it cannot measure disc speed, spin or nose angle.
 
 </Answer>
 
@@ -54,21 +55,21 @@ Two design choices matter more than the model itself:
 - **Angle-awareness.** Each fault is only graded from camera angles that can actually show it: side, behind or front. Rounding is hard to judge from the side; a collapsing brace leg is hard to judge from behind. Instead of guessing, the app tells you which faults need another angle.
 - **Three buckets, not one score.** Results are sorted into "work on these", "looks good" and "not checked from this angle". The third bucket is deliberate. An app that grades everything from every angle is guessing on some of them.
 
-The fault judgement itself uses a multimodal AI model that is grounded with the coach's reference clip for that fault. Because these models can give slightly different answers to the same input, we run the check several times and take the majority vote, which makes results more consistent from run to run. Each fault then links to the coach's explanation, a cue, a drill and a demo clip.
+The fault judgement itself uses a vision model that is grounded with the coach's reference clip for that fault. Because these models can give slightly different answers to the same input, we run the check several times and take the majority vote, which makes results more consistent from run to run. Each fault then links to the coach's explanation, a cue, a drill and a demo clip.
 
 Why compare against a model throw at all? A meta-analysis of observational learning found that watching a model had a mean effect of 0.77 on movement form, against 0.17 on movement outcome ([Ashford, Bennett & Davids 2006](https://pubmed.ncbi.nlm.nih.gov/16709559/)). In plain terms, seeing good form helps your form more than it directly helps your results. That fits a tool whose job is shape, not distance.
 
 <Figure src="/screens/analysis.webp" alt="DGFA analysis screen listing graded faults for a backhand throw" caption="A graded throw in Disc Golf Form Analyzer." width={1242} height={2207} />
 
-## What the AI Analysis adds (and how it differs from measured faults)
+## What Form Analysis adds (and how it differs from measured faults)
 
-The second feature, [AI Analysis](/features/ai-analysis), is a different kind of tool. A large language model, prompted specifically for disc golf, reads the throw video and writes a breakdown: what is working, the main issue, its root cause, the fix and a drill. It covers backhand, forehand and putts. DGFA Coach then answers follow-up questions, such as "what if I only have 20 minutes of field work?"
+The second feature, [Form Analysis](/features/form-analysis), is a different kind of tool. A vision model set up specifically for disc golf watches the throw video and writes a breakdown: what is working, the main issue, its root cause, the fix and a drill. It covers backhand, forehand and putts. DGFA Coach then answers follow-up questions, such as "what if I only have 20 minutes of field work?"
 
-The honest difference: Pose Estimation is anchored to tracked landmarks, a fixed fault list and a coach's reference clip. AI Analysis is a written interpretation. It is better at explaining cause and effect in words and at handling throws outside the fault list, such as putts. It is also more likely to be confidently wrong, because it is not checking against a fixed reference. Use the written breakdown for the "why", and the graded faults plus your own eyes for the "what".
+The honest difference: Pose Estimation is anchored to tracked landmarks, a fixed fault list and a coach's reference clip. Form Analysis is a written interpretation. It is better at explaining cause and effect in words and at handling throws outside the fault list, such as putts. It is also more likely to be confidently wrong, because it is not checking against a fixed reference. Use the written breakdown for the "why", and the graded faults plus your own eyes for the "what".
 
 ## How the 3D Throw is built
 
-A flat video cannot be rotated, so for the [3D Throw](/features/3d-throw) feature we use a 3D human body model, Meta's SAM 3D Body. It is a research model released under a license that permits commercial use. It estimates your full 3D body in each frame. We then smooth the motion so it does not jitter and put your feet on the ground so the figure does not float or sink.
+A flat video cannot be rotated, so for [3D form analysis](/features/3d-throw) (the 3D Throw feature) we use a 3D human body model, Meta's SAM 3D Body. It is a research model released under a license that permits commercial use. It estimates your full 3D body in each frame. We then smooth the motion so it does not jitter and put your feet on the ground so the figure does not float or sink.
 
 The result is a throw you can view from any angle, slow to 1/4 speed through the release, compare with a second throw synced at the release point, or place in augmented reality on iPhone.
 
@@ -80,11 +81,11 @@ Film one throw, then watch it from above, behind or the side at quarter speed, a
 
 </AppCallout>
 
-## What AI form analysis can't do
+## What phone form analysis can't do
 
 This is the part most reviews skip, so here it is in full:
 
-| AI form analysis from phone video can | It can't |
+| Form analysis from phone video can | It can't |
 |---|---|
 | Track joint positions through the throw | Measure arm speed or disc speed |
 | Compare timing, like hips vs shoulders | Measure disc spin, nose angle or flight |

@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("", 1, "weekly"),
     page("/features/pose-estimation", 0.9),
     page("/features/3d-throw", 0.9),
-    page("/features/ai-analysis", 0.8),
+    page("/features/form-analysis", 0.8),
     page("/features/caddie", 0.7),
     page("/compare", 0.8),
     page("/blog", 0.8, "weekly"),

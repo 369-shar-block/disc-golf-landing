@@ -9,6 +9,23 @@ Marketing site, feature pages and blog for the Disc Golf Form Analyzer (DGFA) ap
 
 ---
 
+## Brand rule: vision software, never "AI" (2026-11-11)
+
+The founder wants DGFA known as **vision software**. The word "AI" (or artificial intelligence, LLM,
+language model, machine learning, vendor model names) must not appear in any visible copy, metadata,
+FAQ, schema or blog post. Say computer vision, vision software, body tracking, pose estimation, 3D body
+reconstruction. The old "AI Analysis" feature is **Form Analysis** at `/features/form-analysis`; the old
+post `how-ai-disc-golf-form-analysis-works` is now `how-disc-golf-form-analysis-software-works` (redirect).
+**Exception: `/privacy` and `/terms` still say AI** where they disclose how videos are processed (legal
+disclosure, incl. Apple 5.1.2(i) third-party AI sharing); change those only with the founder's legal OK.
+Code comments and the `llms.txt` filename are not visible copy.
+
+SEO target since 2026-11-11 (a competitor launched a 3D form feature): rank first for disc golf 3D form
+analysis and anything about improving disc golf form. 3D cluster: `/features/3d-throw` + posts
+`disc-golf-3d-form-analysis` (cornerstone), `how-to-read-your-disc-golf-throw-in-3d`,
+`compare-disc-golf-throws-side-by-side`; pillars `disc-golf-form-analysis-guide`, `how-to-get-better-at-disc-golf`.
+Never name the competitor on the site.
+
 ## Facts live in ONE file: `lib/seo.tsx`
 
 Rating, rating count, price, trial length, accounts, throws analyzed, fault count, store links,
@@ -40,8 +57,8 @@ reviews, never edited or invented), `lib/throw-data.ts` (the hero's real 3D thro
 |---|---|---|
 | `/` | `app/page.tsx` | Hero with `ThrowViewer`, stats, how it works, 4 feature bands, compare, reviews, pricing + FAQ, guides teaser, CTA |
 | `/features/pose-estimation` | `app/features/pose-estimation/page.tsx` | Lists all 20 faults with camera angles |
-| `/features/3d-throw` | `app/features/3d-throw/page.tsx` | Interactive viewer + compare/AR |
-| `/features/ai-analysis`, `/features/caddie` | `app/features/*/page.tsx` | Shared `FeaturePage` template |
+| `/features/3d-throw` | `app/features/3d-throw/page.tsx` | Targets "3D disc golf form analysis" (title + H1). Interactive viewer, compare/AR, "why 3D" band, links to the 3D guides |
+| `/features/form-analysis`, `/features/caddie` | `app/features/*/page.tsx` | Shared `FeaturePage` template. `/features/ai-analysis` 308-redirects to `/features/form-analysis` (`next.config.mjs`) |
 | `/compare` | `app/compare/page.tsx` | Honest table + FTC ownership disclosure |
 | `/blog`, `/blog/[slug]` | `app/blog/**` | MDX posts; noindex while there are no posts |
 | `/blog/rss.xml`, `/llms.txt`, `/sitemap.xml`, `/robots.txt`, OG images | `app/**` | Generated from `lib/seo.tsx` + posts |

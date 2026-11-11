@@ -19,11 +19,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Disc Golf Form Analyzer: AI Form Analysis & 3D Throw Coach | DGFA",
+    default: "Disc Golf Form Analyzer: 3D Form Analysis & Vision Coaching | DGFA",
     template: "%s | Disc Golf Form Analyzer",
   },
   description:
-    "Film one throw on your phone. Get your disc golf form graded against a real coach, see the fault costing you distance and the drill that fixes it, and rebuild the throw in 3D. iOS and Android.",
+    "Film one throw on your phone. Get your disc golf form graded against a real coach, see the fault costing you distance and the drill that fixes it, and rebuild the throw in 3D with vision software. iOS and Android.",
   applicationName: "Disc Golf Form Analyzer",
   authors: [{ name: COMPANY }],
   creator: COMPANY,

@@ -40,7 +40,7 @@ export function SectionHead({
 const SHOT_ALT: Record<string, string> = {
   analysis: "Pose Estimation: your throw tracked as a skeleton next to the coach's ideal form, with the main fault and how to fix it",
   "3d-throw": "3D Throw: a disc golf throw rebuilt as a 3D body with view presets, hand trail and slow-motion controls",
-  "fault-causes": "AI Analysis: the main issues in a throw explained, with root causes rather than symptoms",
+  "fault-causes": "Form Analysis: the main issues in a throw explained, with root causes rather than symptoms",
   compare: "Compare two throws side by side, synced at the moment of release",
   ar: "AR: a 3D throw placed life-size on the ground through the iPhone camera",
   "caddie-bag": "DGFA Caddie: your disc bag with flight numbers and personalized disc picks",
@@ -113,7 +113,7 @@ export function Pricing() {
   const items = [
     "Pose Estimation, backhand and forehand",
     `Graded against a coach on ${APP.faults} faults`,
-    "AI Analysis with the fix and a drill",
+    "Form Analysis with the fix and a drill",
     "3D Throw, compare, and AR on iPhone",
     "DGFA Coach chat and DGFA Caddie",
     "Drill library",

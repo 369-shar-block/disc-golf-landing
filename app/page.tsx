@@ -76,14 +76,14 @@ export default function Home() {
         <div className="wrap relative grid items-center gap-12 pb-20 pt-12 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-20">
           <div>
             <p className="label">
-              <span className="text-cyan-400">●</span> AI disc golf form analysis · iPhone + Android
+              <span className="text-cyan-400">●</span> Vision software for disc golf form · iPhone + Android
             </p>
             <h1 className="display mt-6 text-[52px] sm:text-[76px] lg:text-[88px]">
               Find the fault <span className="text-gradient">costing you distance.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[18px] leading-relaxed text-fog-200 sm:text-[19px]">
               Film one throw on your phone. Disc Golf Form Analyzer grades your backhand or forehand against a real coach&apos;s
-              ideal form, then hands you the fix and the drill. Spin the throw in 3D to see it for yourself.
+              ideal form with vision software, then hands you the fix and the drill. Spin the throw in 3D to see it for yourself.
             </p>
             <StoreButtons where="hero" className="mt-9" />
             <TrustRow className="mt-6" />
@@ -157,26 +157,26 @@ export default function Home() {
               index="03"
               label="3D Throw"
               title={<>Spin it. Slow it. <span className="text-gradient">Compare it.</span></>}
-              intro="Any throw video becomes a 3D body you can view from the side, front, behind or straight above. Slow the release to quarter speed, put two throws side by side, or place it life-size on the ground in AR."
+              intro="3D disc golf form analysis from any throw video: it becomes a 3D body you can view from the side, front, behind or straight above, with nothing to mark by hand. Slow the release to quarter speed, put two throws side by side, or place it life-size on the ground in AR."
             />
             <Bullets items={["Any angle, including top-down", "Quarter-speed slow motion", "Two throws, synced at release", "Life-size AR on iPhone"]} />
-            <MoreLink href="/features/3d-throw">Explore 3D Throw</MoreLink>
+            <MoreLink href="/features/3d-throw">Explore 3D form analysis</MoreLink>
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------------ AI analysis */}
-      <section data-section="ai-analysis" className="border-t border-line">
+      {/* ------------------------------------------------------------ Form analysis */}
+      <section data-section="form-analysis" className="border-t border-line">
         <div className="wrap grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-2">
           <div>
             <SectionHead
               index="04"
-              label="AI analysis"
+              label="Form analysis"
               title={<>Root causes, <span className="text-gradient">not symptoms.</span></>}
               intro="A written breakdown of what's working, the one issue holding you back, why it happens, the fix and a drill. It covers backhand, forehand and putts, and DGFA Coach answers your follow-up questions."
             />
             <Bullets items={["What's working, so you keep it", "The main issue, explained", "A drill for the fix", "Ask DGFA Coach anything"]} />
-            <MoreLink href="/features/ai-analysis">See an AI analysis</MoreLink>
+            <MoreLink href="/features/form-analysis">See a form analysis</MoreLink>
           </div>
           <div className="mx-auto w-full max-w-[340px]">
             <Shot name="fault-causes" />

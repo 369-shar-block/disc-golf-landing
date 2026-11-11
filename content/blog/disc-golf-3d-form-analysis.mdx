@@ -1,0 +1,163 @@
+---
+title: "Disc Golf 3D Form Analysis: See Your Throw From Every Angle"
+description: "Disc golf 3D form analysis explained: how one phone video becomes a 3D body, what 3D shows that flat video hides, its honest limits, and how to film for it."
+date: "2026-11-11"
+author: "Tushar Saini"
+category: "3D"
+faqs:
+  - question: "What is disc golf 3D form analysis?"
+    answer: "It is reviewing your throw as a moving 3D body instead of a flat video. Computer vision estimates the 3D position of your joints in every frame, so you can rotate the throw and watch it from the side, from behind, from the front or from straight above, even though you filmed it from one spot."
+  - question: "Do I need motion capture suits or several cameras for 3D?"
+    answer: "No. Markerless 3D body reconstruction works from one ordinary phone video. A lab system with markers and many cameras is more precise, but a single phone clip is enough to study positions, sequencing and the path of your pull."
+  - question: "What can 3D show that normal video cannot?"
+    answer: "The views your camera was not standing in. The biggest one is top-down: from above you can see the pull path (rounding), how far your shoulders turn past your hips, and whether the reach-back goes back along the target line. You can also spin a side-on clip to look from behind."
+  - question: "How accurate is 3D form analysis from one phone video?"
+    answer: "Good for positions, angles and timing, less exact for absolute distances and speeds. Depth (how far a joint is from the camera) is the hardest thing for one camera to judge, so movement across the camera's view is more reliable than movement toward or away from it."
+  - question: "Does 3D form analysis measure disc speed or nose angle?"
+    answer: "No. It reconstructs your body, not the disc. Disc speed, spin, nose angle and wobble are what sensor discs measure. The two answer different questions: what the disc did versus what your body did to make it happen."
+  - question: "How long should my clip be for a 3D build?"
+    answer: "In Disc Golf Form Analyzer, 3D Throw accepts clips from 2 to 30 seconds. Trim to the throw itself, with one person in frame, your whole body visible, a steady phone and good light."
+---
+
+<Answer>
+
+Disc golf 3D form analysis turns a video of your throw into a moving 3D body that you can rotate and watch from any angle. Computer vision estimates where your joints are in three dimensions in every frame, from one ordinary phone clip, with no markers or sensors. The payoff is seeing views you did not film: a top-down look at your pull path, your shoulder turn against your hips, and the depth of your reach-back. It is strong for positions and timing, weaker for exact depth, and it does not measure the disc.
+
+</Answer>
+
+Flat video has a basic problem: it only shows what crosses the camera's view. Anything moving toward or away from the lens gets squashed. That is why a side-on clip can hide rounding completely, and why form check threads so often end with "film it from behind too." 3D form analysis is a way around that. You film once, then move the camera after the fact.
+
+Full disclosure: I build Disc Golf Form Analyzer, which has a 3D feature called 3D Throw. This guide explains how 3D disc golf throw analysis works in general, including what it gets wrong, and I'll point out where the app fits.
+
+## What 3D form analysis actually is
+
+A normal video is a stack of flat pictures. A 3D reconstruction is a stack of 3D poses: for each frame, an estimate of where your hips, knees, ankles, shoulders, elbows, wrists and head sit in space. Play those poses in order and you get a figure that moves exactly like you did, which you can view from anywhere.
+
+That is the same idea as lab motion capture, where reflective markers are stuck to the body and a ring of cameras tracks them. The difference is that markerless systems skip the markers and the camera ring. They infer the body from the image itself.
+
+### How one phone video becomes a 3D body
+
+In plain terms, the process has three steps.
+
+1. **Find the person.** The software locates you in each frame and separates you from the background.
+2. **Estimate the 3D pose.** A body tracking model, trained on many examples of people with known 3D positions, looks at the image and estimates where each joint is in three dimensions. It is using the same cues you use when you look at a photo and can tell someone's arm is reaching toward you: proportions, overlap, shading and the way limbs foreshorten.
+3. **Join the frames into one motion.** Frame-by-frame estimates are noisy, so the software tracks the same person through the clip and smooths the motion so the figure moves continuously instead of jittering.
+
+The phrase you'll see for this is 3D pose estimation or 3D body reconstruction. 2D pose estimation, the skeleton drawn on top of your video, is the simpler cousin: it finds joints on the flat image only. I cover the 2D side in [how disc golf form analysis software works](/blog/how-disc-golf-form-analysis-software-works).
+
+### How it compares with lab motion capture
+
+Phone-based tracking is useful, but it is not a lab. A study comparing three popular markerless 2D tracking tools against marker-based motion capture found their joint centers were "not yet consistently comparable," with hip and knee differences of roughly 30 to 50 mm ([Needham et al. 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8526586/)). A research system that uses two or more phones, OpenCap, measured joint angles with a 4.5 degree mean absolute error against lab capture ([Uhlrich et al. 2023](https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1011462)).
+
+A single camera is harder still. A 2025 review of single-camera 3D pose estimation names "depth ambiguity and occlusion" as the key challenges of a one-view setup ([Guo et al. 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12031093/)). Keep that in mind and you will read a 3D replay sensibly: trust clear shapes and sequences, not tiny differences.
+
+## What 3D shows that 2D video hides
+
+This is where 3D earns its place. These are the checks a single flat clip struggles with.
+
+### Your pull path, from above
+
+Rounding is a sideways curve: the disc swings out away from your chest instead of pulling across it. From the side, that curve moves toward and away from the camera, so it barely shows. From above, it is obvious. A top-down view plus a hand trail (a line that traces where your throwing hand traveled) draws the pull path as a shape you can see at a glance: a fairly straight line along the target line, or a wide arc.
+
+If rounding is your issue, the full diagnosis is in [how to stop rounding your backhand](/blog/how-to-stop-rounding-disc-golf-backhand).
+
+### Hip and shoulder separation
+
+Coaches talk about the hips leading and the shoulders staying closed a beat longer. From the side you can see some of this; from above you can see the hip line and the shoulder line as two separate bars and watch the gap between them open and close. If both bars turn together, the body is rotating as one block. Proximal-to-distal sequencing, where bigger segments near the center of the body start the motion and the arm finishes it, is the classic model for throwing ([Putnam 1993](https://doi.org/10.1016/0021-9290(93)90084-R)). Top-down 3D is the most direct way a phone gives you to see it.
+
+### The depth of your reach-back
+
+Is the disc going back along the target line, or out to the side and away from your body? Did your shoulders actually turn, or did the arm just swing back? From the front or the side these are hard to separate. From above and from behind, they are clear. More on what the reach-back should do in [disc golf reach-back](/blog/disc-golf-reach-back).
+
+### The brace and where your weight goes
+
+A side view of the 3D figure shows whether your front leg firms up and stops your forward drift, or keeps bending and sliding. Rotating to a front view shows whether your hips stay stacked over the plant foot or fall away. If the brace is your question, [hips, brace and weight shift](/blog/disc-golf-hips-brace-weight-shift) goes deeper.
+
+### Angles you forgot to film
+
+The most practical benefit is simple: you filmed side-on, but your question needs a behind view. With 3D you rotate the figure instead of going back to the field.
+
+| What you want to check | Best 3D view | What to look for |
+|---|---|---|
+| Rounding / pull path | Top-down, with hand trail | Straight line along the target line vs a wide arc |
+| Hip lead and shoulder separation | Top-down | Hip line turning before the shoulder line |
+| Reach-back depth and coil | Top-down and behind | Disc back along the line, shoulders turned away |
+| Power pocket | Behind or front | Disc close to the chest, elbow leading |
+| Brace and plant | Side | Front leg firming up, body stopping over it |
+| Early rotation (opening up) | Front | Chest facing the target before the plant |
+| Balance at the finish | Front and side | Head and hips stacked over the front foot |
+
+For a full view-by-view and phase-by-phase routine, see [how to read your disc golf throw in 3D](/blog/how-to-read-your-disc-golf-throw-in-3d).
+
+<AppCallout feature="3d-throw" title="See your disc golf form in 3D">
+
+Film one throw on any phone. 3D Throw rebuilds it as a 3D body you can view from the side, front, behind or straight above, slow to 1/4 speed, and scrub to the release marker.
+
+</AppCallout>
+
+## The honest limits
+
+3D replays look convincing, which makes it easy to over-trust them. Here is what they cannot do.
+
+### One camera guesses depth
+
+Movement across the camera's view is measured directly from the image. Movement toward or away from the camera has to be inferred. So the axis pointing at the lens is always the least certain. If you film side-on, the sideways direction of your pull (toward and away from the camera) is the estimated one. That matters for rounding: a top-down view built from a side-on clip is a good first look, but if the answer is close, film a second clip from behind and compare.
+
+Absolute sizes and speeds are also less certain than angles and timing. Treat "my shoulders turned further on throw B than throw A" as meaningful and "my hand moved 0.4 m" as a rough guess.
+
+### Blur at the fastest moment
+
+The hand and disc are moving fastest right at release, which is exactly when frames blur. A review of 2D video analysis in sport notes that images need to be "sharp and motion blur-free, especially in high speed motions" ([Pueo 2016](https://www.redalyc.org/pdf/3010/301049620005.pdf)). At 30 frames per second, a lot happens between two frames at the hit, so the wrist and hand positions right at release are the shakiest part of any reconstruction. Bright light helps the most.
+
+### Hidden body parts
+
+When your throwing arm passes behind your torso, the camera cannot see it, and the software has to fill the gap from what came before and after. That is occlusion, the second challenge the review above names. Expect the arm to be least reliable when it is hidden from your filming angle.
+
+### No disc data
+
+3D form analysis reconstructs your body. It knows nothing about the disc: no speed, no spin, no nose angle, no wobble. Those are what sensor discs measure; TechDisc's metrics, for example, include speed, spin, nose angle, launch angle, hyzer angle and wobble ([TechDisc metrics](https://techdisc.freshdesk.com/support/solutions/articles/153000074253-techdisc-metrics)). If your question is "why is my disc flipping," the disc's numbers matter. If it is "what is my body doing wrong," the body is where to look. Many players benefit from both.
+
+### It does not replace judgment
+
+A 3D figure shows you what happened. It does not, on its own, tell you which difference matters. That is the job of a coach, a written breakdown, or your own checklist.
+
+## How to film for disc golf 3D form analysis
+
+The reconstruction can only be as good as the clip. Most problems come from the filming, not the software.
+
+1. **One person in frame.** A friend walking behind you can confuse the tracking.
+2. **Whole body, the whole time.** Head to plant foot, from the start of the run-up through the follow-through.
+3. **Steady phone.** Tripod, bag or a still hand. No panning after the disc.
+4. **Side-on is a good default.** It shows the stride, plant and brace clearly, and 3D lets you rotate to other views. If your main question is rounding or the power pocket, film from behind as well.
+5. **Good, even light.** Sun behind the camera, not behind you.
+6. **Trim to the throw.** A short clip of just the throw keeps the build focused. In Disc Golf Form Analyzer, 3D Throw accepts clips from 2 to 30 seconds.
+7. **Several throws.** One throw can be a fluke. Build a few and look for what repeats.
+
+The full setup, including camera height and distance, is in [how to film your disc golf throw for form analysis](/blog/how-to-film-disc-golf-throw-for-form-analysis).
+
+## What to look at first in a 3D replay
+
+If you open a 3D throw and do not know where to start, this order works.
+
+1. **Watch once at full speed** from the default view. Get the overall rhythm.
+2. **Switch to top-down and play at 1/4 speed.** Watch the hand trail. Straight or curved?
+3. **Scrub to the release marker** and check where the hand is relative to your chest.
+4. **Rotate to the side** and check the plant and the front leg.
+5. **Rotate to the front** and check when your chest opens to the target.
+6. **Pick one thing.** Not five. One fault, one drill, then film again.
+
+Comparing two throws is often more useful than studying one. Line up a good throw and a bad one at the moment of release and the difference tends to jump out; [compare disc golf throws side by side](/blog/compare-disc-golf-throws-side-by-side) explains how to do that well.
+
+## Where Disc Golf Form Analyzer fits
+
+In the app, [3D Throw](/features/3d-throw) turns any phone video into a 3D body. You can view it from the side, front, behind or top-down or drag to any angle, play at 1/4 or 1/2 speed, scrub frame by frame with a release marker, follow the hand trail, and compare two throws side by side synced at release. On iPhone you can also place the throw life-size in augmented reality. 3D Throw works on iPhone and Android, each account can build up to two new 3D throws a day, and a build that fails is refunded.
+
+3D shows you the throw. The other two tools grade it: [Pose Estimation](/features/pose-estimation) tracks your body frame by frame and grades it against a real coach's ideal backhand or forehand on 20 coach-defined faults, only the ones your filmed angle can show, and [Form Analysis](/features/form-analysis) writes a breakdown of what is working, the main issue, why it happens, the fix and a drill. The app is $39.99 a year after a 3-day free trial, on iOS and Android. If you are weighing options, the [comparison page](/compare) lays out how it stacks up.
+
+<AppCallout feature="3d-throw" title="Turn your next throw into 3D">
+
+Build a 3D throw from a 2 to 30 second clip, then put it next to an older throw, synced at release.
+
+</AppCallout>
+
+Whatever tool you use, the habit is the same: film well, look at the view that answers your question, change one thing, and film again.
