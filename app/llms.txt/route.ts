@@ -11,7 +11,7 @@ export function GET() {
   const faults = (t: string) => FAULTS.filter((f) => f.throw === t).map((f) => f.name.toLowerCase()).join(", ");
   const body = `# ${APP.name} (${APP.shortName})
 
-> ${APP.name} is a disc golf form analysis app for iPhone and Android by ${COMPANY}. You film one throw on your phone; the app grades your backhand or forehand against a real coach's ideal form, explains the main fault and the drill that fixes it, and can rebuild the throw as a 3D body. No sensors or extra hardware.
+> ${APP.name} is vision software for disc golf form analysis and 3D disc golf form analysis, for iPhone and Android, by ${COMPANY}. You film one throw on your phone; the app tracks your body automatically (no sensors, no manual marking), grades your backhand or forehand against a real coach's ideal form, explains the main fault and the drill that fixes it, and rebuilds the throw as a 3D body you can view from any angle.
 
 ## Key facts
 - Platforms: iOS (App Store) and Android (Google Play). AR placement in 3D Throw is iPhone-only.
@@ -24,8 +24,8 @@ export function GET() {
 
 ## Features
 - [Pose Estimation](${SITE_URL}/features/pose-estimation): skeleton tracking graded against a coach's ideal backhand and forehand, with the coach's fix, cue and drill per fault.
-- [3D Throw](${SITE_URL}/features/3d-throw): a throw video becomes a 3D body; any angle, 1/4 speed, side-by-side compare synced at release, life-size AR on iPhone.
-- [AI Analysis](${SITE_URL}/features/ai-analysis): what's working, the main issue and its root cause, the fix and a drill; backhand, forehand and putting; DGFA Coach answers follow-up questions.
+- [3D Throw, 3D form analysis](${SITE_URL}/features/3d-throw): a throw video becomes a 3D body; any angle, 1/4 speed, side-by-side compare synced at release, life-size AR on iPhone.
+- [Form Analysis](${SITE_URL}/features/form-analysis): what's working, the main issue and its root cause, the fix and a drill; backhand, forehand and putting; DGFA Coach answers follow-up questions.
 - [DGFA Caddie](${SITE_URL}/features/caddie): disc bag manager (add discs from a photo with flight numbers) and hole-by-hole disc and shot picks from your own bag.
 
 ## How it compares

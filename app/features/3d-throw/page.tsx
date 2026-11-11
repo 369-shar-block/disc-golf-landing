@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { FeaturePage, Band, Points } from "@/components/site/FeaturePage";
 import { Shot } from "@/components/site/blocks";
 import { ThrowViewer } from "@/components/site/ThrowViewer";
 
 export const metadata: Metadata = {
-  title: "3D Throw: See Your Disc Golf Throw in 3D",
+  title: "3D Disc Golf Form Analysis from One Phone Video",
   description:
-    "Turn a disc golf throw video into a 3D body. View it from any angle, slow the release to quarter speed, compare two throws side by side, and place it life-size in AR on iPhone.",
+    "3D disc golf form analysis from one phone video. See your throw as a 3D body from any angle, slow it to quarter speed, compare two throws synced at release. iPhone and Android.",
   alternates: { canonical: "/features/3d-throw" },
-  openGraph: { title: "3D Throw: your disc golf throw in 3D", url: "/features/3d-throw" },
+  openGraph: { title: "3D disc golf form analysis: see your throw in 3D", url: "/features/3d-throw" },
 };
 
 const FAQS = [
+  {
+    question: "What is 3D disc golf form analysis?",
+    answer:
+      "It turns an ordinary video of your throw into a moving 3D body, so you can study your form from angles a phone camera never saw: straight above to check the pull path for rounding, from behind for the brace, from the side for posture and timing. Disc Golf Form Analyzer does this with vision software from one phone video, with no sensors or suits.",
+  },
+  {
+    question: "Do I have to mark positions or key frames by hand?",
+    answer:
+      "No. You upload the clip and the vision software finds your body in every frame and builds the 3D throw on its own. The release is marked on the timeline for you.",
+  },
   {
     question: "How does 3D Throw work?",
     answer:
@@ -43,8 +54,8 @@ export default function Page() {
       slug="3d-throw"
       label="3D Throw"
       shot="3d-throw"
-      title={<>See your throw <span className="text-gradient">in 3D.</span></>}
-      intro="Any throw video becomes a 3D body you can spin to any angle, slow to quarter speed and compare side by side. On iPhone, place it life-size on the ground and walk around it."
+      title={<>3D disc golf <span className="text-gradient">form analysis.</span></>}
+      intro="Film one throw on your phone and see it as a 3D body. Spin it to any angle, slow the release to quarter speed and compare two throws side by side. No sensors, no suits, no marking frames by hand. iPhone and Android, with life-size AR on iPhone."
       faqs={FAQS}
       ctaTitle="Turn your next throw into 3D."
     >
@@ -103,6 +114,34 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <Band index="04" label="Why 3D" title={<>What flat video <span className="text-gradient">can&apos;t show.</span></>}>
+        <Points
+          items={[
+            { t: "Pull path from above", d: "Rounding is a sideways curve. A side-on video hides it; the top-down view of a 3D throw shows it in one frame." },
+            { t: "Hips vs shoulders", d: "Turn the figure to see whether your hips open before your shoulders, the separation that powers a backhand and forehand." },
+            { t: "Reach-back depth", d: "How far the disc goes back, and whether it stays on the target line, is a depth question one camera can only guess at in 2D." },
+            { t: "Any angle, one clip", d: "Film once from the side and still check the views from behind, in front and above." },
+          ]}
+        />
+      </Band>
+
+      <Band index="05" label="Guides" title={<>Learn to read <span className="text-gradient">a 3D throw.</span></>}>
+        <ul className="space-y-3">
+          {[
+            { href: "/blog/disc-golf-3d-form-analysis", t: "3D disc golf form analysis: what it shows that 2D video can't" },
+            { href: "/blog/how-to-read-your-disc-golf-throw-in-3d", t: "How to read your disc golf throw in 3D, view by view" },
+            { href: "/blog/compare-disc-golf-throws-side-by-side", t: "How to compare two disc golf throws side by side" },
+            { href: "/blog/disc-golf-form-analysis-guide", t: "The complete guide to disc golf form analysis" },
+          ].map((g) => (
+            <li key={g.href}>
+              <Link href={g.href} className="text-cyan-400 underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-400">
+                {g.t}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Band>
     </FeaturePage>
   );
 }

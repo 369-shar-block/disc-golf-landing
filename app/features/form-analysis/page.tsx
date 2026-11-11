@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { FeaturePage, Band, Points } from "@/components/site/FeaturePage";
 
 export const metadata: Metadata = {
-  title: "AI Disc Golf Form Analysis: The Fix and the Drill",
+  title: "Disc Golf Form Analysis: The Main Fault, the Fix and the Drill",
   description:
-    "Upload a disc golf throw and get an AI breakdown: what's working, the main issue, why it happens, the fix and a drill. Backhand, forehand and putting. Ask DGFA Coach follow-up questions.",
-  alternates: { canonical: "/features/ai-analysis" },
-  openGraph: { title: "AI disc golf form analysis", url: "/features/ai-analysis" },
+    "Disc golf form analysis from one phone video: what's working, the main issue, why it happens, the fix and a drill. Backhand, forehand and putting, with DGFA Coach for follow-ups.",
+  alternates: { canonical: "/features/form-analysis" },
+  openGraph: { title: "Disc golf form analysis: the fix and the drill", url: "/features/form-analysis" },
 };
 
 const FAQS = [
   {
-    question: "What does the AI analysis tell me?",
+    question: "What does a form analysis tell me?",
     answer:
       "What is working in your throw, the one main issue holding you back, why it happens (the root cause, not just the symptom), how to fix it, and a drill to practice the fix.",
   },
   {
     question: "Which throws does it cover?",
     answer: "Backhand, forehand and putting. For a fault-by-fault grade against a coach's ideal form, use Pose Estimation (backhand and forehand).",
+  },
+  {
+    question: "Do I have to mark positions or draw lines on my video?",
+    answer: "No. You upload the clip and the vision software finds your body in every frame on its own. There is nothing to mark, trim to the frame or measure by hand.",
   },
   {
     question: "Can I ask questions about my analysis?",
@@ -32,11 +37,11 @@ const FAQS = [
 export default function Page() {
   return (
     <FeaturePage
-      slug="ai-analysis"
-      label="AI analysis"
+      slug="form-analysis"
+      label="Form analysis"
       shot="fault-causes"
       title={<>Root causes, <span className="text-gradient">not symptoms.</span></>}
-      intro="Upload a throw and get a written breakdown from a model trained for disc golf: what's working, the main issue and why it happens, the fix, and a drill to make it stick."
+      intro="Upload a throw and get a written disc golf form analysis built for disc golf: what's working, the main issue and why it happens, the fix, and a drill to make it stick."
       faqs={FAQS}
       ctaTitle="Get the fix for your throw."
     >
@@ -50,7 +55,16 @@ export default function Page() {
           ]}
         />
       </Band>
-      <Band index="02" label="DGFA Coach" title={<>Then ask <span className="text-gradient">anything.</span></>}>
+      <Band index="02" label="See it in 3D" title={<>Then <span className="text-gradient">see it yourself.</span></>}>
+        <p>
+          Every fault is easier to fix once you can see it. Rebuild the same throw with{" "}
+          <Link href="/features/3d-throw" className="text-cyan-400 underline decoration-cyan-400/40 underline-offset-4">
+            3D form analysis
+          </Link>{" "}
+          and look at it from above, behind or the side at quarter speed.
+        </p>
+      </Band>
+      <Band index="03" label="DGFA Coach" title={<>Then ask <span className="text-gradient">anything.</span></>}>
         <p>
           Not sure how to do the drill, or whether your next clip should be from the side or behind? DGFA Coach answers questions about your
           analysis in plain language, right in the app.

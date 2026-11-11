@@ -15,9 +15,9 @@ const FEATURE: Record<string, { href: string; label: string; line: string }> = {
     label: "3D Throw",
     line: "Rebuild your throw in 3D, slow the release to quarter speed and compare two throws side by side.",
   },
-  "ai-analysis": {
-    href: "/features/ai-analysis",
-    label: "AI Analysis",
+  "form-analysis": {
+    href: "/features/form-analysis",
+    label: "Form Analysis",
     line: "Upload a throw and get the main issue, why it happens, the fix and a drill.",
   },
   caddie: {
